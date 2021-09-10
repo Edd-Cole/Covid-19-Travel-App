@@ -805,5 +805,280 @@
       },
       "hotspots": ["Bucuresti", "Cluj"]
     }
+  },
+  "Sweden": {
+    "colorList": "amber",
+    "entryRequirements": {
+      "recoveryFromCovid": {
+        "minDays": null,
+        "maxDays": null
+      },
+      "withFullVaccination": {
+        "acceptingVisitors": false,
+        "daysInnoculatedBeforeEntry": null,
+        "test": {
+          "maximumHoursBefore": null
+        },
+        "quarantine": {
+          "numberOfDays": null
+        },
+        "documentsRequired": null,
+        "Other": []
+      },
+      "withoutFullVaccination": {
+        "acceptingVisitors": false,
+        "test": {
+          "maximumHoursBefore": null
+        },
+        "quarantine": {
+          "numberOfDays": null
+        },
+        "documentsRequired": [],
+        "other": null
+      }
+    },
+    "restrictions": {
+      "masks": {
+        "isRequired": null,
+        "moreInfo": null
+      },
+      "lockdowns": false,
+      "socialDistancing": true,
+      "groupMaximums": {
+        "inside": 8,
+        "outside": "no limit"
+      }
+    },
+    "Spain": {
+      "colorList": "amber",
+      "entryRequirements": {
+        "recoveryFromCovid": {
+          "minDays": 11,
+          "maxDays": 180
+        },
+        "withFullVaccination": {
+          "acceptingVisitors": true,
+          "daysInnoculatedBeforeEntry": 14,
+          "test": {
+            "maximumHoursBefore": 72
+          },
+          "quarantine": {
+            "numberOfDays": 0
+          },
+          "documentsRequired": ["Vaccination Status Proof"],
+          "Other": []
+        },
+        "withoutFullVaccination": {
+          "acceptingVisitors": true,
+          "test": {
+            "maximumHoursBefore": null
+          },
+          "quarantine": {
+            "numberOfDays": null
+          },
+          "documentsRequired": [
+            "Covid Recovery Certificate",
+            "Test Certificate within laast 72 Hours"
+          ],
+          "other": null
+        }
+      },
+      "restrictions": {
+        "masks": {
+          "isRequired": true,
+          "moreInfo": "Face masks are required in all enclosed public spaces, and wherever a social distance of 1.5 metres cannot be observed"
+        },
+        "lockdowns": false,
+        "socialDistancing": true,
+        "groupMaximums": {
+          "inside": 4,
+          "outside": 6
+        }
+      }
+    },
+    "Slovenia": {
+      "colorList": "green",
+      "entryRequirements": {
+        "recoveryFromCovid": {
+          "minDays": 11,
+          "maxDays": 180
+        },
+        "withFullVaccination": {
+          "acceptingVisitors": true,
+          "daysInnoculatedBeforeEntry": 14,
+          "test": {
+            "maximumHoursBefore": null
+          },
+          "quarantine": {
+            "numberOfDays": 0
+          },
+          "documentsRequired": ["Vaccination Status Proof"],
+          "Other": []
+        },
+        "withoutFullVaccination": {
+          "acceptingVisitors": true,
+          "test": {
+            "maximumHoursBefore": 72
+          },
+          "quarantine": {
+            "numberOfDays": 10
+          },
+          "documentsRequired": [
+            "PCR test no longer than 72 Hours old, or Antigen test no longer than 48 Hours old"
+          ],
+          "other": []
+        }
+      },
+      "restrictions": {
+        "masks": {
+          "isRequired": true,
+          "moreInfo": "Face masks are required in all enclosed public spaces and businesses"
+        },
+        "lockdowns": false,
+        "socialDistancing": true,
+        "groupMaximums": {
+          "inside": 50,
+          "outside": 50
+        }
+      }
+    },
+    "Slovakia": {
+      "colorList": "green",
+      "entryRequirements": {
+        "recoveryFromCovid": {
+          "minDays": 11,
+          "maxDays": 180
+        },
+        "withFullVaccination": {
+          "acceptingVisitors": true,
+          "daysInnoculatedBeforeEntry": 14,
+          "test": {
+            "maximumHoursBefore": null
+          },
+          "quarantine": {
+            "numberOfDays": null
+          },
+          "documentsRequired": ["Vaccination Status Proof"],
+          "Other": ["Passenger Locator Form"]
+        },
+        "withoutFullVaccination": {
+          "acceptingVisitors": false,
+          "test": {
+            "maximumHoursBefore": null
+          },
+          "quarantine": {
+            "numberOfDays": null
+          },
+          "documentsRequired": [],
+          "other": []
+        }
+      },
+      "restrictions": {
+        "masks": {
+          "isRequired": true,
+          "moreInfo": "Face masks are required in all enclosed public spaces"
+        },
+        "lockdowns": false,
+        "socialDistancing": true,
+        "groupMaximums": {
+          "inside": null,
+          "outside": null
+        }
+      }
+    },
+
+    "Iceland": {
+      "colorList": "green",
+      "entryRequirements": {
+        "recoveryFromCovid": {
+          "minDays": 11,
+          "maxDays": 180
+        },
+        "withFullVaccination": {
+          "acceptingVisitors": false,
+          "daysInnoculatedBeforeEntry": null,
+          "test": {
+            "maximumHoursBefore": null
+          },
+          "quarantine": {
+            "numberOfDays": null
+          },
+          "documentsRequired": [],
+          "Other": []
+        },
+        "withoutFullVaccination": {
+          "acceptingVisitors": false,
+          "test": {
+            "maximumHoursBefore": null
+          },
+          "quarantine": {
+            "numberOfDays": null
+          },
+          "documentsRequired": [],
+          "other": []
+        }
+      },
+      "restrictions": {
+        "masks": {
+          "isRequired": true,
+          "moreInfo": "Face masks are required in all enclosed public spaces"
+        },
+        "lockdowns": false,
+        "socialDistancing": true,
+        "groupMaximums": {
+          "inside": null,
+          "outside": null
+        }
+      }
+    },
+    "Finland": {
+      "colorList": "green",
+      "entryRequirements": {
+        "recoveryFromCovid": {
+          "minDays": 11,
+          "maxDays": 180
+        },
+        "withFullVaccination": {
+          "acceptingVisitors": true,
+          "daysInnoculatedBeforeEntry": 14,
+          "test": {
+            "maximumHoursBefore": null
+          },
+          "quarantine": {
+            "numberOfDays": null
+          },
+          "documentsRequired": ["Vaccination Status Proof"],
+          "Other": []
+        },
+        "withoutFullVaccination": {
+          "acceptingVisitors": true,
+          "test": {
+            "maximumHoursBefore": 72
+          },
+          "quarantine": {
+            "numberOfDays": "If tested positive, case must self-isolate until test is negative"
+          },
+          "documentsRequired": [
+            "Proof of Negative Test",
+            "Proof of COVID recovery"
+          ],
+          "other": [
+            "If no documents provided regarding vaccination/testing, traveller must take a test no later than 24 hours after arrival"
+          ]
+        }
+      },
+      "restrictions": {
+        "masks": {
+          "isRequired": true,
+          "moreInfo": "Face masks are required in all enclosed public spaces and businesses"
+        },
+        "lockdowns": false,
+        "socialDistancing": true,
+        "groupMaximums": {
+          "inside": null,
+          "outside": null
+        }
+      }
+    }
   }
 }
