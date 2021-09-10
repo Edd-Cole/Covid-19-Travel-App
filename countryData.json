@@ -805,5 +805,56 @@
       },
       "hotspots": ["Bucuresti", "Cluj"]
     }
+  },
+  "france": {
+    "colorList": "amber",
+    "entryRequirements": {
+      "recoveryFromCovid": {
+        "minDays": 11,
+        "maxDays": 180
+      },
+      "withFullVaccination": {
+        "acceptingVisitors": true,
+        "daysInnoculatedBeforeEntry": 7,
+        "test": {
+          "maximumHoursBefore": 24
+        },
+        "quarantine": {
+          "numberOfDays": 0
+        },
+        "documentsRequired": [
+          "Vaccination Status Proof and self-certifying sworn statement"
+        ],
+        "Other": []
+      },
+      "withoutFullVaccination": {
+        "acceptingVisitors": false,
+        "test": {
+          "maximumHoursBefore": 24
+        },
+        "quarantine": {
+          "numberOfDays": 7
+        },
+        "documentsRequired": [
+          "International travel certificate",
+          "self-certifying sworn statement"
+        ],
+        "other": "essential travel only if unvaccinated"
+      }
+    },
+    "restrictions": {
+      "masks": {
+        "isRequired": "true",
+        "moreInfo": "Face masks are required in all enclosed public spaces. It is no longer a requirement to wear a mask in all outdoor public spaces, with some exceptions, including gatherings, queues, markets, and stadiums. Wearing masks on public transport is compulsory for all users aged 11 and over, with fines for those who are not compliant. Masks are also compulsory in taxis and private hire vehicles without a plexiglass screen"
+      },
+      "lockdowns": "false",
+      "socialDistancing": true,
+      "groupMaximums": {
+        "inside": null,
+        "outside": null
+      }
+    },
+    "hotspots": [],
+    "healthCareNumber": 112
   }
 }
