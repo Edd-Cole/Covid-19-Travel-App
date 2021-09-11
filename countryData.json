@@ -843,11 +843,11 @@
       "groupMaximums": {
         "inside": null,
         "outside": null
-      }
+      },
+      "hotspots": [],
+      "healthCareNumber": 112
     },
-    "hotspots": [],
-    "healthCareNumber": 112
-  },
+  
   "Sweden": {
     "colorList": "amber",
     "entryRequirements": {
