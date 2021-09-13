@@ -1,6 +1,5 @@
 module.exports = [{
-    "country": {
-      "portugal": {
+        "country": "portugal",
         "colorList": "amber",
         "entryRequirements": {
           "recoveryFromCovid": {
@@ -48,10 +47,10 @@ module.exports = [{
         },
         "hotspots": ["Lisbon"],
         "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
-      }
-    },
+      },
   
-    "spain": {
+    {
+      "country": "spain",
       "colorList": "amber",
       "entryRequirements": {
         "recoveryFromCovid": null,
@@ -100,7 +99,8 @@ module.exports = [{
       "healthCareNumber": "Call regional healthcare provider"
     },
   
-    "italy": {
+    {
+      "country": "italy",
       "colorList": "amber",
       "entryRequirements": {
         "recoveryFromCovid": null,
@@ -150,7 +150,8 @@ module.exports = [{
       "healthCareNumber": "Call emergency healthline 112 - English operators available"
     },
   
-    "germany": {
+    {
+        "country": "germany",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -197,7 +198,8 @@ module.exports = [{
       }
     },
   
-    "denmark": {
+    { 
+        "country": "denmark",
       "colorList": "Green",
       "entryRequirements": {
         "recoveryFromCovid": {
@@ -246,7 +248,8 @@ module.exports = [{
       "healthCareNumber": "Danish authorities on their helpline (+45 7020 6044)"
     },
   
-    "switzerland": {
+    {
+        "country": "switzerland",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -298,7 +301,8 @@ module.exports = [{
       }
     },
   
-    "greece": {
+    {
+        "country": "greece",
       "colorList": "amber",
       "entryRequirements": {
         "recoveryFromCovid": {
@@ -354,7 +358,8 @@ module.exports = [{
       "healthCareNumber": "Call healthcare on 210 521 2054"
     },
   
-    "belgium": {
+    {
+        "country": "belgium",
       "colorList": "amber",
       "entryRequirements": {
         "recoveryFromCovid": {
@@ -408,7 +413,8 @@ module.exports = [{
       "healthCareNumber": "Call healthcare line on 100"
     },
 
-    "austria": {
+    {
+        "country": "austria",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -456,7 +462,8 @@ module.exports = [{
       }
     },
 
-    "bulgaria": {
+    {
+        "country": "bulgaria",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": "conditional - Family members of citizens, students with D-visas & Bulgarian Nationals",
@@ -511,7 +518,8 @@ module.exports = [{
       }
     },
 
-    "cyprus": {
+    {
+        "country": "cyprus",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -557,9 +565,11 @@ module.exports = [{
           "outside": null
         },
         "hotspots": ["Split", "Dubrovnik"]
-      },
+      }
+    },
 
-      "croatia": {
+      {
+          "country": "croatia",
         "colorList": "green",
         "withFullVaccination": {
           "acceptingVisitors": true,
@@ -608,10 +618,10 @@ module.exports = [{
           },
           "hotspots": ["plit", "Dubrovnik"]
         }
-      }
-    },
+      },
 
-    "ireland": {
+    {
+        "country": "ireland",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -662,7 +672,8 @@ module.exports = [{
       }
     },
 
-    "lithuania": {
+    {
+        "country": "lithuania",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -716,7 +727,8 @@ module.exports = [{
       }
     },
 
-    "netherlands": {
+    {
+        "country": "netherlands",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -767,7 +779,8 @@ module.exports = [{
       }
     },
 
-    "romania": {
+    {
+        "country": "romania",
       "colorList": "green",
       "withFullVaccination": {
         "acceptingVisitors": true,
@@ -815,7 +828,8 @@ module.exports = [{
       }
     },
 
-    "france": {
+    {
+        "country": "france",
       "colorList": "amber",
       "entryRequirements": {
         "recoveryFromCovid": {
@@ -857,7 +871,8 @@ module.exports = [{
         "healthCareNumber": 112
     },
     
-    "sweden": {
+    {
+        "country": "sweden",
       "colorList": "amber",
       "entryRequirements": {
         "recoveryFromCovid": {
@@ -900,8 +915,10 @@ module.exports = [{
           "outside": "no limit"
         }
       },
+    },
 
-      "slovenia": {
+      {
+          "country": "slovenia",
         "colorList": "green",
         "entryRequirements": {
           "recoveryFromCovid": {
@@ -948,7 +965,8 @@ module.exports = [{
         }
       },
 
-      "slovakia": {
+      {
+          "country": "slovakia",
         "colorList": "green",
         "entryRequirements": {
           "recoveryFromCovid": {
@@ -993,7 +1011,8 @@ module.exports = [{
         }
       },
   
-      "iceland": {
+      {
+          "country": "iceland",
         "colorList": "green",
         "entryRequirements": {
           "recoveryFromCovid": {
@@ -1038,7 +1057,8 @@ module.exports = [{
         }
       },
 
-      "finland": {
+      {
+          "country": "finland",
         "colorList": "green",
         "entryRequirements": {
           "recoveryFromCovid": {
@@ -1087,6 +1107,5 @@ module.exports = [{
           }
         }
       }
-    }
-  }
+    
 ]
