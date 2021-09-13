@@ -1106,6 +1106,109 @@ module.exports = [{
             "outside": null
           }
         }
+      },
+      {
+        "country": "hungary",
+    "colorList": "amber",
+    "entryRequirements": {
+      "recoveryFromCovid": {
+        "minDays": null,
+        "maxDays": 180
+      },
+      "withFullVaccination": {
+        "acceptingVisitors": true,
+        "daysInnoculatedBeforeEntry": 14,
+        "test": {
+          "maximumHoursBefore": 72
+        },
+        "quarantine": {
+          "numberOfDays": 0
+        },
+        "documentsRequired": ["Proof of vaccination"],
+        "Other": []
+      },
+      "withoutFullVaccination": {
+        "acceptingVisitors": true,
+        "test": {
+          "maximumHoursBefore": null
+        },
+        "quarantine": {
+          "numberOfDays": null
+        },
+        "documentsRequired": [
+          "Negative covid test no longer than 72 hours old"
+        ],
+        "other": ["Temparature check on arrival"]
       }
+    },
+    "restrictions": {
+      "masks": {
+        "isRequired": false,
+        "moreInfo": null
+      },
+      "lockdowns": false,
+      "socialDistancing": true,
+      "groupMaximums": {
+        "inside": null,
+        "outside": null
+      }
+    },
+    "hotspots": ["Budapest"],
+    "healthCareNumber": null
+
+
+  },
+  {
+    "country": "estonia",
+    "colorList": "amber",
+    "entryRequirements": {
+      "recoveryFromCovid": {
+        "minDays": null,
+        "maxDays": 180
+      },
+      "withFullVaccination": {
+        "acceptingVisitors": true,
+        "daysInnoculatedBeforeEntry": null,
+        "test": {
+          "maximumHoursBefore": 72
+        },
+        "quarantine": {
+          "numberOfDays": 0
+        },
+        "documentsRequired": [
+          "Negative covid test no longer than 72 hours old"
+        ],
+        "Other": []
+      },
+      "withoutFullVaccination": {
+        "acceptingVisitors": true,
+        "test": {
+          "maximumHoursBefore": 72
+        },
+        "quarantine": {
+          "numberOfDays": 10
+        },
+        "documentsRequired": [
+          "Negative Covid Test no longer than 72 Hours old"
+        ],
+        "other": []
+      }
+    },
+    "restrictions": {
+      "masks": {
+        "isRequired": true,
+        "moreInfo": "Masks required in public spaces where vaccination checks aren't in place"
+      },
+      "lockdowns": false,
+      "socialDistancing": true,
+      "groupMaximums": {
+        "inside": null,
+        "outside": null
+      }
+    },
+    "hotspots": ["Tallinn"],
+    "healthCareNumber": null
+  }
+      
     
 ]
