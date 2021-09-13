@@ -25,4 +25,5 @@ async function main() {
   return db;
 }
 
+export {client};
 export default main;
