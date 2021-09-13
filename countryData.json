@@ -1,5 +1,6 @@
 {
   "country": {
+
     "Portugal": {
       "colorList": "amber",
       "entryRequirements": {
@@ -49,6 +50,7 @@
       "hotspots": ["Lisbon"],
       "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
     },
+
     "Italy": {
       "colorList": "amber",
       "entryRequirements": {
@@ -98,6 +100,7 @@
       "hotspots": ["Rome", "Milan", "Venice", "Naples"],
       "healthCareNumber": "Call emergency healthline 112 - English operators available"
     },
+
     "Germany": {
       "colorList": "green",
       "withFullVaccination": {
@@ -147,6 +150,7 @@
         "hotspots": ["Berlin", "Hamburg", "Cologne"]
       }
     },
+
     "Denmark": {
       "colorList": "Green",
       "entryRequirements": {
@@ -195,6 +199,7 @@
       "hotspots": ["Copenhagen", "Aarhus", "Herning"],
       "healthCareNumber": "Danish authorities on their helpline (+45 7020 6044)"
     },
+
     "Switzerland": {
       "colorList": "green",
       "withFullVaccination": {
@@ -249,6 +254,7 @@
         "hotspots": ["Geneva", "Zurich"]
       }
     },
+
     "Greece": {
       "colorList": "amber",
       "entryRequirements": {
@@ -304,6 +310,7 @@
       "hotspots": ["Meesinia", "Achaia", "Peloponnese", "Ikaria", "Crete"],
       "healthCareNumber": "Call healthcare on 210 521 2054"
     },
+
     "Belgium": {
       "colorList": "amber",
       "entryRequirements": {
@@ -357,6 +364,7 @@
       "hotspots": [],
       "healthCareNumber": "Call healthcare line on 100"
     },
+
     "Austria": {
       "colorList": "green",
       "withFullVaccination": {
@@ -404,6 +412,7 @@
         "hotspots": ["Vienna", "Vorarlberg"]
       }
     },
+
     "Bulgaria": {
       "colorList": "green",
       "withFullVaccination": {
@@ -458,6 +467,7 @@
         "hotspots": ["Sofia", "Plovdiv"]
       }
     },
+
     "Cyprus": {
       "colorList": "green",
       "withFullVaccination": {
@@ -556,6 +566,7 @@
         }
       }
     },
+
     "Ireland": {
       "colorList": "green",
       "withFullVaccination": {
@@ -606,6 +617,7 @@
         "hotspots": ["Derry City", "Donegal"]
       }
     },
+
     "Lithuania": {
       "colorList": "green",
       "withFullVaccination": {
@@ -659,6 +671,7 @@
         "hotspots": ["Vilnius", "Kaunas"]
       }
     },
+
     "Netherlands": {
       "colorList": "green",
       "withFullVaccination": {
@@ -709,6 +722,7 @@
         "hotspots": ["Amsterdam", "Rotterdam"]
       }
     },
+
     "Romania": {
       "colorList": "green",
       "withFullVaccination": {
@@ -756,6 +770,7 @@
         "hotspots": ["Bucuresti", "Cluj"]
       }
     },
+
     "France": {
       "colorList": "amber",
       "entryRequirements": {
@@ -797,6 +812,7 @@
       "hotspots": [],
       "healthCareNumber": 112
     },
+
     "Sweden": {
       "colorList": "amber",
       "entryRequirements": {
@@ -841,6 +857,7 @@
         }
       }
     },
+
     "Spain": {
       "colorList": "amber",
       "entryRequirements": {
@@ -888,6 +905,7 @@
         }
       }
     },
+
     "Slovenia": {
       "colorList": "green",
       "entryRequirements": {
@@ -934,6 +952,7 @@
         }
       }
     },
+
     "Slovakia": {
       "colorList": "green",
       "entryRequirements": {
@@ -978,6 +997,7 @@
         }
       }
     },
+
     "Iceland": {
       "colorList": "green",
       "entryRequirements": {
@@ -1022,6 +1042,7 @@
         }
       }
     },
+
     "Finland": {
       "colorList": "green",
       "entryRequirements": {
@@ -1071,6 +1092,7 @@
         }
       }
     }
-  }
-}
 
+  }
+
+}
