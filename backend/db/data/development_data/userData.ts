@@ -1,0 +1,275 @@
+module.exports = [
+    {
+        fullName: "John Smith",
+        email: "js@google.com",
+        password: "password",
+        trips: [{
+            country: "france",
+            trafficLight: "amber",
+            dateGoing: "2022.01.12",
+            dateReturning: "2022.01.24",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        },
+        {
+        country: "greece",
+        trafficLight: "amber",
+        dateGoing: "2022.05.03",
+        dateReturning: "2022.05.10",
+        acceptingTourists: true,
+        vaccineRequired: true,
+        testRequired: true,
+        extraDocsRequired: true,
+        newInfo: true
+        }],
+        pastTrips: [{
+            country: "poland",
+            dateGoing: "2021.12.02",
+            dateReturning: "2021.12.06",
+        }],
+    },
+    {
+        fullName: "Edd Kleszcz",
+        email: "ek@sadballoons.com",
+        password: "thisIsTheBestPasswordEver",
+        trips: [{
+            country: "spain",
+            trafficLight: "amber",
+            dateGoing: "2022.01.12",
+            dateReturning: "2022.01.24",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: true
+        },
+        {
+            country: "ireland",
+            trafficLight: "amber",
+            dateGoing: "2022.05.03",
+            dateReturning: "2022.05.10",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        },
+        {
+            country: "netherlands",
+            trafficLight: "amber",
+            dateGoing: "2022.05.011",
+            dateReturning: "2022.05.19",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        }],
+        pastTrips: [{
+            country: "italy",
+            dateGoing: "2021.12.02",
+            dateReturning: "2021.12.06",
+        },
+        {
+            country: "france",
+            dateGoing: "2021.12.07",
+            dateReturning: "2021.12.10",
+        }],
+    },
+    {
+        fullName: "Mahamud Arteh",
+        email: "ma@sadballoons.com",
+        password: "IrockThePARTY",
+        trips: [{
+            country: "spain",
+            trafficLight: "amber",
+            dateGoing: "2022.01.12",
+            dateReturning: "2022.01.24",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: true
+        },
+        {
+            country: "ireland",
+            trafficLight: "amber",
+            dateGoing: "2022.05.03",
+            dateReturning: "2022.05.10",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        },
+        {
+            country: "netherlands",
+            trafficLight: "amber",
+            dateGoing: "2022.05.011",
+            dateReturning: "2022.05.19",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        }],
+        pastTrips: [{
+            country: "italy",
+            dateGoing: "2021.12.02",
+            dateReturning: "2021.12.06",
+        },
+        {
+            country: "france",
+            dateGoing: "2021.12.07",
+            dateReturning: "2021.12.10",
+        }],
+    },
+    {
+       fullName: "Rob Crowther",
+        email: "rc@sadballoons.com",
+        password: "IrockThePARTY",
+            trips: [{
+                country: "france",
+                trafficLight: "amber",
+                dateGoing: "2022.01.12",
+                dateReturning: "2022.01.24",
+                acceptingTourists: true,
+                vaccineRequired: true,
+                testRequired: true,
+                extraDocsRequired: true,
+                newInfo: true
+            },
+            {
+                country: "germany",
+                trafficLight: "amber",
+                dateGoing: "2022.05.03",
+                dateReturning: "2022.05.10",
+                acceptingTourists: true,
+                vaccineRequired: true,
+                testRequired: true,
+                extraDocsRequired: true,
+                newInfo: false
+            },
+            {
+                country: "spain",
+                trafficLight: "amber",
+                dateGoing: "2022.05.011",
+                dateReturning: "2022.05.19",
+                acceptingTourists: true,
+                vaccineRequired: true,
+                testRequired: true,
+                extraDocsRequired: true,
+                newInfo: false
+            }],
+            pastTrips: [{
+                country: "portugal",
+                dateGoing: "2021.12.02",
+                dateReturning: "2021.12.06",
+            },
+            {
+                country: "ireland",
+                dateGoing: "2021.12.07",
+                dateReturning: "2021.12.10",
+            }],
+    },
+    {
+        fullName: "Seb Boyse",
+        email: "sb@sadballoons.com",
+        password: "thisIsTheBestPasswordEver",
+        trips: [{
+            country: "poland",
+            trafficLight: "amber",
+            dateGoing: "2022.01.12",
+            dateReturning: "2022.01.24",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: true
+        },
+        {
+            country: "netherlands",
+            trafficLight: "amber",
+            dateGoing: "2022.05.03",
+            dateReturning: "2022.05.10",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        },
+        {
+            country: "switzerland",
+            trafficLight: "amber",
+            dateGoing: "2022.05.011",
+            dateReturning: "2022.05.19",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        }],
+        pastTrips: [{
+            country: "france",
+            dateGoing: "2021.12.02",
+            dateReturning: "2021.12.06",
+        },
+        {
+            country: "iceland",
+            dateGoing: "2021.12.07",
+            dateReturning: "2021.12.10",
+        }],
+    },
+    {
+        fullName: "Heather Berrill",
+        email: "hb@sadballoons.com",
+        password: "thisIsTheBestPasswordEver",
+        trips: [{
+            country: "greece",
+            trafficLight: "amber",
+            dateGoing: "2022.01.12",
+            dateReturning: "2022.01.24",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: true
+        },
+        {
+            country: "italy",
+            trafficLight: "amber",
+            dateGoing: "2022.05.03",
+            dateReturning: "2022.05.10",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        },
+        {
+            country: "croatia",
+            trafficLight: "amber",
+            dateGoing: "2022.05.011",
+            dateReturning: "2022.05.19",
+            acceptingTourists: true,
+            vaccineRequired: true,
+            testRequired: true,
+            extraDocsRequired: true,
+            newInfo: false
+        }],
+        pastTrips: [{
+            country: "france",
+            dateGoing: "2021.12.02",
+            dateReturning: "2021.12.06",
+        },
+        {
+            country: "portugal",
+            dateGoing: "2021.12.07",
+            dateReturning: "2021.12.10",
+        }],
+    },
+
+]
