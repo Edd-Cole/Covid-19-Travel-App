@@ -5,9 +5,11 @@ const path = require('path');
 const url = 'mongodb://localhost:27017';
 const client = new MongoClient(url);
 
-//Database name
+//Database name changes depending on whether tests are being run or not
 const ENV = process.env.NODE_ENV || 'development';
 let dbSuffix = process.env.NODE_ENV || '';
+
+//adjust suffix if normal database connection isn't being established
 if(dbSuffix !== '') {
     dbSuffix = '-' + dbSuffix;
 }
@@ -16,11 +18,12 @@ require('dotenv').config({
     path: path.resolve(__dirname, `../.env.${ENV}`)
 })
 
+//Establish database connection asynchronously
 async function main() {
     await client.connect();
     const db = client.db(dbName);
-    const userCollection = db.collection('users');
-    const countriesCollection = db.collection('countries');
+    const userCollection = db.collection('users'); //establishes connection to users
+    const countriesCollection = db.collection('countries'); //establishes connection to countries
     return {userCollection, countriesCollection};
   }
 
