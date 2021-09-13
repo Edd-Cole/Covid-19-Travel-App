@@ -17,13 +17,11 @@ require('dotenv').config({
 })
 
 async function main() {
-    // Use connect method to connect to the server
     await client.connect();
-    console.log('Connected successfully to server');
     const db = client.db(dbName);
-    const collection = db.collection('documents');
-  
-    // the following code examples can be pasted here...
-  
-    return 'done.';
+    const userCollection = db.collection('users');
+    const countriesCollection = db.collection('countries');
+    return {userCollection, countriesCollection};
   }
+
+ module.exports = main;
