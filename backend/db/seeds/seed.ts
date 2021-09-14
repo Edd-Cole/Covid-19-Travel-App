@@ -1,20 +1,22 @@
 import main from "./connection";
 
-const seed = () => {
+const seed = async (countryData: object[], userData: object[]) => {
   // 1. drop collections
-  return main().then((db) => {
-    db.collection('countries').drop();
-    db.collection('users').drop();
-    console.log('change')
+  return main().then(async (db) => {
+    await db.collection('countries').drop();
+    await db.collection('users').drop();
     return db;
   })
   // 2. create collections
-  .then((db) => {
-      db.createCollection('countries');
-      db.createCollection('users');
+  .then(async (db) => {
+      await db.createCollection('countries');
+      await db.createCollection('users');
       return db;
   })
   // 3. populate collections
+  .then(async (db) => {
+      return db.collection('countries').insertOne()
+    })
 };
 
 export default seed;
