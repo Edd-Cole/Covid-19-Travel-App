@@ -22,7 +22,7 @@ require("dotenv").config({
 async function main() {
   await client.connect();
   const db = client.db(dbName);
-  return { db, client };
+  return db;
 }
 
 export { client };
