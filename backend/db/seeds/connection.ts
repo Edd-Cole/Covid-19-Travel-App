@@ -25,4 +25,4 @@ const main = async () => {
   return db;
 };
 
-module.exports = { client, main };
+module.exports = { client, main, url };
