@@ -1,0 +1,8 @@
+{
+  "GET /": {
+    "Description": "Serves up a JSON representation of all the available endpoints",
+    "Queries": [],
+    "Request Example": null,
+    "Response Example": []
+  }
+}
