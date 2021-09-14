@@ -1,2 +1,4 @@
-exports.countryData = require('./countryData.ts');
-exports.userData = require('./userData.ts');
+let countryData = require('./countryData.ts');
+let userData = require('./userData.ts');
+
+export {countryData, userData};
