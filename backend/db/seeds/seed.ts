@@ -28,4 +28,4 @@ const seed = async (countryData: object[], userData: object[]) => {
   );
 };
 
-module.exports = seed;
+module.exports = { seed };

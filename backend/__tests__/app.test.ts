@@ -6,7 +6,7 @@ const countryData = require("../db/data/development_data/countryData");
 const userData = require("../db/data/development_data/userData");
 const { main } = require("../db/seeds/connection");
 const { client } = require("../db/seeds/connection");
-const seed = require("../db/seeds/seed");
+const { seed } = require("../db/seeds/seed");
 
 beforeEach(() => seed(countryData, userData));
 afterAll(() => main().then(() => client.close()));
