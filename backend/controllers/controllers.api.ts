@@ -1,13 +1,16 @@
-import { fetchEndpoints } from "../models/models.api";
+const { fetchEndpoints: selectEndpoints } = require("../models/models.api");
 
 const getEndpoints = (req: object, res: any, next: any) => {
-  fetchEndpoints()
+  console.log("in the controller");
+  selectEndpoints()
     .then((endpoints: string) => {
-      res.status(200).send(JSON.parse(endpoints));
+      endpoints = JSON.parse(endpoints);
+      res.status(200).send({ endpoints });
     })
     .catch((err: any) => {
+      console.log(err);
       next(err);
     });
 };
 
-export { getEndpoints };
+module.exports = { getEndpoints };

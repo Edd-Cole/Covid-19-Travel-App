@@ -1,6 +1,8 @@
 const apiRouter = require("express").Router();
-import { getEndpoints } from "../controllers/controllers.api";
+const {
+  getEndpoints: grabEndpoints,
+} = require("../controllers/controllers.api");
 
-apiRouter.get("/", getEndpoints);
+apiRouter.get("/", grabEndpoints);
 
-module.exports = apiRouter;
+module.exports = { apiRouter };

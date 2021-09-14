@@ -1,7 +1,13 @@
 const fs = require("fs/promises");
 
 const fetchEndpoints = () => {
-  return fs.readFile("../endpoints.json", "utf-8");
+  console.log("in the model");
+  return fs
+    .readFile(`${__dirname}/../../endpoints.json`, "utf-8")
+    .then((endpoints: object) => {
+      console.log(endpoints);
+      return endpoints;
+    });
 };
 
-export { fetchEndpoints };
+module.exports = { fetchEndpoints };
