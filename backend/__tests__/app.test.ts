@@ -2,10 +2,9 @@ import "jest";
 const request = require("supertest");
 const fs = require("fs/promises");
 const app = require("../app");
-const countryData = require("../db/data/development_data/countryData");
-const userData = require("../db/data/development_data/userData");
-const { main } = require("../db/seeds/connection");
-const { client } = require("../db/seeds/connection");
+const countryData = require("../db/data/test_data/countryData");
+const userData = require("../db/data/test_data/userData");
+const { main, client, url } = require("../db/seeds/connection");
 const { seed } = require("../db/seeds/seed");
 
 beforeEach(() => seed(countryData, userData));
@@ -30,4 +29,17 @@ describe("Test Endpoints", () => {
       });
     });
   });
+
+  describe("/countries", () => {
+      describe("/ - GET", () => {
+          describe("status 200 - success", () => {
+              test("returns a list of country names", async() => {
+                  await request(app).get("/api/countries").expect(200)
+                  .then((response: any) => {
+                    expect(response.body.countries).toEqual(["Portugal", "Spain", "Italy", "Germany", "Denmark", "Switzerland"].sort())
+                  })
+              })
+          })
+      })
+  })
 });
