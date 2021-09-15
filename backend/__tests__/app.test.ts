@@ -4,7 +4,7 @@ const fs = require('fs/promises');
 const app = require('../app');
 const countryData = require('../db/data/test_data/countryData');
 const userData = require('../db/data/test_data/userData');
-const { main, client, url } = require('../db/seeds/connection');
+const { main, client } = require('../db/seeds/connection');
 const { seed } = require('../db/seeds/seed');
 
 beforeEach(() => seed(countryData, userData));
@@ -72,7 +72,7 @@ describe('Test Endpoints', () => {
 												numberOfDays: 0,
 											},
 											documentsRequired: ['Vaccination Status Proof', 'Negative Covid-19 Test'],
-											Other: ['Complete online digital form'],
+											other: ['Complete online digital form'],
 										},
 										withoutFullVaccination: {
 											acceptingVisitors: true,
@@ -133,7 +133,7 @@ describe('Test Endpoints', () => {
 
 	describe('/users', () => {
         describe("/ - POST", () => {
-            describe.only("success 201 - Created", () => {
+            describe("success 201 - Created", () => {
                 test("creates and returns a new user object when given a name, email and password", () => {
                     return request(app)
                     .post("/api/users")
@@ -145,6 +145,19 @@ describe('Test Endpoints', () => {
                             trips: [],
                             pastTrips: [],
                         })
+                    })
+                })
+            })
+
+            describe("success 400 - Bad request", () => {
+                test("returns an error when trying to create a new account with an email that already exists in the database", () => {
+                    return request(app)
+                    .post("/api/users")
+                    .send({name: "John Smith", email: "js@google.com", password: "password"})
+                    .expect(400)
+                    .then((response: any) => {
+                        console.log(response.body)
+                        expect(response.body.msg).toBe("Email already exists")
                     })
                 })
             })
