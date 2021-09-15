@@ -179,6 +179,18 @@ describe('Test Endpoints', () => {
 							});
 					});
 				});
+				describe('status 401 - unauthorised', () => {
+					test('returns an error if passwords do not match', () => {
+						return request(app)
+							.post('/api/users/js@google.com')
+							.send({ email: 'js@google.com', password: 'password-nope' })
+							.expect(401)
+							.then((res: any) => {
+								expect(res.body.msg).toBe('Incorrect password');
+							});
+					});
+				});
+
 				describe('status 404 - not found', () => {
 					test.only('returns a not found if email does not exist', () => {
 						return request(app)
