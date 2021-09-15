@@ -37,29 +37,13 @@ describe("Test Endpoints", () => {
                   return request(app).get("/api/countries").expect(200)
                   .then((response: any) => {
                     expect(response.body.countries).toEqual([
-                            "Austria",
-                            "Belgium",
-                            "Bulgaria",
-                            "Croatia",
-                            "Cyprus",
                             "Denmark",
-                            "Finland",
-                            "France",
                             "Germany",
-                            "Greece",
-                            "Iceland",
-                            "Ireland",
                             "Italy",
-                            "Lithuania",
-                            "Netherlands",
                             "Portugal",
-                            "Romania",
-                            "Slovakia",
-                            "Slovenia",
                             "Spain",
-                            "Sweden",
                             "Switzerland",
-                          ])
+                    ])
                   })
               })
           })
