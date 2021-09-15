@@ -18,4 +18,15 @@ const fetchCountries = () => {
   });
 };
 
+const fetchCountry = (country: string) => {
+    return mongo()
+      .then((db: any) => {
+          return db.collection("countries")
+          .find({country: country})
+          .then((country: any) => {
+              console.log(country)
+          })
+      })
+}
+
 module.exports = { fetchCountries };
