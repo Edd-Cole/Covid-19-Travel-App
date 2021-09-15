@@ -140,7 +140,7 @@ describe('Test Endpoints', () => {
                     .send({name: "Blaine Stella", email: "bs@google.com", password: "BlaineStella"})
                     .then((response: any) => {
                         expect(response.body.user).toEqual({
-                            fullName: 'Blaine Stella',
+                            name: 'Blaine Stella',
                             email: 'bs@google.com',
                             trips: [],
                             pastTrips: [],
@@ -159,7 +159,7 @@ describe('Test Endpoints', () => {
 							.expect(200)
 							.then((response: any) => {
 								expect(response.body.user).toEqual({
-									fullName: 'John Smith',
+									name: 'John Smith',
 									email: 'js@google.com',
 									trips: [
 										{

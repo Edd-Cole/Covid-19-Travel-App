@@ -22,4 +22,25 @@ const fetchUser = (email: string, password: string) => {
 	});
 };
 
-module.exports = { fetchUser };
+const buildUser = async (name: string, email: string, password: string) => {
+    // create new user object using info they have inputted from form
+    const newUser = {
+        name: name,
+        email: email,
+        password: password,
+        trips: [],
+        pastTrips: [],
+    };
+
+    //Insert the new user into the database
+    await mongoCl()
+    .then((db: any) => {
+        return db.collection('users')
+            .insert(newUser)
+    });
+
+    //returns the new user using fetchUser from above, see fetchUser for details of implementation
+    return fetchUser(email, password);
+}
+
+module.exports = { fetchUser, buildUser };
