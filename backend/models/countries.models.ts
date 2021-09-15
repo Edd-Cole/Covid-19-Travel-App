@@ -22,11 +22,11 @@ const fetchCountry = (country: string) => {
     return mongo()
       .then((db: any) => {
           return db.collection("countries")
-          .find({country: country})
-          .then((country: any) => {
-              console.log(country)
+          .findOne({country: country})
+          .then((countryObject: any) => {
+              return countryObject
           })
       })
 }
 
-module.exports = { fetchCountries };
+module.exports = { fetchCountries, fetchCountry };
