@@ -24,6 +24,9 @@ const fetchCountry = (country: string) => {
           return db.collection("countries")
           .findOne({country: country})
           .then((countryObject: any) => {
+              if(!countryObject) {
+                  return Promise.reject({code: 400, msg: "Invalid Endpoint"})
+              }
               return countryObject
           })
       })
