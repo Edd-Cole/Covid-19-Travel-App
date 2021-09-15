@@ -115,7 +115,7 @@ describe("Test Endpoints", () => {
           });
         });
               describe("status 400 - Bad Request", () => {
-                  test.only("returns an error when given wrong type for parametric endpoint/data", () => {
+                  test("returns an error when given wrong type for parametric endpoint/data", () => {
                     return request(app)
                     .get("/api/countries/12")
                     .expect(400)
