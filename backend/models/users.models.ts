@@ -9,6 +9,7 @@ const fetchUser = (email: string, password: string) => {
         .findOne({email: email})
         .then((user: any) => {
             //before returning, remove password to keep user secure
+            delete user._id;
             delete user.password;
             return user
     })
