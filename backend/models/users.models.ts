@@ -23,7 +23,7 @@ const fetchUser = (email: string, password: string) => {
 };
 
 const buildUser = async (name: string, email: string, password: string) => {
-    // create new user object using info they have inputted from form
+    //create new user object using info they have inputted from form
     const newUser = {
         name: name,
         email: email,
@@ -32,14 +32,15 @@ const buildUser = async (name: string, email: string, password: string) => {
         pastTrips: [],
     };
 
-    //Insert the new user into the database
+    //connect to database
     await mongoCl()
     .then(async (db: any) => {
         const user = await db.collection('users').findOne({email: email})
-            //If user already exists within the database, reject the post request
+        //If user already exists within the database, reject the post request
         if(user) {
             return Promise.reject({code: 400, msg: "Email already exists"})
         }
+        //insert the new user into the database 
         return db.collection('users').insert(newUser);    
     })
 
