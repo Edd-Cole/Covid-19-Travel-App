@@ -17,12 +17,9 @@ export const getCountries = (req: object, res: any, next: any) => {
 };
 
 export const getCountry = (req: any, res: any, next: any) => {
-    console.log("in controllers")
     const { country } = req.params;
-    console.log(country)
     return selectCountry(country)
       .then((country: object) => {
-          console.log(country, "<<< controller")
           res.status(200).send({country});
       })
       .catch((err: object) => {
