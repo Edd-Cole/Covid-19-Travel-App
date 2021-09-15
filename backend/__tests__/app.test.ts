@@ -129,4 +129,16 @@ describe("Test Endpoints", () => {
           })
       })
   })
+
+  describe("/users", () => {
+      describe("/:email", () => {
+          describe("/ - POST", () => {
+              describe("status 200 - Success", () => {
+                test("Returns a user object given their email address", () => {
+                    return request(app)
+                })
+              })
+          })
+      })
+  })
 });
