@@ -115,6 +115,17 @@ describe("Test Endpoints", () => {
                       })
                   })
               })
+
+              describe("status 400 - Bad Request", () => {
+                  test("returns an error when given wrong type for parametric endpoint/data", () => {
+                    return request(app)
+                    .get("/api/countries/12")
+                    .expect(400)
+                    .then((response: any) => {
+                        expect(response.body.msg).toBe("Invalid Endpoint")
+                    })
+                  })
+              })
           })
       })
   })
