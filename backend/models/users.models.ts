@@ -41,10 +41,7 @@ const buildUser = async (name: string, email: string, password: string) => {
             if(user) {
                 return Promise.reject({code: 400, msg: "Email already exists"})
             }
-        return db;    
-    })
-    .then((db: any) => {
-        return db.collection('users').insert(newUser);
+        return db.collection('users').insert(newUser);    
     })
 
     //returns the new user using fetchUser from above, see fetchUser for details of implementation
