@@ -1,6 +1,6 @@
 module.exports = [
     {
-        fullName: "John Smith",
+        name: "John Smith",
         email: "js@google.com",
         password: "password",
         trips: [{
@@ -32,7 +32,7 @@ module.exports = [
         }],
     },
     {
-        fullName: "Edd Kleszcz",
+        name: "Edd Kleszcz",
         email: "ek@sadballoons.com",
         password: "thisIsTheBestPasswordEver",
         trips: [{
@@ -80,7 +80,7 @@ module.exports = [
         }],
     },
     {
-        fullName: "Mahamud Arteh",
+        name: "Mahamud Arteh",
         email: "ma@sadballoons.com",
         password: "IrockThePARTY",
         trips: [{
@@ -128,7 +128,7 @@ module.exports = [
         }],
     },
     {
-       fullName: "Rob Crowther",
+       name: "Rob Crowther",
         email: "rc@sadballoons.com",
         password: "IrockThePARTY",
             trips: [{
@@ -176,7 +176,7 @@ module.exports = [
             }],
     },
     {
-        fullName: "Seb Boyse",
+        name: "Seb Boyse",
         email: "sb@sadballoons.com",
         password: "thisIsTheBestPasswordEver",
         trips: [{
@@ -224,7 +224,7 @@ module.exports = [
         }],
     },
     {
-        fullName: "Heather Berrill",
+        name: "Heather Berrill",
         email: "hb@sadballoons.com",
         password: "thisIsTheBestPasswordEver",
         trips: [{
