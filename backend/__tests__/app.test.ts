@@ -61,6 +61,7 @@ describe("Test Endpoints", () => {
                       .then((response: any) => {
                           expect(response.body.country).toEqual(
                             {
+                                "_id": expect.any(String),
                                 "country": "italy",
                                 "colorList": "amber",
                                 "entryRequirements": {
