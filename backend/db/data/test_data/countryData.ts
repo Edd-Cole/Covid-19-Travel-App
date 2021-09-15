@@ -19,7 +19,7 @@ module.exports = [{
           "Vaccination Status Proof",
           "Covid Recovery Certificate"
         ],
-        "Other": ["Temperature Screening < 38 degrees on arrival"]
+        "other": ["Temperature Screening < 38 degrees on arrival"]
       },
       "withoutFullVaccination": {
         "acceptingVisitors": false,
@@ -67,7 +67,7 @@ module.exports = [{
         "Vaccination Status Proof",
         "Negative Covid-19 Test"
       ],
-      "Other": [
+      "other": [
         "Complete online Health Control Form within 48 hours of travel"
       ]
     },
@@ -117,7 +117,7 @@ module.exports = [{
         "Vaccination Status Proof",
         "Negative Covid-19 Test"
       ],
-      "Other": ["Complete online digital form"]
+      "other": ["Complete online digital form"]
     },
     "withoutFullVaccination": {
       "acceptingVisitors": true,
@@ -164,7 +164,7 @@ module.exports = [{
       "numberOfDays": null
     },
     "documentsRequired": ["proof of residence (UK)", "proof of vaccination"],
-    "Other": ["none"]
+    "other": ["none"]
   },
   "withoutFullVaccination": {
     "acceptingVisitors": "conditionally - german residents, spouse/partner/child or a german citizen, important roles & urgent travel",
@@ -181,7 +181,7 @@ module.exports = [{
       "whenAvailable": "5 days into quarantine"
     },
     "documentsRequired": ["proof of residence (UK)", "negative test"],
-    "Other": ["none"]
+    "other": ["none"]
   },
   "restrictions": {
     "masks": {
@@ -218,7 +218,7 @@ module.exports = [{
       "documentsRequired": [
         "Vaccination Status Proof or Covid Recovery Certificate"
       ],
-      "Other": null
+      "other": null
     },
     "withoutFullVaccination": {
       "acceptingVisitors": true,
@@ -262,7 +262,7 @@ module.exports = [{
       "numberOfDays": null
     },
     "documentsRequired": ["proof of residence (UK)", "proof of vaccination"],
-    "Other": [null]
+    "other": [null]
   },
   "withoutFullVaccination": {
     "acceptingVisitors": "conditionally - Swiss or Liechtenstein nationals, EU of EFTA nationals, residence permit holders, cross-border permit holders, FDFA legitimation card holders, D visa holders (Issues by Switzerland)",
@@ -283,7 +283,7 @@ module.exports = [{
       "negative test/covid certificate/recovery within lat 6 months",
       "passenger locator form"
     ],
-    "Other": [null]
+    "other": [null]
   },
   "restrictions": {
     "masks": {
