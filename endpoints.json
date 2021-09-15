@@ -1,8 +1,14 @@
 {
-  "GET /": {
-    "Description": "Serves up a JSON representation of all the available endpoints",
-    "Queries": [],
-    "Request Example": null,
-    "Response Example": []
-  }
+    "GET /": {
+        "Description": "Serves up a JSON representation of all the available endpoints",
+        "Queries": [],
+        "Request Example": null,
+        "Response Example": []
+    },
+    "GET /countries": {
+        "Description": "Serves an array of all countries in the database, capitalised and in alphabetical order",
+        "Queries": [],
+        "Request Example": null,
+        "Response Example": ["France", "Italy", "Portugal", "Spain"]
+    }
 }
