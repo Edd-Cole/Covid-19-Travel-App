@@ -1,16 +1,23 @@
-const {main: mongo} = require('../db/seeds/connection')
+const { main: mongo } = require("../db/seeds/connection");
 
-const fetchCountries = () => {
-    return mongo()
-        .then(async (db: any) => {
-            const countries = await db.collections('countries')[0].find() // error here
-            console.log(countries[0].find());
-            return countries;
-        })
-        .then((countries: any) => {
-            console.log(countries[0].db)
-            return countries;
-        })        
-}
-
-module.exports = {fetchCountries};
+const fetchCountries = async () => {
+  // Establish connection to the database and, using promises, manipulate info
+  const db = await mongo().then(async (db: any) => {
+      // Use info from the countries collection within DB, get all the documents inside
+    const countries = await db.collection("countries")
+      .find({})
+      .toArray()
+      .then((countryData: any) => {
+          //  map and return the capitalised version of the country
+        const countriesFromDB: string[] =  countryData.map((country: any) => {
+            const upperCaseCountry = country.country[0].toUpperCase() + country.country.slice(1)
+            return upperCaseCountry;
+        });
+        // sort into alphabetical order
+        return countriesFromDB.sort();
+      });
+    return countries;
+  });
+  return db;
+};
+module.exports = { fetchCountries };
