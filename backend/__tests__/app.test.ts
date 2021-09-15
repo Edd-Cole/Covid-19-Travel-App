@@ -31,102 +31,111 @@ describe("Test Endpoints", () => {
   });
 
   describe("/countries", () => {
+    describe("/ - GET", () => {
+      describe("status 200 - success", () => {
+        test("returns a list of country names", () => {
+          return request(app)
+            .get("/api/countries")
+            .expect(200)
+            .then((response: any) => {
+              expect(response.body.countries).toEqual([
+                "Denmark",
+                "Germany",
+                "Italy",
+                "Portugal",
+                "Spain",
+                "Switzerland",
+              ]);
+            });
+        });
+      });
+    });
+
+    describe("/:country", () => {
       describe("/ - GET", () => {
-          describe("status 200 - success", () => {
-              test("returns a list of country names", () => {
-                  return request(app)
-                  .get("/api/countries")
-                  .expect(200)
-                  .then((response: any) => {
-                    expect(response.body.countries).toEqual([
-                            "Denmark",
-                            "Germany",
-                            "Italy",
-                            "Portugal",
-                            "Spain",
-                            "Switzerland",
-                    ])
-                  })
-              })
-          })
-      })
+        describe("status 200 - Success", () => {
+          test("returns all the details of a country from the database using a country name", () => {
+            return request(app)
+              .get("/api/countries/italy")
+              .expect(200)
+              .then((response: any) => {
+                expect(response.body.country).toEqual({
+                  _id: expect.any(String),
+                  country: "italy",
+                  colorList: "amber",
+                  entryRequirements: {
+                    recoveryFromCovid: null,
+                    withFullVaccination: {
+                      acceptingVisitors: true,
+                      daysInnoculatedBeforeEntry: 0,
+                      test: {
+                        maximumHoursBefore: 48,
+                      },
+                      quarantine: {
+                        numberOfDays: 0,
+                      },
+                      documentsRequired: [
+                        "Vaccination Status Proof",
+                        "Negative Covid-19 Test",
+                      ],
+                      Other: ["Complete online digital form"],
+                    },
+                    withoutFullVaccination: {
+                      acceptingVisitors: true,
+                      test: {
+                        maximumHoursBefore: 48,
+                      },
+                      quarantine: {
+                        numberOfDays: 5,
+                      },
+                      documentsRequired: ["Negative Covid-19 Test"],
+                      other: [
+                        "Inform ASL where you will be quarantining",
+                        "New negative test after quarantine period",
+                      ],
+                    },
+                  },
+                  restrictions: {
+                    masks: {
+                      isRequired: true,
+                      moreInfo: "Face masks are required in all yellow zones",
+                    },
+                    lockdowns: false,
+                    socialDistancing: true,
+                    groupMaximums: {
+                      inside: 3,
+                      outside: 0,
+                    },
+                  },
+                  hotspots: ["Rome", "Milan", "Venice", "Naples"],
+                  healthCareNumber:
+                    "Call emergency healthline 112 - English operators available",
+                });
+              });
+          });
+        });
 
-      describe("/:country", () => {
-          describe("/ - GET", () => {
-              describe("status 200 - Success", () => {
-                  test("returns all the details of a country from the database using a country name", () => {
-                      return request(app)
-                      .get("/api/countries/italy")
-                      .expect(200)
-                      .then((response: any) => {
-                          expect(response.body.country).toEqual(
-                            {
-                                "_id": expect.any(String),
-                                "country": "italy",
-                                "colorList": "amber",
-                                "entryRequirements": {
-                                  "recoveryFromCovid": null,
-                                  "withFullVaccination": {
-                                    "acceptingVisitors": true,
-                                    "daysInnoculatedBeforeEntry": 0,
-                                    "test": {
-                                      "maximumHoursBefore": 48
-                                    },
-                                    "quarantine": {
-                                      "numberOfDays": 0
-                                    },
-                                    "documentsRequired": [
-                                      "Vaccination Status Proof",
-                                      "Negative Covid-19 Test"
-                                    ],
-                                    "Other": ["Complete online digital form"]
-                                  },
-                                  "withoutFullVaccination": {
-                                    "acceptingVisitors": true,
-                                    "test": {
-                                      "maximumHoursBefore": 48
-                                    },
-                                    "quarantine": {
-                                      "numberOfDays": 5
-                                    },
-                                    "documentsRequired": ["Negative Covid-19 Test"],
-                                    "other": [
-                                      "Inform ASL where you will be quarantining",
-                                      "New negative test after quarantine period"
-                                    ]
-                                  }
-                                },
-                                "restrictions": {
-                                    "masks": {
-                                      "isRequired": true,
-                                      "moreInfo": "Face masks are required in all yellow zones"
-                                    },
-                                    "lockdowns": false,
-                                    "socialDistancing": true,
-                                    "groupMaximums": {
-                                      "inside": 3,
-                                      "outside": 0
-                                    }
-                                  },
-                                  "hotspots": ["Rome", "Milan", "Venice", "Naples"],
-                                  "healthCareNumber": "Call emergency healthline 112 - English operators available"
-                            }                              
-                          )
-                      })
-                  })
-              })
-
-              describe("status 400 - Bad Request", () => {
-                  test.only("returns an error when given wrong type for parametric endpoint/data", () => {
-                    return request(app)
-                    .get("/api/countries/12")
-                    .expect(400)
-                    .then((response: any) => {
-                        expect(response.body.msg).toBe("Invalid Endpoint")
-                    })
-                  })
-              })
-          })
-      })
-  })
+        describe("status 400 - Bad Request", () => {
+          test("returns an error when given wrong type for parametric endpoint/data", () => {
+            return request(app)
+              .get("/api/countries/12")
+              .expect(400)
+              .then((response: any) => {
+                expect(response.body.msg).toBe("Invalid Endpoint");
+              });
+          });
+        });
+        describe("status 404 - Not Found", () => {
+          test.only("returns an error when given country that isnt in the database ", () => {
+            return request(app)
+              .get("/api/countries/moldova")
+              .expect(404)
+              .then((response: any) => {
+                expect(response.body.msg).toEqual("Endpoint Not Found");
+              });
+          });
+        });
+      });
+    });
+  });
 });
