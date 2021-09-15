@@ -12,7 +12,7 @@
         "Response Example": ["France", "Italy", "Portugal", "Spain"]
     },
     "GET /countries/:country": {
-        "Description": "Serves a country object with all the current information within it, and as it exists in the database",
+        "Description": "Serves a country object with all the current information in it, and as it exists in the database",
         "Queries": [],
         "Request Example": null,
         "Response Example": {
