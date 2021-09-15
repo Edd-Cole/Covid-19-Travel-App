@@ -132,6 +132,23 @@ describe('Test Endpoints', () => {
 	});
 
 	describe('/users', () => {
+        describe("/ - POST", () => {
+            describe("success 201 - Created", () => {
+                test("creates and returns a new user object when given a name, email and password", () => {
+                    return request(app)
+                    .post("/api/users")
+                    .send({name: "Blaine Stella", email: "bs@google.com", password: "BlaineStella"})
+                    .then((response: any) => {
+                        expect(response.body.user).toEqual({
+                            fullName: 'Blaine Stella',
+                            email: 'bs@google.com',
+                            trips: [],
+                            pastTrips: [],
+                        })
+                    })
+                })
+            })
+        })
 		describe('/:email', () => {
 			describe.only('/ - POST', () => {
 				describe('status 200 - Success', () => {
