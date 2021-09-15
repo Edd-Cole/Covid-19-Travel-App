@@ -133,7 +133,7 @@ describe('Test Endpoints', () => {
 
 	describe('/users', () => {
         describe("/ - POST", () => {
-            describe("success 201 - Created", () => {
+            describe("status 201 - Created", () => {
                 test("creates and returns a new user object when given a name, email and password", () => {
                     return request(app)
                     .post("/api/users")
@@ -149,7 +149,7 @@ describe('Test Endpoints', () => {
                 })
             })
 
-            describe("success 400 - Bad request", () => {
+            describe("status 400 - Bad request", () => {
                 test("returns an error when trying to create a new account with an email that already exists in the database", () => {
                     return request(app)
                     .post("/api/users")
