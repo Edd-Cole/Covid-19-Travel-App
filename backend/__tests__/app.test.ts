@@ -54,7 +54,7 @@ describe("Test Endpoints", () => {
       describe("/:country", () => {
           describe("/ - GET", () => {
               describe("status 200 - Success", () => {
-                  test.only("returns all the details of a country from the database using a country name", () => {
+                  test("returns all the details of a country from the database using a country name", () => {
                       return request(app)
                       .get("/api/countries/italy")
                       .expect(200)
@@ -117,7 +117,7 @@ describe("Test Endpoints", () => {
               })
 
               describe("status 400 - Bad Request", () => {
-                  test("returns an error when given wrong type for parametric endpoint/data", () => {
+                  test.only("returns an error when given wrong type for parametric endpoint/data", () => {
                     return request(app)
                     .get("/api/countries/12")
                     .expect(400)
