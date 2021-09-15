@@ -47,7 +47,4 @@ const buildUser = async (name: string, email: string, password: string) => {
     return fetchUser(email, password);
 }
 
-//to test:
-// - email already exists in database
-
 module.exports = { fetchUser, buildUser };
