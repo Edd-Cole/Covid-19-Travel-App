@@ -35,8 +35,8 @@ const buildUser = async (name: string, email: string, password: string) => {
     //connect to database
     await mongoCl()
     .then(async (db: any) => {
-        const user = await db.collection('users').findOne({email: email})
         //If user already exists within the database, reject the post request
+        const user = await db.collection('users').findOne({email: email})
         if(user) {
             return Promise.reject({code: 400, msg: "Email already exists"})
         }
