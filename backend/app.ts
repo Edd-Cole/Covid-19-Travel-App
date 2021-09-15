@@ -1,6 +1,6 @@
 const express = require("express");
 const { apiRouter: router } = require("./routers/api-router");
-const {dbErrors: mongoErrors} = require("./errors/error-handling");
+const {customErrors: errorHandling} = require("./errors/error-handling");
 const cors = require("cors");
 
 const app = express();
@@ -9,6 +9,6 @@ app.use(express.json());
 
 app.use("/api", router);
 
-app.use(mongoErrors)
+app.use(errorHandling)
 
 module.exports = app;
