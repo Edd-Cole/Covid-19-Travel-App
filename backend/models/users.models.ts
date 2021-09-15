@@ -34,13 +34,24 @@ const buildUser = async (name: string, email: string, password: string) => {
 
     //Insert the new user into the database
     await mongoCl()
+    .then(async (db: any) => {
+        const user = await db.collection('users')
+            .findOne({email: email})
+            //If user already exists within the database, reject the post request
+            if(user) {
+                return Promise.reject({code: 400, msg: "Email already exists"})
+            }
+        return db;    
+    })
     .then((db: any) => {
-        return db.collection('users')
-            .insert(newUser)
-    });
+        return db.collection('users').insert(newUser);
+    })
 
     //returns the new user using fetchUser from above, see fetchUser for details of implementation
     return fetchUser(email, password);
 }
+
+//to test:
+// - email already exists in database
 
 module.exports = { fetchUser, buildUser };
