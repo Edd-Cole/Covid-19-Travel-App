@@ -10,8 +10,8 @@ const fetchCountries = async () => {
       .then((countryData: any) => {
           //  map and return the capitalised version of the country
         const countriesFromDB: string[] =  countryData.map((country: any) => {
-            const upperCaseCountry = country.country[0].toUpperCase() + country.country.slice(1)
-            return upperCaseCountry;
+            const capitalisedCountry = country.country[0].toUpperCase() + country.country.slice(1)
+            return capitalisedCountry;
         });
         // sort into alphabetical order
         return countriesFromDB.sort();

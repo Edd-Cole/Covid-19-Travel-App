@@ -30,7 +30,7 @@ describe("Test Endpoints", () => {
     });
   });
 
-  describe.only("/countries", () => {
+  describe("/countries", () => {
       describe("/ - GET", () => {
           describe("status 200 - success", () => {
               test("returns a list of country names", () => {
