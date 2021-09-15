@@ -11,7 +11,7 @@
         "Request Example": null,
         "Response Example": ["France", "Italy", "Portugal", "Spain"]
     },
-    "GET /countries/:countrty": {
+    "GET /countries/:country": {
         "Description": "Serves a country object with all the current information within it, and as it exists in the database",
         "Queries": [],
         "Request Example": null,
@@ -64,6 +64,47 @@
             },
             "hotspots": ["Lisbon"],
             "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+        }
+    },
+
+    "POST /users/:email": {
+        "Description": "Serves a user object with all the current info for that user",
+        "Queries": [],
+        "Request Example": {
+            "email": "js@google.com",
+            "password": "password"
+        },
+        "Response Example": {
+            "fullName": "John Smith",
+            "email": "js@google.com",
+            "trips": [{
+                    "country": "france",
+                    "trafficLight": "amber",
+                    "dateGoing": "2022.01.12",
+                    "dateReturning": "2022.01.24",
+                    "acceptingTourists": true,
+                    "vaccineRequired": true,
+                    "testRequired": true,
+                    "extraDocsRequired": true,
+                    "newInfo": false
+                },
+                {
+                    "country": "greece",
+                    "trafficLight": "amber",
+                    "dateGoing": "2022.05.03",
+                    "dateReturning": "2022.05.10",
+                    "acceptingTourists": true,
+                    "vaccineRequired": true,
+                    "testRequired": true,
+                    "extraDocsRequired": true,
+                    "newInfo": true
+                }
+            ],
+            "pastTrips": [{
+                "country": "poland",
+                "dateGoing": "2021.12.02",
+                "dateReturning": "2021.12.06"
+            }]
         }
     }
 }
