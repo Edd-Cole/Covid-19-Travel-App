@@ -151,7 +151,6 @@ describe("Test Endpoints", () => {
                       expect(response.body.user).toEqual({
                         fullName: "John Smith",
                         email: "js@google.com",
-                        password: "password",
                         trips: [{
                             country: "france",
                             trafficLight: "amber",
