@@ -1,16 +1,16 @@
 const {main: mongo} = require('../db/seeds/connection')
 
 const fetchCountries = () => {
-    return mongo
+    return mongo()
         .then(async (db: any) => {
-            console.log(db);
-            const countries = await db.collections('countries').find()
+            const countries = await db.collections('countries')[0].find() // error here
+            console.log(countries[0].find());
             return countries;
         })
-        .then((countries: object) => {
-            console.log(countries)
+        .then((countries: any) => {
+            console.log(countries[0].db)
             return countries;
-        })
+        })        
 }
 
 module.exports = {fetchCountries};

@@ -30,11 +30,11 @@ describe("Test Endpoints", () => {
     });
   });
 
-  describe("/countries", () => {
+  describe.only("/countries", () => {
       describe("/ - GET", () => {
           describe("status 200 - success", () => {
-              test("returns a list of country names", async() => {
-                  await request(app).get("/api/countries").expect(200)
+              test("returns a list of country names", () => {
+                  return request(app).get("/api/countries").expect(200)
                   .then((response: any) => {
                     expect(response.body.countries).toEqual(["Portugal", "Spain", "Italy", "Germany", "Denmark", "Switzerland"].sort())
                   })
