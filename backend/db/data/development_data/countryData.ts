@@ -1323,5 +1323,53 @@ module.exports = [
     },
     hotspots: ["Lisbon"],
     healthCareNumber: "+372 634 6630 or 1220 if in Estonia, English provided between 3pm - 5pm daily",
+  },
+
+  {
+    country: "luxembourg",
+    colorList: "amber",
+    entryRequirements: {
+      recoveryFromCovid: {
+        minDays: null,
+        maxDays: null,
+      },
+      withFullVaccination: {
+        acceptingVisitors: false,
+        daysInnoculatedBeforeEntry: null,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: [],
+      },
+      withoutFullVaccination: {
+        acceptingVisitors: false,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: null,
+      },
+    },
+    restrictions: {
+      masks: {
+        isRequired: true,
+        moreInfo: "Face masks are required in public spaces",
+      },
+      lockdowns: false,
+      socialDistancing: true,
+      groupMaximums: {
+        inside: 4,
+        outside: 10,
+      },
+    },
+    hotspots: [],
+    healthCareNumber: "112"
   }
 ];
