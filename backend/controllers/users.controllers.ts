@@ -14,9 +14,12 @@ export const setUser = (req: any, res: any, next: any) => {
 }
 
 export const postUser = (req: any, res: any, next: any) => {
+    //Extract name, email and password from request body
     const { name, email, password} = req.body;
+    //invoke model using name email and password
     return addUser(name, email, password)
         .then((user: object) => {
+            //If successful send back success status!
             res.status(201).send({user});
         })
         .catch((err: object) => {
