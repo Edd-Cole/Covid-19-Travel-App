@@ -133,7 +133,7 @@ describe('Test Endpoints', () => {
 
 	describe('/users', () => {
         describe("/ - POST", () => {
-            describe("success 201 - Created", () => {
+            describe.only("success 201 - Created", () => {
                 test("creates and returns a new user object when given a name, email and password", () => {
                     return request(app)
                     .post("/api/users")
@@ -150,7 +150,7 @@ describe('Test Endpoints', () => {
             })
         })
 		describe('/:email', () => {
-			describe.only('/ - POST', () => {
+			describe('/ - POST', () => {
 				describe('status 200 - Success', () => {
 					test('Returns a user object given their email address', () => {
 						return request(app)

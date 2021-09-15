@@ -1,4 +1,4 @@
-const { fetchUser: selectUser } = require('../models/users.models.ts');
+const { fetchUser: selectUser, buildUser: addUser } = require('../models/users.models.ts');
 
 export const setUser = (req: any, res: any, next: any) => {
     //destructure email and password from the request body, then send into models
@@ -10,5 +10,16 @@ export const setUser = (req: any, res: any, next: any) => {
         })
         .catch((err: any) => {
             next(err)
+        })
+}
+
+export const postUser = (req: any, res: any, next: any) => {
+    const { name, email, password} = req.body;
+    return addUser(name, email, password)
+        .then((user: object) => {
+            res.status(201).send({user});
+        })
+        .catch((err: object) => {
+            next(err);
         })
 }
