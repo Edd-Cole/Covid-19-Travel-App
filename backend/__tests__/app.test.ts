@@ -133,7 +133,7 @@ describe('Test Endpoints', () => {
 
 	describe('/users', () => {
 		describe('/:email', () => {
-			describe('/ - POST', () => {
+			describe.only('/ - POST', () => {
 				describe('status 200 - Success', () => {
 					test('Returns a user object given their email address', () => {
 						return request(app)
@@ -192,7 +192,7 @@ describe('Test Endpoints', () => {
 				});
 
 				describe('status 404 - not found', () => {
-					test.only('returns a not found if email does not exist', () => {
+					test('returns a not found if email does not exist', () => {
 						return request(app)
 							.post('/api/users/e@123.com')
 							.send({ email: 'e@123.com', password: 'password' })

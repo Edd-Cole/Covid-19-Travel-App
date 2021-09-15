@@ -10,6 +10,9 @@ const fetchUser = (email: string, password: string) => {
 			.then((user: any) => {
 				if (!user) {
 					return Promise.reject({ code: 404, msg: 'User not found' });
+				} else if (password !== user.password) {
+					// check if passwords match, if not then refuse access
+					return Promise.reject({ code: 401, msg: 'Incorrect password' });
 				}
 				//before returning, remove password to keep user secure
 				delete user._id;
