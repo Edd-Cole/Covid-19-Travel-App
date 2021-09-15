@@ -10,5 +10,60 @@
         "Queries": [],
         "Request Example": null,
         "Response Example": ["France", "Italy", "Portugal", "Spain"]
+    },
+    "GET /countries/:countrty": {
+        "Description": "Serves a country object with all the current information within it, and as it exists in the database",
+        "Queries": [],
+        "Request Example": null,
+        "Response Example": {
+            "country": "portugal",
+            "colorList": "amber",
+            "entryRequirements": {
+                "recoveryFromCovid": {
+                    "minDays": 11,
+                    "maxDays": 180
+                },
+                "withFullVaccination": {
+                    "acceptingVisitors": true,
+                    "daysInnoculatedBeforeEntry": 14,
+                    "test": {
+                        "maximumHoursBefore": 72
+                    },
+                    "quarantine": {
+                        "numberOfDays": 0
+                    },
+                    "documentsRequired": [
+                        "Vaccination Status Proof",
+                        "Covid Recovery Certificate"
+                    ],
+                    "Other": ["Temperature Screening < 38 degrees on arrival"]
+                },
+                "withoutFullVaccination": {
+                    "acceptingVisitors": false,
+                    "test": {
+                        "maximumHoursBefore": null
+                    },
+                    "quarantine": {
+                        "numberOfDays": null
+                    },
+                    "documentsRequired": [],
+                    "other": null
+                }
+            },
+            "restrictions": {
+                "masks": {
+                    "isRequired": true,
+                    "moreInfo": "Face masks are required in all enclosed public spaces"
+                },
+                "lockdowns": false,
+                "socialDistancing": true,
+                "groupMaximums": {
+                    "inside": 8,
+                    "outside": 15
+                }
+            },
+            "hotspots": ["Lisbon"],
+            "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+        }
     }
 }
