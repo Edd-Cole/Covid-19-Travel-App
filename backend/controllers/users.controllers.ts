@@ -11,5 +11,3 @@ export const setUser = (req: any, res: any, next: any) => {
             next(err)
         })
 }
-
-// hello
