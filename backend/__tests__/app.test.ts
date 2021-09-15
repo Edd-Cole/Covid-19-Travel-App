@@ -144,6 +144,43 @@ describe("Test Endpoints", () => {
             describe("status 200 - Success", () => {
               test("Returns a user object given their email address", () => {
                   return request(app)
+                  .post("/api/users/js@google.com")
+                  .send({email: "js@google.com", password: "password"})
+                  .expect(200)
+                  .then((response: any) => {
+                      expect(response.body.user).toEqual({
+                        fullName: "John Smith",
+                        email: "js@google.com",
+                        password: "password",
+                        trips: [{
+                            country: "france",
+                            trafficLight: "amber",
+                            dateGoing: "2022.01.12",
+                            dateReturning: "2022.01.24",
+                            acceptingTourists: true,
+                            vaccineRequired: true,
+                            testRequired: true,
+                            extraDocsRequired: true,
+                            newInfo: false
+                        },
+                        {
+                        country: "greece",
+                        trafficLight: "amber",
+                        dateGoing: "2022.05.03",
+                        dateReturning: "2022.05.10",
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                        }],
+                        pastTrips: [{
+                            country: "poland",
+                            dateGoing: "2021.12.02",
+                            dateReturning: "2021.12.06",
+                        }],
+                    })
+                  })
               })
             })
         })
