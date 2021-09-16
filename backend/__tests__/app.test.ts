@@ -233,6 +233,16 @@ describe('Test Endpoints', () => {
 					});
 				});
 			});
+
+            describe("/ - DELETE", () => {
+                describe("status 204 - Success, No Content", () => {
+                    test("deletes a user from the database", () => {
+                        return request(app)
+                            .delete("/api/users/js@google.com")
+                            .expect(204)
+                    })
+                })
+            })
 		});
 	});
 });
