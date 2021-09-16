@@ -321,6 +321,49 @@ describe('Test Endpoints', () => {
                 });
               });
           });
+          test('resturns an user with an updated email', () => {
+            return request(app)
+              .patch('/api/users/js@google.com')
+              .send({ email: 'new@email.com' })
+              .expect(200)
+              .then((res: any) => {
+                expect(res.body.user).toEqual({
+                  name: 'John Smith',
+                  email: 'new@email.com',
+                  trips: [
+                    {
+                      country: 'france',
+                      trafficLight: 'amber',
+                      dateGoing: '2022.01.12',
+                      dateReturning: '2022.01.24',
+                      acceptingTourists: true,
+                      vaccineRequired: true,
+                      testRequired: true,
+                      extraDocsRequired: true,
+                      newInfo: false
+                    },
+                    {
+                      country: 'greece',
+                      trafficLight: 'amber',
+                      dateGoing: '2022.05.03',
+                      dateReturning: '2022.05.10',
+                      acceptingTourists: true,
+                      vaccineRequired: true,
+                      testRequired: true,
+                      extraDocsRequired: true,
+                      newInfo: true
+                    }
+                  ],
+                  pastTrips: [
+                    {
+                      country: 'poland',
+                      dateGoing: '2021.12.02',
+                      dateReturning: '2021.12.06'
+                    }
+                  ]
+                });
+              });
+          });
         });
       });
     });
