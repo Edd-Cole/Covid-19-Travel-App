@@ -234,12 +234,23 @@ describe('Test Endpoints', () => {
 				});
 			});
 
-            describe("/ - DELETE", () => {
+            describe.only("/ - DELETE", () => {
                 describe("status 204 - Success, No Content", () => {
                     test("deletes a user from the database", () => {
                         return request(app)
                             .delete("/api/users/js@google.com")
                             .expect(204)
+                    })
+                })
+
+                describe("status 400 - Bad Request", () => {
+                    test("returns an error if the endpoint is not of the correct type", () => {
+                        return request(app)
+                            .delete("/api/users/1111111111100000000")
+                            .expect(400)
+                            .then((response: any) => {
+                                expect(response.body.msg).toBe("Not a valid email")
+                        })
                     })
                 })
 
