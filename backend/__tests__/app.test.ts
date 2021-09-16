@@ -2,8 +2,7 @@ import 'jest';
 const request = require('supertest');
 const fs = require('fs/promises');
 const app = require('../app');
-const countryData = require('../db/data/test_data/countryData');
-const userData = require('../db/data/test_data/userData');
+const { countryData, userData } = require('../db/data/test_data/index');
 const { main, client } = require('../db/seeds/connection');
 const { seed } = require('../db/seeds/seed');
 
