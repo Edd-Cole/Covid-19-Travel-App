@@ -109,7 +109,7 @@
     },
 
     "POST /users": {
-        "Description": "Inserts a new user into the database, given they do not already exist, returns the new user",
+        "Description": "Inserts a new user into the database, given they do not already exist, returns the new user without their password",
         "Queries": [],
         "Request Example": { "name": "Blaine Stella", "email": "bs@google.com", "password": "SadBalloons" },
         "Response Example": {
