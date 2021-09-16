@@ -236,10 +236,21 @@ describe('Test Endpoints', () => {
 
             describe("/ - DELETE", () => {
                 describe("status 204 - Success, No Content", () => {
-                    test.only("deletes a user from the database", () => {
+                    test("deletes a user from the database", () => {
                         return request(app)
                             .delete("/api/users/js@google.com")
                             .expect(204)
+                    })
+                })
+
+                describe("status 404 - Not Found", () => {
+                    test("returns an error if email is not in the database", () => {
+                        return request(app)
+                            .delete("/api/users/el123@google.com")
+                            .expect(404)
+                            .then((response: any) => {
+                                expect(response.body.msg).toBe("User does not exist")
+                            })
                     })
                 })
             })
