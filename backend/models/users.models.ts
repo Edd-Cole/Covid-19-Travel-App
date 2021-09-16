@@ -66,27 +66,28 @@ const killUser = (email: string) => {
   });
 };
 
-const repairUser = async (email: string, name: string, updateEmail: string) => {
+const repairUser = async (email: string, name: string, updateEmail: string, password: any) => { //newpassword
   // Get the user from the db
   const oldUser = await mongoCl().then((db: any) => {
     return db.collection('users').findOne({ email });
   });
-
   // Set any undefined values from the request to current values in the db,
   // otherwise set to new values
   const newName = name || oldUser.name;
   const newEmail = updateEmail || oldUser.email;
+  const newPassword = password || oldUser.password;
 
   // Find and update user in the db by email
   await mongoCl().then((db: any) => {
     return db
       .collection('users')
-      .update({ email }, { $set: { name: newName, email: newEmail } });
+      .update({ email }, { $set: { name: newName, email: newEmail, password: newPassword } });
   });
 
   // Get the updated user from the db
   return mongoCl().then(async (db: any) => {
     const user = await db.collection('users').findOne({ email: newEmail });
+    if(password && oldUser.password === user.password) return Promise.reject({code: 400, msg: "Cannot use current password"})
     // deleting password and id for security
     delete user._id;
     delete user.password;

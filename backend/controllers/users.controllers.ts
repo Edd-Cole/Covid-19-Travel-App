@@ -45,14 +45,13 @@ export const deleteUser = (req: any, res: any, next: any) => {
 
 export const updateUser = (req: any, res: any, next: any) => {
   const { email } = req.params;
-  const { name, email: updateEmail } = req.body;
-  return fixUser(email, name, updateEmail)
+  const { name, email: updateEmail, password } = req.body;
+  return fixUser(email, name, updateEmail, password)
     .then((user: object) => {
       res.status(200).send({ user });
     })
     .catch((err: object) => {
       console.log(err);
-
       next(err);
     });
 };
