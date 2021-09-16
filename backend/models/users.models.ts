@@ -87,6 +87,7 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
   // Get the updated user from the db
   return mongoCl().then(async (db: any) => {
     const user = await db.collection('users').findOne({ email: newEmail });
+    //check that new password is not old password
     if(password && oldUser.password === user.password) return Promise.reject({code: 400, msg: "Cannot use current password"})
     // deleting password and id for security
     delete user._id;
