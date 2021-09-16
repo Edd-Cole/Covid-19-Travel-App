@@ -1419,6 +1419,57 @@ module.exports = [
     },
     hotspots: [],
     healthCareNumber: "111"
-  }
+  },
 
+  {
+    country: "liechtenstein",
+    colorList: "green",
+    entryRequirements: {
+      recoveryFromCovid: {
+        minDays: null,
+        maxDays: 180,
+      },
+      withFullVaccination: {
+        acceptingVisitors: true,
+        daysInnoculatedBeforeEntry: null,
+        test: {
+          maximumHoursBefore: 72,
+          acceptedTests: ["PCR", "Rapid antigen test"],
+        },
+        quarantine: {
+          numberOfDays: 0,
+        },
+        documentsRequired: [
+          "Vaccination Status Proof",
+          "passenger locator form"
+        ],
+        other: ["Switzerland handles immigration and customs matters for Liechtenstein. Entry requirements are the same as for Switzerland."],
+      },
+      withoutFullVaccination: {
+        acceptingVisitors: false,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: null,
+      },
+    },
+    restrictions: {
+      masks: {
+        isRequired: true,
+        moreInfo: "Wearing a facemask is compulsory when travelling on public transport or entering indoor spaces accessible to the public. Failure to do so is punishable by a fine. Children under the age of 12 are exempt from this requirement, as are individuals who are unable to wear a mask for medical reasons",
+      },
+      lockdowns: false,
+      socialDistancing: true,
+      groupMaximums: {
+        inside: 1000,
+        outside: 1000,
+      },
+    },
+    hotspots: [""],
+    healthCareNumber: "+423 235 45 32 (24 hours)",
+  }
 ];
