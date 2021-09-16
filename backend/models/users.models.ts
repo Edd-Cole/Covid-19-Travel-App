@@ -50,6 +50,11 @@ const buildUser = async (name: string, email: string, password: string) => {
 }
 
 const killUser = (email: string) => {
+    //if email is only numbers, reject promise
+    if(/^\d+$/.test(email)) {
+        return Promise.reject({code: 400, msg: "Not a valid email"})
+    }
+    
     //connect to database
     return mongoCl()
     .then(async (db: any) => {
