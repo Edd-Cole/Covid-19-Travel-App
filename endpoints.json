@@ -106,5 +106,17 @@
                 "dateReturning": "2021.12.06"
             }]
         }
+    },
+
+    "POST /users": {
+        "Description": "Inserts a new user into the database, given they do not already exist, returns the new user",
+        "Queries": [],
+        "Request Example": { "name": "Blaine Stella", "email": "bs@google.com", "password": "SadBalloons" },
+        "Response Example": {
+            "name": "Blaine Stella",
+            "email": "bs@google.com",
+            "trips": [],
+            "pastTrips": []
+        }
     }
 }
