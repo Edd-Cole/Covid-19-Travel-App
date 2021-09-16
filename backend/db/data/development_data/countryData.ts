@@ -1471,5 +1471,53 @@ module.exports = [
     },
     hotspots: [""],
     healthCareNumber: "+423 235 45 32 (24 hours)",
-  }
+  },
+
+  {
+	"country": "lativa",
+	"colorList": "green",
+	"entryRequirements": {
+		"recoveryFromCovid": {
+			"minDays": 7,
+			"maxDays": 182
+		},
+		"withFullVaccination": {
+			"acceptingVisitors": true,
+			"daysInnoculatedBeforeEntry": 15,
+			"test": {
+				"maximumHoursBefore": 0
+			},
+			"quarantine": {
+				"numberOfDays": 0 
+			},
+			"documentsRequired": ["Vaccination Status Proof", "Electronic Form"],
+			"other": ["Everyone who intends to enter Latvia is required to complete and submit an electronic form no earlier than 48 hours before entering Latvia."]
+		},
+		"withoutFullVaccination": {
+			"acceptingVisitors": false,
+			"test": {
+				"maximumHoursBefore": 72
+			},
+			"quarantine": {
+				"numberOfDays": 0
+			},
+			"documentsRequired": [ "Covid Recovery Certificate", "Electronic Form" ],
+			"other": "0 days quarantine is based upon a negative test. Also everyone who intends to enter Latvia is required to complete and submit an electronic form no earlier than 48 hours before entering Latvia."
+		}
+	},
+	"restrictions": {
+		"masks": {
+			"isRequired": true,
+			"moreInfo": "Face masks must be used in all indoor places, where there is more than 1 person. Children up to 13 years old do not need to use masks, but from 7 years must wear a mask in public transport."
+		},
+		"lockdowns": false,
+		"socialDistancing": true,
+		"groupMaximums": {
+			"inside": 20,
+			"outside": 50
+		}
+	},
+	"hotspots": ["Riga", "Kuldīga", "Daugavpils"],
+	"healthCareNumber": "Latvian Centre for Disease Prevention and Control (SPKC) helpline (00 371) 67501590 or (00 371) 67387661 (open 8.30-17.00 working days). In case of emergency call 113."
+}
 ];
