@@ -19,11 +19,10 @@ require("dotenv").config({
 });
 
 //Establish database connection asynchronously
-async function main() {
+const main = async () => {
   await client.connect();
   const db = client.db(dbName);
   return db;
-}
+};
 
-export {client};
-export default main;
+module.exports = { client, main, url };

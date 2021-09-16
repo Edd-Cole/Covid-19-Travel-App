@@ -1,0 +1,122 @@
+{
+    "GET /": {
+        "Description": "Serves up a JSON representation of all the available endpoints",
+        "Queries": [],
+        "Request Example": null,
+        "Response Example": []
+    },
+    "GET /countries": {
+        "Description": "Serves an array of all countries in the database, capitalised and in alphabetical order",
+        "Queries": [],
+        "Request Example": null,
+        "Response Example": ["France", "Italy", "Portugal", "Spain"]
+    },
+    "GET /countries/:country": {
+        "Description": "Serves a country object with all the current information in it, and as it exists in the database",
+        "Queries": [],
+        "Request Example": null,
+        "Response Example": {
+            "country": "portugal",
+            "colorList": "amber",
+            "entryRequirements": {
+                "recoveryFromCovid": {
+                    "minDays": 11,
+                    "maxDays": 180
+                },
+                "withFullVaccination": {
+                    "acceptingVisitors": true,
+                    "daysInnoculatedBeforeEntry": 14,
+                    "test": {
+                        "maximumHoursBefore": 72
+                    },
+                    "quarantine": {
+                        "numberOfDays": 0
+                    },
+                    "documentsRequired": [
+                        "Vaccination Status Proof",
+                        "Covid Recovery Certificate"
+                    ],
+                    "Other": ["Temperature Screening < 38 degrees on arrival"]
+                },
+                "withoutFullVaccination": {
+                    "acceptingVisitors": false,
+                    "test": {
+                        "maximumHoursBefore": null
+                    },
+                    "quarantine": {
+                        "numberOfDays": null
+                    },
+                    "documentsRequired": [],
+                    "other": null
+                }
+            },
+            "restrictions": {
+                "masks": {
+                    "isRequired": true,
+                    "moreInfo": "Face masks are required in all enclosed public spaces"
+                },
+                "lockdowns": false,
+                "socialDistancing": true,
+                "groupMaximums": {
+                    "inside": 8,
+                    "outside": 15
+                }
+            },
+            "hotspots": ["Lisbon"],
+            "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+        }
+    },
+
+    "POST /users/:email": {
+        "Description": "Serves a user object with all the current info for that user",
+        "Queries": [],
+        "Request Example": {
+            "email": "js@google.com",
+            "password": "password"
+        },
+        "Response Example": {
+            "fullName": "John Smith",
+            "email": "js@google.com",
+            "trips": [{
+                    "country": "france",
+                    "trafficLight": "amber",
+                    "dateGoing": "2022.01.12",
+                    "dateReturning": "2022.01.24",
+                    "acceptingTourists": true,
+                    "vaccineRequired": true,
+                    "testRequired": true,
+                    "extraDocsRequired": true,
+                    "newInfo": false
+                },
+                {
+                    "country": "greece",
+                    "trafficLight": "amber",
+                    "dateGoing": "2022.05.03",
+                    "dateReturning": "2022.05.10",
+                    "acceptingTourists": true,
+                    "vaccineRequired": true,
+                    "testRequired": true,
+                    "extraDocsRequired": true,
+                    "newInfo": true
+                }
+            ],
+            "pastTrips": [{
+                "country": "poland",
+                "dateGoing": "2021.12.02",
+                "dateReturning": "2021.12.06"
+            }]
+        }
+    },
+
+    "POST /users": {
+        "Description": "Inserts a new user into the database, given they do not already exist, returns the new user without their password",
+        "Queries": [],
+        "Request Example": { "name": "Blaine Stella", "email": "bs@google.com", "password": "SadBalloons" },
+        "Response Example": {
+            "name": "Blaine Stella",
+            "email": "bs@google.com",
+            "trips": [],
+            "pastTrips": []
+        }
+    }
+}

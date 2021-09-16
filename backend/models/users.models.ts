@@ -1,0 +1,71 @@
+const { main: mongoCl } = require('../db/seeds/connection');
+
+const fetchUser = (email: string, password: string) => {
+	//connect to database
+	return mongoCl().then((db: any) => {
+		//connect to the relevant collection and find the user given their email address
+		return db
+			.collection('users')
+			.findOne({ email })
+			.then((user: any) => {
+                //if user doesn't exist, reject promise
+				if (!user) {
+					return Promise.reject({ code: 404, msg: 'User not found' });
+					//check if passwords match, if not then refuse access
+				} else if (password !== user.password) {
+					return Promise.reject({ code: 401, msg: 'Incorrect password' });
+				}
+				//before returning, remove password to keep user secure
+				delete user._id;
+				delete user.password;
+				return user;
+			});
+	});
+};
+
+const buildUser = async (name: string, email: string, password: string) => {
+    //create new user object using info they have inputted from form
+    const newUser = {
+        name: name,
+        email: email,
+        password: password,
+        trips: [],
+        pastTrips: [],
+    };
+
+    //connect to database
+    await mongoCl()
+    .then(async (db: any) => {
+        //If user already exists within the database, reject the post request
+        const user = await db.collection('users').findOne({ email })
+        if(user) {
+            return Promise.reject({code: 400, msg: "Email already exists"})
+        }
+        //insert the new user into the database 
+        return db.collection('users').insert(newUser);    
+    })
+
+    //returns the new user using fetchUser from above, see fetchUser for details of implementation
+    return fetchUser(email, password);
+}
+
+const killUser = (email: string) => {
+    //if email is only numbers, reject promise
+    if(/^\d+$/.test(email)) {
+        return Promise.reject({code: 400, msg: "Not a valid email"})
+    }
+    
+    //connect to database
+    return mongoCl()
+    .then(async (db: any) => {
+        //Check if user does not exist, if so, reject promise
+        const user = await db.collection("users").findOne({ email })
+        if(!user) {
+            return Promise.reject({code: 404, msg: "User does not exist"})
+        }
+        //Remove user given their email
+        return db.collection('users').remove({ email })
+    })
+}
+
+module.exports = { fetchUser, buildUser, killUser };

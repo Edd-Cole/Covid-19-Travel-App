@@ -1,6 +1,7 @@
-import seed from './seed';
-import {client} from './connection';
+const { seed: seedFunc } = require("./seed");
+const { client: MongoCl } = require("./connection");
+const { countryData, userData } = require("../data/development_data/index");
 
-seed()
-    .catch(error => console.error(error))
-    .finally(() => client.close());
+seedFunc(countryData, userData)
+  .catch((error: object) => console.error(error))
+  .finally(() => MongoCl.close());

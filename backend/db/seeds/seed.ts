@@ -1,20 +1,31 @@
-import main from "./connection";
+const { main: connection } = require("./connection");
 
-const seed = () => {
+const seed = async (countryData: object[], userData: object[]) => {
   // 1. drop collections
-  return main().then((db) => {
-    console.log(db, "<<<< database connection");
-    db.countries.drop();
-    db.users.drop();
-    return db;
-  })
-  // 2. create collections
-  .then((db) => {
-      db.createCollection("countries");
-      db.createCollection("users");
-      return db;
-  })
-  // 3. populate collections
+  return (
+    connection()
+      .then(async (db: any) => {
+        await db.collection("countries").drop();
+        await db.collection("users").drop();
+        return db;
+      })
+      // 2. create collections
+      .then(async (db: any) => {
+        await db.createCollection("countries");
+        await db.createCollection("users");
+        return db;
+      })
+      // 3. populate collections - country data
+      .then(async (db: any) => {
+        await db.collection("countries").insertMany(countryData);
+        return db;
+      })
+      // 4. populate collections - user data
+      .then(async (db: any) => {
+        await db.collection("users").insertMany(userData);
+        return db;
+      })
+  );
 };
 
-export default seed;
+module.exports = { seed };

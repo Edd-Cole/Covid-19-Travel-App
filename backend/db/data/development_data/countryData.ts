@@ -20,7 +20,7 @@ module.exports = [
           "Vaccination Status Proof",
           "Covid Recovery Certificate",
         ],
-        Other: ["Temperature Screening < 38 degrees on arrival"],
+        other: ["Temperature Screening < 38 degrees on arrival"],
       },
       withoutFullVaccination: {
         acceptingVisitors: false,
@@ -68,7 +68,7 @@ module.exports = [
           "Vaccination Status Proof",
           "Negative Covid-19 Test",
         ],
-        Other: [
+        other: [
           "Complete online Health Control Form within 48 hours of travel",
         ],
       },
@@ -119,7 +119,7 @@ module.exports = [
           "Vaccination Status Proof",
           "Negative Covid-19 Test",
         ],
-        Other: ["Complete online digital form"],
+        other: ["Complete online digital form"],
       },
       withoutFullVaccination: {
         acceptingVisitors: true,
@@ -167,7 +167,7 @@ module.exports = [
         numberOfDays: null,
       },
       documentsRequired: ["proof of residence (UK)", "proof of vaccination"],
-      Other: ["none"],
+      other: ["none"],
     },
     withoutFullVaccination: {
       acceptingVisitors:
@@ -185,7 +185,7 @@ module.exports = [
         whenAvailable: "5 days into quarantine",
       },
       documentsRequired: ["proof of residence (UK)", "negative test"],
-      Other: ["none"],
+      other: ["none"],
     },
     restrictions: {
       masks: {
@@ -223,7 +223,7 @@ module.exports = [
         documentsRequired: [
           "Vaccination Status Proof or Covid Recovery Certificate",
         ],
-        Other: null,
+        other: null,
       },
       withoutFullVaccination: {
         acceptingVisitors: true,
@@ -267,7 +267,7 @@ module.exports = [
         numberOfDays: null,
       },
       documentsRequired: ["proof of residence (UK)", "proof of vaccination"],
-      Other: [null],
+      other: [null],
     },
     withoutFullVaccination: {
       acceptingVisitors:
@@ -289,7 +289,7 @@ module.exports = [
         "negative test/covid certificate/recovery within lat 6 months",
         "passenger locator form",
       ],
-      Other: [null],
+      other: [null],
     },
     restrictions: {
       masks: {
@@ -330,7 +330,7 @@ module.exports = [
           "Negative Covid-19 Test",
           "Passenge Locator Form",
         ],
-        Other: [
+        other: [
           "Complete online Health Control Form within 48 hours of travel",
         ],
       },
@@ -385,7 +385,7 @@ module.exports = [
           "Negative Covid-19 Test",
           "Passenge Locator Form",
         ],
-        Other: [
+        other: [
           "Take test on arrival and quarantine until negative result received",
           "Take test on day 7 of trip",
         ],
@@ -433,7 +433,7 @@ module.exports = [
         numberOfDays: null,
       },
       documentsRequired: ["proof of vaccination"],
-      Other: [null],
+      other: [null],
     },
     withoutFullVaccination: {
       acceptingVisitors: true,
@@ -450,7 +450,7 @@ module.exports = [
         whenAvailable: "5 days into quarantine",
       },
       documentsRequired: ["negative test (within last 72hours)"],
-      Other: [null],
+      other: [null],
     },
     restrictions: {
       masks: {
@@ -487,7 +487,7 @@ module.exports = [
       documentsRequired: [
         "proof of vaccination (Vaccine Declaration COVID-19 Form)",
       ],
-      Other: [
+      other: [
         "certificate of COVID recovery, negative test within last 72 hours",
       ],
     },
@@ -509,7 +509,7 @@ module.exports = [
       documentsRequired: [
         "proof of negative COVID test (within 72 hours of arrival)",
       ],
-      Other: [null],
+      other: [null],
     },
     restrictions: {
       masks: {
@@ -543,7 +543,7 @@ module.exports = [
         numberOfDays: null,
       },
       documentsRequired: ["Full Vaccination Certificate for COVID-19"],
-      Other: ["Cyprus Flight Pass"],
+      other: ["Cyprus Flight Pass"],
     },
     withoutFullVaccination: {
       acceptingVisitors: true,
@@ -560,7 +560,7 @@ module.exports = [
         whenAvailable: null,
       },
       documentsRequired: ["Test certificate no longer than 72 hours old"],
-      Other: ["Cyprus Flight Pass"],
+      other: ["Cyprus Flight Pass"],
     },
     restrictions: {
       masks: {
@@ -596,7 +596,7 @@ module.exports = [
       documentsRequired: [
         "Test certificate no longer than 72 hours old, regardless of vaccination status",
       ],
-      Other: ["Online entry form to be filled before travel"],
+      other: ["Online entry form to be filled before travel"],
     },
     withoutFullVaccination: {
       acceptingVisitors: true,
@@ -613,7 +613,7 @@ module.exports = [
         whenAvailable: null,
       },
       documentsRequired: ["Test certificate no longer than 72 hours old"],
-      Other: ["Online entry form to be filled before travel"],
+      other: ["Online entry form to be filled before travel"],
     },
     restrictions: {
       masks: {
@@ -649,7 +649,7 @@ module.exports = [
         "Passenger Locator Form",
         "UK proof of Covid-19 Full Vaccination",
       ],
-      Other: [null],
+      other: [null],
     },
     withoutFullVaccination: {
       acceptingVisitors: "conditionally - Quarantine and Testing Required",
@@ -666,7 +666,7 @@ module.exports = [
         whenAvailable: null,
       },
       documentsRequired: ["negative test (within last 72hours)"],
-      Other: [null],
+      other: [null],
     },
     restrictions: {
       masks: {
@@ -701,7 +701,7 @@ module.exports = [
         "proof of vaccination",
         "online registration at least 48-hours before beginning journey",
       ],
-      Other: [null],
+      other: [null],
     },
     withoutFullVaccination: {
       acceptingVisitors: "conditionally - quarantine and testing required",
@@ -721,7 +721,7 @@ module.exports = [
         "negative test (within last 72hours)",
         "online registration at least 48-hours before beginning journey",
       ],
-      Other: [null],
+      other: [null],
     },
     restrictions: {
       masks: {
@@ -756,7 +756,7 @@ module.exports = [
       documentsRequired: [
         "proof of vaccination (Vaccine Declaration COVID-19 Form)",
       ],
-      Other: ["Health Screening Form to be filled before making journey"],
+      other: ["Health Screening Form to be filled before making journey"],
     },
     withoutFullVaccination: {
       acceptingVisitors:
@@ -774,7 +774,7 @@ module.exports = [
         whenAvailable: null,
       },
       documentsRequired: ["negative test (within last 48 hours)"],
-      Other: ["Health Screening Form to be filled before making journey"],
+      other: ["Health Screening Form to be filled before making journey"],
     },
     restrictions: {
       masks: {
@@ -807,7 +807,7 @@ module.exports = [
         numberOfDays: null,
       },
       documentsRequired: ["proof of vaccination"],
-      Other: [null],
+      other: [null],
     },
     withoutFullVaccination: {
       acceptingVisitors:
@@ -825,7 +825,7 @@ module.exports = [
         whenAvailable: null,
       },
       documentsRequired: ["negative test (within last 72hours)"],
-      Other: [null],
+      other: [null],
     },
     restrictions: {
       masks: {
@@ -906,7 +906,7 @@ module.exports = [
           numberOfDays: null,
         },
         documentsRequired: null,
-        Other: [],
+        other: [],
       },
       withoutFullVaccination: {
         acceptingVisitors: false,
@@ -952,7 +952,7 @@ module.exports = [
           numberOfDays: 0,
         },
         documentsRequired: ["Vaccination Status Proof"],
-        Other: [],
+        other: [],
       },
       withoutFullVaccination: {
         acceptingVisitors: true,
@@ -1001,7 +1001,7 @@ module.exports = [
           numberOfDays: null,
         },
         documentsRequired: ["Vaccination Status Proof"],
-        Other: ["Passenger Locator Form"],
+        other: ["Passenger Locator Form"],
       },
       withoutFullVaccination: {
         acceptingVisitors: false,
@@ -1047,7 +1047,7 @@ module.exports = [
           numberOfDays: null,
         },
         documentsRequired: [],
-        Other: [],
+        other: [],
       },
       withoutFullVaccination: {
         acceptingVisitors: false,
@@ -1093,7 +1093,7 @@ module.exports = [
           numberOfDays: null,
         },
         documentsRequired: ["Vaccination Status Proof"],
-        Other: [],
+        other: [],
       },
       withoutFullVaccination: {
         acceptingVisitors: true,
@@ -1145,7 +1145,7 @@ module.exports = [
           numberOfDays: 0,
         },
         documentsRequired: ["Proof of vaccination"],
-        Other: [],
+        other: [],
       },
       withoutFullVaccination: {
         acceptingVisitors: true,
@@ -1192,7 +1192,7 @@ module.exports = [
           numberOfDays: 0,
         },
         documentsRequired: ["Negative covid test no longer than 72 hours old"],
-        Other: [],
+        other: [],
       },
       withoutFullVaccination: {
         acceptingVisitors: true,
@@ -1240,7 +1240,7 @@ module.exports = [
           numberOfDays: 0,
         },
         documentsRequired: [],
-        Other: [],
+        other: [],
       },
       withoutFullVaccination: {
         acceptingVisitors: false,
@@ -1270,4 +1270,206 @@ module.exports = [
     hotspots: ["Prague"],
     healthCareNumber: null,
   },
+
+  {
+    country: "estonia",
+    colorList: "amber",
+    entryRequirements: {
+      recoveryFromCovid: {
+        minDays: 0,
+        maxDays: 180,
+      },
+      withFullVaccination: {
+        acceptingVisitors: true,
+        daysInnoculatedBeforeEntry: 0,
+        test: {
+          maximumHoursBefore: 0,
+        },
+        quarantine: {
+          numberOfDays: 0,
+        },
+        documentsRequired: [
+          "Vaccination Status Proof",
+          "Covid Recovery Certificate",
+          "Customer Locator Form"
+        ],
+        other: ["Full vaccine course less than 12 months old", "Second negative test after 6 days"],
+      },
+      withoutFullVaccination: {
+        acceptingVisitors: true,
+        test: {
+          maximumHoursBefore: 72,
+        },
+        quarantine: {
+          numberOfDays: 10,
+        },
+        documentsRequired: [
+            "Customer Locator Form"
+        ],
+        other: ["Second negative test after 6 days"],
+      },
+    },
+    restrictions: {
+      masks: {
+        isRequired: true,
+        moreInfo: "Face masks are required in all enclosed public spaces",
+      },
+      lockdowns: false,
+      socialDistancing: false,
+      groupMaximums: {
+        inside: null,
+        outside: null,
+      },
+    },
+    hotspots: [],
+    healthCareNumber: "+372 634 6630 or 1220 if in Estonia, English provided between 3pm - 5pm daily",
+  },
+
+  {
+    country: "luxembourg",
+    colorList: "amber",
+    entryRequirements: {
+      recoveryFromCovid: {
+        minDays: null,
+        maxDays: null,
+      },
+      withFullVaccination: {
+        acceptingVisitors: false,
+        daysInnoculatedBeforeEntry: null,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: [],
+      },
+      withoutFullVaccination: {
+        acceptingVisitors: false,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: null,
+      },
+    },
+    restrictions: {
+      masks: {
+        isRequired: true,
+        moreInfo: "Face masks are required in public spaces",
+      },
+      lockdowns: false,
+      socialDistancing: true,
+      groupMaximums: {
+        inside: 4,
+        outside: 10,
+      },
+    },
+    hotspots: [],
+    healthCareNumber: "112"
+  },
+
+  {
+    country: "Malta",
+    colorList: "amber",
+    entryRequirements: {
+      recoveryFromCovid: {
+        minDays: null,
+        maxDays: null,
+      },
+      withFullVaccination: {
+        acceptingVisitors: true,
+        daysInnoculatedBeforeEntry: 14,
+        test: {
+          maximumHoursBefore: 0,
+        },
+        quarantine: {
+          numberOfDays: 0,
+        },
+        documentsRequired: ["Public Health Travel Declaration Form"],
+        other: [],
+      },
+      withoutFullVaccination: {
+        acceptingVisitors: false,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: null,
+      },
+    },
+    restrictions: {
+      masks: {
+        isRequired: true,
+        moreInfo: "Face masks are required in public spaces",
+      },
+      lockdowns: false,
+      socialDistancing: true,
+      groupMaximums: {
+        inside: 6,
+        outside: 15,
+      },
+    },
+    hotspots: [],
+    healthCareNumber: "111"
+  },
+
+  {
+    country: "liechtenstein",
+    colorList: "green",
+    entryRequirements: {
+      recoveryFromCovid: {
+        minDays: null,
+        maxDays: 180,
+      },
+      withFullVaccination: {
+        acceptingVisitors: true,
+        daysInnoculatedBeforeEntry: null,
+        test: {
+          maximumHoursBefore: 72,
+          acceptedTests: ["PCR", "Rapid antigen test"],
+        },
+        quarantine: {
+          numberOfDays: 0,
+        },
+        documentsRequired: [
+          "Vaccination Status Proof",
+          "passenger locator form"
+        ],
+        other: ["Handled by Switzerland - conditionally - Swiss or Liechtenstein nationals, EU of EFTA nationals, residence permit holders, cross-border permit holders, FDFA legitimation card holders, D visa holders (Issues by Switzerland)"],
+      },
+      withoutFullVaccination: {
+        acceptingVisitors: false,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: null,
+      },
+    },
+    restrictions: {
+      masks: {
+        isRequired: true,
+        moreInfo: "Wearing a facemask is compulsory when travelling on public transport or entering indoor spaces accessible to the public. Failure to do so is punishable by a fine. Children under the age of 12 are exempt from this requirement, as are individuals who are unable to wear a mask for medical reasons",
+      },
+      lockdowns: false,
+      socialDistancing: true,
+      groupMaximums: {
+        inside: 1000,
+        outside: 1000,
+      },
+    },
+    hotspots: [""],
+    healthCareNumber: "+423 235 45 32 (24 hours)",
+  }
 ];
