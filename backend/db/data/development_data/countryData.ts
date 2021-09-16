@@ -1443,7 +1443,7 @@ module.exports = [
           "Vaccination Status Proof",
           "passenger locator form"
         ],
-        other: ["Switzerland handles immigration and customs matters for Liechtenstein. Entry requirements are the same as for Switzerland."],
+        other: ["Handled by Switzerland - conditionally - Swiss or Liechtenstein nationals, EU of EFTA nationals, residence permit holders, cross-border permit holders, FDFA legitimation card holders, D visa holders (Issues by Switzerland)"],
       },
       withoutFullVaccination: {
         acceptingVisitors: false,
