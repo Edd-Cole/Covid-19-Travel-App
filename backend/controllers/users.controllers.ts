@@ -45,8 +45,8 @@ export const deleteUser = (req: any, res: any, next: any) => {
 
 export const updateUser = (req: any, res: any, next: any) => {
   const { email } = req.params;
-  const { name, email: updateEmail, password } = req.body;
-  return fixUser(email, name, updateEmail, password)
+  const { name, email: updateEmail, password, trip } = req.body;
+  return fixUser(email, name, updateEmail, password, trip)
     .then((user: object) => {
       res.status(200).send({ user });
     })

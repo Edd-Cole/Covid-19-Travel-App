@@ -277,7 +277,7 @@ describe('Test Endpoints', () => {
         });
       });
 
-      describe.only('/ - PATCH', () => {
+      describe('/ - PATCH', () => {
         describe('status 200 - Success', () => {
           test('returns a user with an updated name', () => {
             return request(app)
@@ -368,12 +368,12 @@ describe('Test Endpoints', () => {
 
           });
 
-          test('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
+          test.only('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
               return request(app).patch("/api/users/js@google.com").send({trip: {
                 country: "ireland",
                 trafficLight: "amber",
-                dateGoing: "2022.06.03",
-                dateReturning: "2022.06.10",
+                dateGoing: "2020.06.03",
+                dateReturning: "2020.06.10",
                 acceptingTourists: true,
                 vaccineRequired: true,
                 testRequired: true,
@@ -430,7 +430,7 @@ describe('Test Endpoints', () => {
         })
 
         describe("status 400 - Bad Request", () => {
-            test.only("user cannot set their password to their current password", () => {
+            test("user cannot set their password to their current password", () => {
                 return request(app)
                 .patch("/api/users/js@google.com")
                 .send({password: "password"})
