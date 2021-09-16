@@ -49,4 +49,13 @@ const buildUser = async (name: string, email: string, password: string) => {
     return fetchUser(email, password);
 }
 
-module.exports = { fetchUser, buildUser };
+const killUser = (email: string) => {
+    //connect to database
+    return mongoCl()
+    .then((db: any) => {
+        //Remove user given their email
+        return db.collection('users').remove({email})
+    })
+}
+
+module.exports = { fetchUser, buildUser, killUser };

@@ -1,4 +1,4 @@
-const { fetchUser: selectUser, buildUser: addUser } = require('../models/users.models.ts');
+const { fetchUser: selectUser, buildUser: addUser, killUser: wipeUser } = require('../models/users.models.ts');
 
 export const setUser = (req: any, res: any, next: any) => {
     //destructure email and password from the request body, then send into models
@@ -21,6 +21,17 @@ export const postUser = (req: any, res: any, next: any) => {
         .then((user: object) => {
             //If successful send back success status!
             res.status(201).send({user});
+        })
+        .catch((err: object) => {
+            next(err);
+        })
+}
+
+export const deleteUser = (req: any, res: any, next: any) => {
+    const { email } = req.body;
+    return wipeUser(email)
+        .then(() => {
+            res.sendStatus(204);
         })
         .catch((err: object) => {
             next(err);
