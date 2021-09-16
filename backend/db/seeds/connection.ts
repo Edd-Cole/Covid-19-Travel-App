@@ -22,7 +22,7 @@ require("dotenv").config({
 
 //if current value for ENV is production, set the database to mongo cloud
 if(ENV === "production") {
-    const uri = "mongodb+srv://covid-travel-app:<password>@travel-app-data.1d4ta.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    const uri = "mongodb+srv://covid-travel-app:Pmdm*o6S!4w9&^PWi'fg0@travel-app-data.1d4ta.mongodb.net/covid-travel-app?retryWrites=true&w=majority";
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
