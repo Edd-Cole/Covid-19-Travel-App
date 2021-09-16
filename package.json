@@ -1,52 +1,53 @@
 {
-  "name": "covid-19-travel-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "seed": "ts-node backend/db/seeds/run-seed.ts"
-  },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "name": "covid-19-travel-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "service mongod start",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "seed": "ts-node backend/db/seeds/run-seed.ts"
     },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Edd-Cole/Covid-19-Travel-App.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Edd-Cole/Covid-19-Travel-App/issues"
-  },
-  "homepage": "https://github.com/Edd-Cole/Covid-19-Travel-App#readme",
-  "devDependencies": {
-    "@babel/preset-env": "^7.15.6",
-    "@types/jest": "^27.0.1",
-    "babel-jest": "^27.2.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.25.1",
-    "husky": "^7.0.2",
-    "jest": "^27.2.0",
-    "supertest": "^6.1.6",
-    "ts-jest": "^27.0.5",
-    "typescript": "^4.4.3"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "mongodb": "^4.1.1",
-    "ts-node": "^10.2.1"
-  }
+    "jest": {
+        "transform": {
+            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+        },
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Edd-Cole/Covid-19-Travel-App.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Edd-Cole/Covid-19-Travel-App/issues"
+    },
+    "homepage": "https://github.com/Edd-Cole/Covid-19-Travel-App#readme",
+    "devDependencies": {
+        "@babel/preset-env": "^7.15.6",
+        "@types/jest": "^27.0.1",
+        "babel-jest": "^27.2.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-react": "^7.25.1",
+        "husky": "^7.0.2",
+        "jest": "^27.2.0",
+        "supertest": "^6.1.6",
+        "ts-jest": "^27.0.5",
+        "typescript": "^4.4.3"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "mongodb": "^4.1.1",
+        "ts-node": "^10.2.1"
+    }
 }
