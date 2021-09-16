@@ -118,5 +118,7 @@
             "trips": [],
             "pastTrips": []
         }
-    }
+    },
+
+    "DELETE /users/:email": {}
 }
