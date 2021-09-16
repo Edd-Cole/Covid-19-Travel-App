@@ -42,7 +42,7 @@ const buildUser = async (name: string, email: string, password: string) => {
             return Promise.reject({code: 400, msg: "Email already exists"})
         }
         //insert the new user into the database 
-        return db.collection('users').insert(newUser);    
+        return db.collection('users').insertOne(newUser);    
     })
 
     //returns the new user using fetchUser from above, see fetchUser for details of implementation
@@ -54,7 +54,7 @@ const killUser = (email: string) => {
     if(/^\d+$/.test(email)) {
         return Promise.reject({code: 400, msg: "Not a valid email"})
     }
-    
+
     //connect to database
     return mongoCl()
     .then(async (db: any) => {
@@ -64,7 +64,7 @@ const killUser = (email: string) => {
             return Promise.reject({code: 404, msg: "User does not exist"})
         }
         //Remove user given their email
-        return db.collection('users').remove({ email })
+        return db.collection('users').deleteOne({ email })
     })
 }
 
