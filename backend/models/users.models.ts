@@ -66,11 +66,12 @@ const killUser = (email: string) => {
   });
 };
 
-const repairUser = async (email: string, name: string, updateEmail: string, password: any) => { //newpassword
+const repairUser = async (email: string, name: string, updateEmail: string, password: any) => {
   // Get the user from the db
   const oldUser = await mongoCl().then((db: any) => {
     return db.collection('users').findOne({ email });
   });
+
   // Set any undefined values from the request to current values in the db,
   // otherwise set to new values
   const newName = name || oldUser.name;
