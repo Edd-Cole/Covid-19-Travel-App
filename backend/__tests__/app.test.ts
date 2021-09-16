@@ -366,6 +366,8 @@ describe('Test Endpoints', () => {
             })
 
         });
+
+    })
         describe("status 400 - Bad Request", () => {
             test.only("user cannot set their password to their current password", () => {
                 return request(app)
@@ -377,8 +379,6 @@ describe('Test Endpoints', () => {
                   })
                 })
             });
-
-          })
         });
       });
     });
