@@ -322,6 +322,7 @@ describe('Test Endpoints', () => {
                 });
               });
           });
+
           test('resturns a user with an updated email', () => {
             return request(app)
             .patch('/api/users/js@google.com')
@@ -365,9 +366,69 @@ describe('Test Endpoints', () => {
                 });
             })
 
-        });
+          });
 
-    })
+          test('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
+              return request(app).patch("/api/users/js@google.com").send({trip: {
+                country: "ireland",
+                trafficLight: "amber",
+                dateGoing: "2022.06.03",
+                dateReturning: "2022.06.10",
+                acceptingTourists: true,
+                vaccineRequired: true,
+                testRequired: true,
+                extraDocsRequired: true,
+                newInfo: false    
+              }})
+              .expect(200)
+              .then((res: any) => {
+                  expect(res.body.user).toEqual({
+                    name: "John Smith",
+                    email: "js@google.com",
+                    password: "password",
+                    trips: [{
+                        country: "france",
+                        trafficLight: "amber",
+                        dateGoing: "2022.01.12",
+                        dateReturning: "2022.01.24",
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                    },
+                    {
+                        country: "greece",
+                        trafficLight: "amber",
+                        dateGoing: "2022.05.03",
+                        dateReturning: "2022.05.10",
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                    },
+                    {
+                        country: "ireland",
+                        trafficLight: "amber",
+                        dateGoing: "2022.06.03",
+                        dateReturning: "2022.06.10",
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false    
+                      }],
+                    pastTrips: [{
+                        country: "poland",
+                        dateGoing: "2021.12.02",
+                        dateReturning: "2021.12.06",
+                    }],
+                })
+              })
+          })
+        })
+
         describe("status 400 - Bad Request", () => {
             test.only("user cannot set their password to their current password", () => {
                 return request(app)
