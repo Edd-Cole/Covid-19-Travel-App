@@ -1321,7 +1321,7 @@ module.exports = [
         outside: null,
       },
     },
-    hotspots: ["Lisbon"],
+    hotspots: [],
     healthCareNumber: "+372 634 6630 or 1220 if in Estonia, English provided between 3pm - 5pm daily",
   },
 
@@ -1371,5 +1371,54 @@ module.exports = [
     },
     hotspots: [],
     healthCareNumber: "112"
+  },
+
+  {
+    country: "Malta",
+    colorList: "amber",
+    entryRequirements: {
+      recoveryFromCovid: {
+        minDays: null,
+        maxDays: null,
+      },
+      withFullVaccination: {
+        acceptingVisitors: true,
+        daysInnoculatedBeforeEntry: 14,
+        test: {
+          maximumHoursBefore: 0,
+        },
+        quarantine: {
+          numberOfDays: 0,
+        },
+        documentsRequired: ["Public Health Travel Declaration Form"],
+        other: [],
+      },
+      withoutFullVaccination: {
+        acceptingVisitors: false,
+        test: {
+          maximumHoursBefore: null,
+        },
+        quarantine: {
+          numberOfDays: null,
+        },
+        documentsRequired: [],
+        other: null,
+      },
+    },
+    restrictions: {
+      masks: {
+        isRequired: true,
+        moreInfo: "Face masks are required in public spaces",
+      },
+      lockdowns: false,
+      socialDistancing: true,
+      groupMaximums: {
+        inside: 6,
+        outside: 15,
+      },
+    },
+    hotspots: [],
+    healthCareNumber: "111"
   }
+
 ];
