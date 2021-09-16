@@ -28,7 +28,7 @@ export const postUser = (req: any, res: any, next: any) => {
 }
 
 export const deleteUser = (req: any, res: any, next: any) => {
-    const { email } = req.body;
+    const { email } = req.params;
     return wipeUser(email)
         .then(() => {
             res.sendStatus(204);

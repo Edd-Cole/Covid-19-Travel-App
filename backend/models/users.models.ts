@@ -6,7 +6,7 @@ const fetchUser = (email: string, password: string) => {
 		//connect to the relevant collection and find the user given their email address
 		return db
 			.collection('users')
-			.findOne({ email: email })
+			.findOne({ email })
 			.then((user: any) => {
                 //if user doesn't exist, reject promise
 				if (!user) {
@@ -37,7 +37,7 @@ const buildUser = async (name: string, email: string, password: string) => {
     await mongoCl()
     .then(async (db: any) => {
         //If user already exists within the database, reject the post request
-        const user = await db.collection('users').findOne({email: email})
+        const user = await db.collection('users').findOne({ email })
         if(user) {
             return Promise.reject({code: 400, msg: "Email already exists"})
         }
@@ -52,9 +52,14 @@ const buildUser = async (name: string, email: string, password: string) => {
 const killUser = (email: string) => {
     //connect to database
     return mongoCl()
-    .then((db: any) => {
+    .then(async (db: any) => {
+        //Check if user does not exist, if so, reject promise
+        const user = await db.collection("users").findOne({ email })
+        if(!user) {
+            return Promise.reject({code: 404, msg: "User does not exist"})
+        }
         //Remove user given their email
-        return db.collection('users').remove({email})
+        return db.collection('users').remove({ email })
     })
 }
 
