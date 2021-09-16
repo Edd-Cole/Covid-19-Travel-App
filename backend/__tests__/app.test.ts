@@ -156,7 +156,6 @@ describe('Test Endpoints', () => {
                     .send({name: "John Smith", email: "js@google.com", password: "password"})
                     .expect(400)
                     .then((response: any) => {
-                        console.log(response.body)
                         expect(response.body.msg).toBe("Email already exists")
                     })
                 })
@@ -234,7 +233,7 @@ describe('Test Endpoints', () => {
 				});
 			});
 
-            describe.only("/ - DELETE", () => {
+            describe("/ - DELETE", () => {
                 describe("status 204 - Success, No Content", () => {
                     test("deletes a user from the database", () => {
                         return request(app)
