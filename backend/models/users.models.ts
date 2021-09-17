@@ -79,8 +79,13 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
   const newPassword = password || oldUser.password;
   const newTrips = trip ? (oldUser.trips.concat([trip])) : oldUser.trips;
 
-  console.log(newTrips)
-//.sort((a: any, b: any) => a.dateGoing - b.dateGoing)
+  //Sort the trips by the date going
+  newTrips.sort((a: any,b: any) => {
+    const date1: any = new Date(a.dateGoing);
+    const date2: any = new Date(b.dateGoing);
+    return date1 - date2;
+  })
+
   // Find and update user in the db by email
   await mongoCl().then((db: any) => {
     return db
