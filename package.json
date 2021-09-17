@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "prestart": "npm install",
+        "prestart": "next build",
         "start": "ts-node ./backend/listen.ts",
         "test": "jest",
         "test:watch": "jest --watch",
