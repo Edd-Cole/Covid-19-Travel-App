@@ -4,7 +4,6 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "prestart": "next build",
         "start": "ts-node ./backend/listen.ts",
         "test": "jest",
         "test:watch": "jest --watch",
