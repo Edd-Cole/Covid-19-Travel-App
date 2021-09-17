@@ -239,6 +239,7 @@ describe('Test Endpoints', () => {
             });
         });
       });
+
       describe('status 400 - Bad Request', () => {
         test('if the value on the countries key is not an object or an array, return an error', () => {
           return request(app)
@@ -250,6 +251,7 @@ describe('Test Endpoints', () => {
             });
         });
       });
+    });
 
       describe('/:country', () => {
         describe('/ - GET', () => {
@@ -799,5 +801,4 @@ describe('Test Endpoints', () => {
         });
       });
     });
-  });
 });
