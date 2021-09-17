@@ -507,7 +507,6 @@ describe('Test Endpoints', () => {
                     newInfo: false  
                 }, deleteTrip: 0, archiveTrip: 1})
                 .then((res: any) => {
-                    console.log(res.body.user)
                     expect(res.body.user).toEqual({
                         name: "Dave",
                         email: "new@email.com",
@@ -549,7 +548,29 @@ describe('Test Endpoints', () => {
                     expect(response.body.msg).toBe("Cannot use current password");
                   })
                 })
-            });
+
+            test("returns an error if wrong type of email is used", () => {
+                return request(app)
+                    .patch("/api/users/123456789")
+                    .send({name: "Dave"})
+                    .expect(400)
+                    .then((res: any) => {
+                        expect(res.body.msg).toBe("Invalid Endpoint")
+                    })
+            })
+        });
+
+        describe("status 404 - Not Found", () => {
+            test("email does not exist in the database", () => {
+                return request(app)
+                    .patch("/api/users/not@email.com")
+                    .send({name: "Dave"})
+                    .expect(404)
+                    .then((res: any) => {
+                        expect(res.body.msg).toBe("User does not exist")
+                    })
+                })
+            })
         });
       });
     });

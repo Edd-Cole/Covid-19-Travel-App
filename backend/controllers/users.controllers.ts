@@ -51,7 +51,6 @@ export const updateUser = (req: any, res: any, next: any) => {
       res.status(200).send({ user });
     })
     .catch((err: object) => {
-      console.log(err);
       next(err);
     });
 };
