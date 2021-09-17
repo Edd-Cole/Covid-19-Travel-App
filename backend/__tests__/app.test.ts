@@ -50,7 +50,7 @@ describe('Test Endpoints', () => {
       });
     });
 
-    describe.only('/ - POST', () => {
+    describe('/ - POST', () => {
       describe('status 201 - Created', () => {
         test('it adds a new country into the database and returns an array of country names', () => {
           return request(app)
@@ -239,549 +239,562 @@ describe('Test Endpoints', () => {
             });
         });
       });
-    });
+      describe('status 400 - Bad Request', () => {
+        test('if the value on the countries key is not an object or an array, return an error', () => {
+          return request(app)
+            .post('/api/countries')
+            .send({ countries: 'hello' })
+            .expect(400)
+            .then((res: any) => {
+              expect(res.body.msg).toBe('Invalid Data');
+            });
+        });
+      });
 
-    describe('/:country', () => {
-      describe('/ - GET', () => {
-        describe('status 200 - Success', () => {
-          test('returns all the details of a country from the database using a country name', () => {
-            return request(app)
-              .get('/api/countries/italy')
-              .expect(200)
-              .then((response: any) => {
-                expect(response.body.country).toEqual({
-                  _id: expect.any(String),
-                  country: 'italy',
-                  colorList: 'amber',
-                  entryRequirements: {
-                    recoveryFromCovid: null,
-                    withFullVaccination: {
-                      acceptingVisitors: true,
-                      daysInnoculatedBeforeEntry: 0,
-                      test: {
-                        maximumHoursBefore: 48
+      describe('/:country', () => {
+        describe('/ - GET', () => {
+          describe('status 200 - Success', () => {
+            test('returns all the details of a country from the database using a country name', () => {
+              return request(app)
+                .get('/api/countries/italy')
+                .expect(200)
+                .then((response: any) => {
+                  expect(response.body.country).toEqual({
+                    _id: expect.any(String),
+                    country: 'italy',
+                    colorList: 'amber',
+                    entryRequirements: {
+                      recoveryFromCovid: null,
+                      withFullVaccination: {
+                        acceptingVisitors: true,
+                        daysInnoculatedBeforeEntry: 0,
+                        test: {
+                          maximumHoursBefore: 48
+                        },
+                        quarantine: {
+                          numberOfDays: 0
+                        },
+                        documentsRequired: [
+                          'Vaccination Status Proof',
+                          'Negative Covid-19 Test'
+                        ],
+                        other: ['Complete online digital form']
                       },
-                      quarantine: {
-                        numberOfDays: 0
-                      },
-                      documentsRequired: [
-                        'Vaccination Status Proof',
-                        'Negative Covid-19 Test'
-                      ],
-                      other: ['Complete online digital form']
+                      withoutFullVaccination: {
+                        acceptingVisitors: true,
+                        test: {
+                          maximumHoursBefore: 48
+                        },
+                        quarantine: {
+                          numberOfDays: 5
+                        },
+                        documentsRequired: ['Negative Covid-19 Test'],
+                        other: [
+                          'Inform ASL where you will be quarantining',
+                          'New negative test after quarantine period'
+                        ]
+                      }
                     },
-                    withoutFullVaccination: {
-                      acceptingVisitors: true,
-                      test: {
-                        maximumHoursBefore: 48
+                    restrictions: {
+                      masks: {
+                        isRequired: true,
+                        moreInfo: 'Face masks are required in all yellow zones'
                       },
-                      quarantine: {
-                        numberOfDays: 5
-                      },
-                      documentsRequired: ['Negative Covid-19 Test'],
-                      other: [
-                        'Inform ASL where you will be quarantining',
-                        'New negative test after quarantine period'
-                      ]
-                    }
-                  },
-                  restrictions: {
-                    masks: {
-                      isRequired: true,
-                      moreInfo: 'Face masks are required in all yellow zones'
+                      lockdowns: false,
+                      socialDistancing: true,
+                      groupMaximums: {
+                        inside: 3,
+                        outside: 0
+                      }
                     },
-                    lockdowns: false,
-                    socialDistancing: true,
-                    groupMaximums: {
-                      inside: 3,
-                      outside: 0
-                    }
-                  },
-                  hotspots: ['Rome', 'Milan', 'Venice', 'Naples'],
-                  healthCareNumber:
-                    'Call emergency healthline 112 - English operators available'
+                    hotspots: ['Rome', 'Milan', 'Venice', 'Naples'],
+                    healthCareNumber:
+                      'Call emergency healthline 112 - English operators available'
+                  });
                 });
-              });
+            });
           });
-        });
-        describe('status 400 - Bad Request', () => {
-          test('returns an error when given wrong type for parametric endpoint/data', () => {
-            return request(app)
-              .get('/api/countries/12')
-              .expect(400)
-              .then((response: any) => {
-                expect(response.body.msg).toBe('Invalid Endpoint');
-              });
+          describe('status 400 - Bad Request', () => {
+            test('returns an error when given wrong type for parametric endpoint/data', () => {
+              return request(app)
+                .get('/api/countries/12')
+                .expect(400)
+                .then((response: any) => {
+                  expect(response.body.msg).toBe('Invalid Endpoint');
+                });
+            });
           });
-        });
-        describe('status 404 - Not Found', () => {
-          test('returns an error when given country that isnt in the database ', () => {
-            return request(app)
-              .get('/api/countries/moldova')
-              .expect(404)
-              .then((response: any) => {
-                expect(response.body.msg).toEqual('Endpoint Not Found');
-              });
+          describe('status 404 - Not Found', () => {
+            test('returns an error when given country that isnt in the database ', () => {
+              return request(app)
+                .get('/api/countries/moldova')
+                .expect(404)
+                .then((response: any) => {
+                  expect(response.body.msg).toEqual('Endpoint Not Found');
+                });
+            });
           });
         });
       });
     });
-  });
 
-  describe('/users', () => {
-    describe('/ - POST', () => {
-      describe('status 201 - Created', () => {
-        test('creates and returns a new user object when given a name, email and password', () => {
-          return request(app)
-            .post('/api/users')
-            .send({
-              name: 'Blaine Stella',
-              email: 'bs@google.com',
-              password: 'BlaineStella'
-            })
-            .then((response: any) => {
-              expect(response.body.user).toEqual({
+    describe('/users', () => {
+      describe('/ - POST', () => {
+        describe('status 201 - Created', () => {
+          test('creates and returns a new user object when given a name, email and password', () => {
+            return request(app)
+              .post('/api/users')
+              .send({
                 name: 'Blaine Stella',
                 email: 'bs@google.com',
-                trips: [],
-                pastTrips: []
-              });
-            });
-        });
-      });
-
-      describe('status 400 - Bad request', () => {
-        test('returns an error when trying to create a new account with an email that already exists in the database', () => {
-          return request(app)
-            .post('/api/users')
-            .send({
-              name: 'John Smith',
-              email: 'js@google.com',
-              password: 'password'
-            })
-            .expect(400)
-            .then((response: any) => {
-              expect(response.body.msg).toBe('Email already exists');
-            });
-        });
-      });
-    });
-    describe('/:email', () => {
-      describe('/ - POST', () => {
-        describe('status 200 - Success', () => {
-          test('Returns a user object given their email address', () => {
-            return request(app)
-              .post('/api/users/js@google.com')
-              .send({ email: 'js@google.com', password: 'password' })
-              .expect(200)
+                password: 'BlaineStella'
+              })
               .then((response: any) => {
                 expect(response.body.user).toEqual({
-                  name: 'John Smith',
-                  email: 'js@google.com',
-                  trips: [
-                    {
-                      country: 'france',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: false
-                    },
-                    {
-                      country: 'greece',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: true
-                    }
-                  ],
-                  pastTrips: [
-                    {
-                      country: 'poland',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    }
-                  ]
+                  name: 'Blaine Stella',
+                  email: 'bs@google.com',
+                  trips: [],
+                  pastTrips: []
                 });
               });
           });
         });
-        describe('status 401 - unauthorised', () => {
-          test('returns an error if passwords do not match', () => {
-            return request(app)
-              .post('/api/users/js@google.com')
-              .send({ email: 'js@google.com', password: 'password-nope' })
-              .expect(401)
-              .then((res: any) => {
-                expect(res.body.msg).toBe('Incorrect password');
-              });
-          });
-        });
 
-        describe('status 404 - not found', () => {
-          test('returns a not found if email does not exist', () => {
+        describe('status 400 - Bad request', () => {
+          test('returns an error when trying to create a new account with an email that already exists in the database', () => {
             return request(app)
-              .post('/api/users/e@123.com')
-              .send({ email: 'e@123.com', password: 'password' })
-              .expect(404)
-              .then((res: any) => {
-                expect(res.body.msg).toBe('User not found');
+              .post('/api/users')
+              .send({
+                name: 'John Smith',
+                email: 'js@google.com',
+                password: 'password'
+              })
+              .expect(400)
+              .then((response: any) => {
+                expect(response.body.msg).toBe('Email already exists');
               });
           });
         });
       });
+      describe('/:email', () => {
+        describe('/ - POST', () => {
+          describe('status 200 - Success', () => {
+            test('Returns a user object given their email address', () => {
+              return request(app)
+                .post('/api/users/js@google.com')
+                .send({ email: 'js@google.com', password: 'password' })
+                .expect(200)
+                .then((response: any) => {
+                  expect(response.body.user).toEqual({
+                    name: 'John Smith',
+                    email: 'js@google.com',
+                    trips: [
+                      {
+                        country: 'france',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                      },
+                      {
+                        country: 'greece',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                      }
+                    ],
+                    pastTrips: [
+                      {
+                        country: 'poland',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      }
+                    ]
+                  });
+                });
+            });
+          });
+          describe('status 401 - unauthorised', () => {
+            test('returns an error if passwords do not match', () => {
+              return request(app)
+                .post('/api/users/js@google.com')
+                .send({ email: 'js@google.com', password: 'password-nope' })
+                .expect(401)
+                .then((res: any) => {
+                  expect(res.body.msg).toBe('Incorrect password');
+                });
+            });
+          });
 
-      describe('/ - DELETE', () => {
-        describe('status 204 - Success, No Content', () => {
-          test('deletes a user from the database', () => {
-            return request(app).delete('/api/users/js@google.com').expect(204);
+          describe('status 404 - not found', () => {
+            test('returns a not found if email does not exist', () => {
+              return request(app)
+                .post('/api/users/e@123.com')
+                .send({ email: 'e@123.com', password: 'password' })
+                .expect(404)
+                .then((res: any) => {
+                  expect(res.body.msg).toBe('User not found');
+                });
+            });
           });
         });
 
-        describe('status 400 - Bad Request', () => {
-          test('returns an error if the endpoint is not of the correct type', () => {
-            return request(app)
-              .delete('/api/users/1111111111100000000')
-              .expect(400)
-              .then((response: any) => {
-                expect(response.body.msg).toBe('Not a valid email');
-              });
+        describe('/ - DELETE', () => {
+          describe('status 204 - Success, No Content', () => {
+            test('deletes a user from the database', () => {
+              return request(app)
+                .delete('/api/users/js@google.com')
+                .expect(204);
+            });
+          });
+
+          describe('status 400 - Bad Request', () => {
+            test('returns an error if the endpoint is not of the correct type', () => {
+              return request(app)
+                .delete('/api/users/1111111111100000000')
+                .expect(400)
+                .then((response: any) => {
+                  expect(response.body.msg).toBe('Not a valid email');
+                });
+            });
+          });
+
+          describe('status 404 - Not Found', () => {
+            test('returns an error if email is not in the database', () => {
+              return request(app)
+                .delete('/api/users/el123@google.com')
+                .expect(404)
+                .then((response: any) => {
+                  expect(response.body.msg).toBe('User does not exist');
+                });
+            });
           });
         });
 
-        describe('status 404 - Not Found', () => {
-          test('returns an error if email is not in the database', () => {
-            return request(app)
-              .delete('/api/users/el123@google.com')
-              .expect(404)
-              .then((response: any) => {
-                expect(response.body.msg).toBe('User does not exist');
-              });
-          });
-        });
-      });
+        describe('/ - PATCH', () => {
+          describe('status 200 - Success', () => {
+            test('returns a user with an updated name', () => {
+              return request(app)
+                .patch('/api/users/js@google.com')
+                .send({ name: 'Dave' })
+                .expect(200)
+                .then((response: any) => {
+                  expect(response.body.user).toEqual({
+                    name: 'Dave',
+                    email: 'js@google.com',
+                    trips: [
+                      {
+                        country: 'france',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                      },
+                      {
+                        country: 'greece',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                      }
+                    ],
+                    pastTrips: [
+                      {
+                        country: 'poland',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      }
+                    ]
+                  });
+                });
+            });
 
-      describe('/ - PATCH', () => {
-        describe('status 200 - Success', () => {
-          test('returns a user with an updated name', () => {
-            return request(app)
-              .patch('/api/users/js@google.com')
-              .send({ name: 'Dave' })
-              .expect(200)
-              .then((response: any) => {
-                expect(response.body.user).toEqual({
+            test('returns a user with an updated email', () => {
+              return request(app)
+                .patch('/api/users/js@google.com')
+                .send({ email: 'new@email.com' })
+                .expect(200)
+                .then((res: any) => {
+                  expect(res.body.user).toEqual({
+                    name: 'John Smith',
+                    email: 'new@email.com',
+                    trips: [
+                      {
+                        country: 'france',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                      },
+                      {
+                        country: 'greece',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                      }
+                    ],
+                    pastTrips: [
+                      {
+                        country: 'poland',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      }
+                    ]
+                  });
+                });
+            });
+
+            test('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
+              return request(app)
+                .patch('/api/users/js@google.com')
+                .send({
+                  trip: {
+                    country: 'ireland',
+                    trafficLight: 'amber',
+                    dateGoing: new Date(2022, 2, 28),
+                    dateReturning: new Date(2022, 3, 10),
+                    acceptingTourists: true,
+                    vaccineRequired: true,
+                    testRequired: true,
+                    extraDocsRequired: true,
+                    newInfo: false
+                  }
+                })
+                .expect(200)
+                .then((res: any) => {
+                  expect(res.body.user).toEqual({
+                    name: 'John Smith',
+                    email: 'js@google.com',
+                    trips: [
+                      {
+                        country: 'france',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                      },
+                      {
+                        country: 'ireland',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                      },
+                      {
+                        country: 'greece',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                      }
+                    ],
+                    pastTrips: [
+                      {
+                        country: 'poland',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      }
+                    ]
+                  });
+                });
+            });
+
+            test('deletes a trip from the users trips', () => {
+              return request(app)
+                .patch('/api/users/js@google.com')
+                .send({ deleteTrip: 1 })
+                .expect(200)
+                .then((res: any) => {
+                  expect(res.body.user).toEqual({
+                    name: 'John Smith',
+                    email: 'js@google.com',
+                    trips: [
+                      {
+                        country: 'france',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                      }
+                    ],
+                    pastTrips: [
+                      {
+                        country: 'poland',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      }
+                    ]
+                  });
+                });
+            });
+
+            test('returns a user with a trip moved from trips into past trips, archiving process', () => {
+              return request(app)
+                .patch('/api/users/js@google.com')
+                .send({ archiveTrip: 0 })
+                .expect(200)
+                .then((res: any) => {
+                  expect(res.body.user).toEqual({
+                    name: 'John Smith',
+                    email: 'js@google.com',
+                    trips: [
+                      {
+                        country: 'greece',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                      }
+                    ],
+                    pastTrips: [
+                      {
+                        country: 'poland',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      },
+                      {
+                        country: 'france',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      }
+                    ]
+                  });
+                });
+            });
+
+            test('Can patch multiple key/value pairs at once', () => {
+              return request(app)
+                .patch('/api/users/js@google.com')
+                .send({
                   name: 'Dave',
-                  email: 'js@google.com',
-                  trips: [
-                    {
-                      country: 'france',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: false
-                    },
-                    {
-                      country: 'greece',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: true
-                    }
-                  ],
-                  pastTrips: [
-                    {
-                      country: 'poland',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    }
-                  ]
-                });
-              });
-          });
-
-          test('returns a user with an updated email', () => {
-            return request(app)
-              .patch('/api/users/js@google.com')
-              .send({ email: 'new@email.com' })
-              .expect(200)
-              .then((res: any) => {
-                expect(res.body.user).toEqual({
-                  name: 'John Smith',
                   email: 'new@email.com',
-                  trips: [
-                    {
-                      country: 'france',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: false
-                    },
-                    {
-                      country: 'greece',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: true
-                    }
-                  ],
-                  pastTrips: [
-                    {
-                      country: 'poland',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    }
-                  ]
+                  password: 'newPassword',
+                  trip: {
+                    country: 'ireland',
+                    trafficLight: 'amber',
+                    dateGoing: new Date(2022, 3, 10),
+                    dateReturning: new Date(2022, 3, 17),
+                    acceptingTourists: true,
+                    vaccineRequired: true,
+                    testRequired: true,
+                    extraDocsRequired: true,
+                    newInfo: false
+                  },
+                  deleteTrip: 0,
+                  archiveTrip: 1
+                })
+                .then((res: any) => {
+                  expect(res.body.user).toEqual({
+                    name: 'Dave',
+                    email: 'new@email.com',
+                    trips: [
+                      {
+                        country: 'ireland',
+                        trafficLight: 'amber',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: false
+                      }
+                    ],
+                    pastTrips: [
+                      {
+                        country: 'poland',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      },
+                      {
+                        country: 'greece',
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String)
+                      }
+                    ]
+                  });
                 });
-              });
+            });
           });
 
-          test('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
-            return request(app)
-              .patch('/api/users/js@google.com')
-              .send({
-                trip: {
-                  country: 'ireland',
-                  trafficLight: 'amber',
-                  dateGoing: new Date(2022, 2, 28),
-                  dateReturning: new Date(2022, 3, 10),
-                  acceptingTourists: true,
-                  vaccineRequired: true,
-                  testRequired: true,
-                  extraDocsRequired: true,
-                  newInfo: false
-                }
-              })
-              .expect(200)
-              .then((res: any) => {
-                expect(res.body.user).toEqual({
-                  name: 'John Smith',
-                  email: 'js@google.com',
-                  trips: [
-                    {
-                      country: 'france',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: false
-                    },
-                    {
-                      country: 'ireland',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: false
-                    },
-                    {
-                      country: 'greece',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: true
-                    }
-                  ],
-                  pastTrips: [
-                    {
-                      country: 'poland',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    }
-                  ]
+          describe('status 400 - Bad Request', () => {
+            test('user cannot set their password to their current password', () => {
+              return request(app)
+                .patch('/api/users/js@google.com')
+                .send({ password: 'password' })
+                .expect(400)
+                .then((response: any) => {
+                  expect(response.body.msg).toBe('Cannot use current password');
                 });
-              });
-          });
+            });
 
-          test('deletes a trip from the users trips', () => {
-            return request(app)
-              .patch('/api/users/js@google.com')
-              .send({ deleteTrip: 1 })
-              .expect(200)
-              .then((res: any) => {
-                expect(res.body.user).toEqual({
-                  name: 'John Smith',
-                  email: 'js@google.com',
-                  trips: [
-                    {
-                      country: 'france',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: false
-                    }
-                  ],
-                  pastTrips: [
-                    {
-                      country: 'poland',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    }
-                  ]
+            test('returns an error if wrong type of email is used', () => {
+              return request(app)
+                .patch('/api/users/123456789')
+                .send({ name: 'Dave' })
+                .expect(400)
+                .then((res: any) => {
+                  expect(res.body.msg).toBe('Invalid Endpoint');
                 });
-              });
+            });
           });
 
-          test('returns a user with a trip moved from trips into past trips, archiving process', () => {
-            return request(app)
-              .patch('/api/users/js@google.com')
-              .send({ archiveTrip: 0 })
-              .expect(200)
-              .then((res: any) => {
-                expect(res.body.user).toEqual({
-                  name: 'John Smith',
-                  email: 'js@google.com',
-                  trips: [
-                    {
-                      country: 'greece',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: true
-                    }
-                  ],
-                  pastTrips: [
-                    {
-                      country: 'poland',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    },
-                    {
-                      country: 'france',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    }
-                  ]
+          describe('status 404 - Not Found', () => {
+            test('email does not exist in the database', () => {
+              return request(app)
+                .patch('/api/users/not@email.com')
+                .send({ name: 'Dave' })
+                .expect(404)
+                .then((res: any) => {
+                  expect(res.body.msg).toBe('User does not exist');
                 });
-              });
-          });
-
-          test('Can patch multiple key/value pairs at once', () => {
-            return request(app)
-              .patch('/api/users/js@google.com')
-              .send({
-                name: 'Dave',
-                email: 'new@email.com',
-                password: 'newPassword',
-                trip: {
-                  country: 'ireland',
-                  trafficLight: 'amber',
-                  dateGoing: new Date(2022, 3, 10),
-                  dateReturning: new Date(2022, 3, 17),
-                  acceptingTourists: true,
-                  vaccineRequired: true,
-                  testRequired: true,
-                  extraDocsRequired: true,
-                  newInfo: false
-                },
-                deleteTrip: 0,
-                archiveTrip: 1
-              })
-              .then((res: any) => {
-                expect(res.body.user).toEqual({
-                  name: 'Dave',
-                  email: 'new@email.com',
-                  trips: [
-                    {
-                      country: 'ireland',
-                      trafficLight: 'amber',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String),
-                      acceptingTourists: true,
-                      vaccineRequired: true,
-                      testRequired: true,
-                      extraDocsRequired: true,
-                      newInfo: false
-                    }
-                  ],
-                  pastTrips: [
-                    {
-                      country: 'poland',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    },
-                    {
-                      country: 'greece',
-                      dateGoing: expect.any(String),
-                      dateReturning: expect.any(String)
-                    }
-                  ]
-                });
-              });
-          });
-        });
-
-        describe('status 400 - Bad Request', () => {
-          test('user cannot set their password to their current password', () => {
-            return request(app)
-              .patch('/api/users/js@google.com')
-              .send({ password: 'password' })
-              .expect(400)
-              .then((response: any) => {
-                expect(response.body.msg).toBe('Cannot use current password');
-              });
-          });
-
-          test('returns an error if wrong type of email is used', () => {
-            return request(app)
-              .patch('/api/users/123456789')
-              .send({ name: 'Dave' })
-              .expect(400)
-              .then((res: any) => {
-                expect(res.body.msg).toBe('Invalid Endpoint');
-              });
-          });
-        });
-
-        describe('status 404 - Not Found', () => {
-          test('email does not exist in the database', () => {
-            return request(app)
-              .patch('/api/users/not@email.com')
-              .send({ name: 'Dave' })
-              .expect(404)
-              .then((res: any) => {
-                expect(res.body.msg).toBe('User does not exist');
-              });
+            });
           });
         });
       });
