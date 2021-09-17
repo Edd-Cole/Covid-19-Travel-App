@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "node ./backend/listen.ts",
+        "start": "ts-node ./backend/listen.ts",
         "test": "jest",
         "test:watch": "jest --watch",
         "seed": "ts-node backend/db/seeds/run-seed.ts",
