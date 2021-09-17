@@ -1519,5 +1519,52 @@ module.exports = [
 	},
 	"hotspots": ["Warsaw"],
 	"healthCareNumber": "Dial 989 and then 6 for English"
+},
+{
+	"country": "norway",
+	"colorList": "green",
+	"entryRequirements": {
+		"recoveryFromCovid": {
+			"minDays": 0,
+			"maxDays": 180,
+		},
+		"withFullVaccination": {
+			"acceptingVisitors": true,
+			"daysInnoculatedBeforeEntry": 14,
+			"test": {
+				"maximumHoursBefore": 72
+			},
+			"quarantine": {
+				"numberOfDays": 10 
+			},
+			"documentsRequired": ["Vaccination Status Proof", "Self Declaration Form"],
+			"other": []
+		},
+		"withoutFullVaccination": {
+			"acceptingVisitors": false,
+			"test": {
+				"maximumHoursBefore": null
+			},
+			"quarantine": {
+				"numberOfDays": null
+			},
+			"documentsRequired": [],
+			"other": []
+		}
+	},
+	"restrictions": {
+		"masks": {
+			"isRequired": false,
+			"moreInfo": null
+		},
+		"lockdowns": false,
+		"socialDistancing": true,
+		"groupMaximums": {
+			"inside": 1000,
+			"outside": 1000
+		}
+	},
+	"hotspots": ["Warsaw"],
+	"healthCareNumber": " +47 815 55 015 for general enquiries and +47 116 117 if you believe you have been infected"
 }
 ];
