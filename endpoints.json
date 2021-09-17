@@ -5,12 +5,14 @@
         "Request Example": null,
         "Response Example": []
     },
+
     "GET /countries": {
         "Description": "Serves an array of all countries in the database, capitalised and in alphabetical order",
         "Queries": [],
         "Request Example": null,
         "Response Example": ["France", "Italy", "Portugal", "Spain"]
     },
+
     "GET /countries/:country": {
         "Description": "Serves a country object with all the current information in it, and as it exists in the database",
         "Queries": [],
@@ -67,6 +69,18 @@
         }
     },
 
+    "POST /users": {
+        "Description": "Inserts a new user into the database, given they do not already exist, returns the new user without their password",
+        "Queries": [],
+        "Request Example": { "name": "Blaine Stella", "email": "bs@google.com", "password": "SadBalloons" },
+        "Response Example": {
+            "name": "Blaine Stella",
+            "email": "bs@google.com",
+            "trips": [],
+            "pastTrips": []
+        }
+    },
+
     "POST /users/:email": {
         "Description": "Serves a user object with all the current info for that user",
         "Queries": [],
@@ -108,17 +122,59 @@
         }
     },
 
-    "POST /users": {
-        "Description": "Inserts a new user into the database, given they do not already exist, returns the new user without their password",
+    "DELETE /users/:email": {
+        "Description": "removes a user from the database by their email",
         "Queries": [],
-        "Request Example": { "name": "Blaine Stella", "email": "bs@google.com", "password": "SadBalloons" },
-        "Response Example": {
-            "name": "Blaine Stella",
-            "email": "bs@google.com",
-            "trips": [],
-            "pastTrips": []
-        }
+        "Request Example": null,
+        "Response Example": null
     },
 
-    "DELETE /users/:email": {}
+    "PATCH /users/:email": {
+        "Description": "Updates and returns a user with one or more keys (listed below) using their current email address",
+        "Queries": [],
+        "Request Example": {
+            "name": "Dave",
+            "email": "new@email.com",
+            "password": "newPassword",
+            "trip": {
+                "country": "ireland",
+                "trafficLight": "amber",
+                "dateGoing": "new Date(2022, 3, 10)",
+                "dateReturning": "new Date(2022, 3, 17)",
+                "acceptingTourists": true,
+                "vaccineRequired": true,
+                "testRequired": true,
+                "extraDocsRequired": true,
+                "newInfo": false
+            },
+            "deleteTrip": "0 (<=== Just a number, indicates the position of the trip in the array)",
+            "archiveTrip": "1 (<=== Just a number, indicates the position of the trip in the array)"
+        },
+        "Response Example": {
+            "name": "Dave",
+            "email": "new@email.com",
+            "trips": [{
+                "country": "ireland",
+                "trafficLight": "amber",
+                "dateGoing": "2022-04-09T23:00:00.000Z",
+                "dateReturning": "2022-04-16T23:00:00.000Z",
+                "acceptingTourists": true,
+                "vaccineRequired": true,
+                "testRequired": true,
+                "extraDocsRequired": true,
+                "newInfo": false
+            }],
+            "pastTrips": [{
+                    "country": "poland",
+                    "dateGoing": "2021-12-02T00:00:00.000Z",
+                    "dateReturning": "2021-12-06T00:00:00.000Z"
+                },
+                {
+                    "country": "greece",
+                    "dateGoing": "2022-05-02T23:00:00.000Z",
+                    "dateReturning": "2022-05-09T23:00:00.000Z"
+                }
+            ]
+        }
+    }
 }
