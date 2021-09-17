@@ -31,6 +31,7 @@ const fetchCountry = (country: string) => {
         } else if (!countryObject) {
           return Promise.reject({ code: 404, msg: 'Endpoint Not Found' });
         }
+        delete countryObject._id;
         return countryObject;
       });
   });
