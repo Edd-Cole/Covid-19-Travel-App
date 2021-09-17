@@ -66,7 +66,7 @@ const killUser = (email: string) => {
   });
 };
 
-const repairUser = async (email: string, name: string, updateEmail: string, password: any, trip: object) => {
+const repairUser = async (email: string, name: string, updateEmail: string, password: any, trip: object, deleteTrip: number) => {
   // Get the user from the db
   const oldUser = await mongoCl().then((db: any) => {
     return db.collection('users').findOne({ email });
@@ -77,7 +77,7 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
   const newName = name || oldUser.name;
   const newEmail = updateEmail || oldUser.email;
   const newPassword = password || oldUser.password;
-  const newTrips = trip ? (oldUser.trips.concat([trip])) : oldUser.trips;
+  let newTrips = trip ? (oldUser.trips.concat([trip])) : oldUser.trips;
 
   //Sort the trips by the date going
   newTrips.sort((a: any,b: any) => {
@@ -85,6 +85,11 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
     const date2: any = new Date(b.dateGoing);
     return date1 - date2;
   })
+
+  //if deleteTrip has been defined, remove it from the array of newTrips
+  if(deleteTrip) {
+    newTrips = newTrips.slice(0, deleteTrip).concat(newTrips.slice(deleteTrip + 1))
+  }
 
   // Find and update user in the db by email
   await mongoCl().then((db: any) => {
