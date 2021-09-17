@@ -277,7 +277,7 @@ describe('Test Endpoints', () => {
         });
       });
 
-      describe('/ - PATCH', () => {
+      describe.only('/ - PATCH', () => {
         describe('status 200 - Success', () => {
           test('returns a user with an updated name', () => {
             return request(app)
@@ -449,6 +449,40 @@ describe('Test Endpoints', () => {
                         }],
                         pastTrips: [{
                             country: "poland",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+                        }],
+                    })
+                })
+          })
+
+          test("returns a user with a trip moved from trips into past trips, archiving process", () => {
+              return request(app)
+                .patch("/api/users/js@google.com")
+                .send({archiveTrip: 0})
+                .expect(200)
+                .then((res: any) => {
+                    expect(res.body.user).toEqual({
+                        name: "John Smith",
+                        email: "js@google.com",
+                        trips: [{
+                            country: "greece",
+                            trafficLight: "amber",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+                            acceptingTourists: true,
+                            vaccineRequired: true,
+                            testRequired: true,
+                            extraDocsRequired: true,
+                            newInfo: true
+                        }],
+                        pastTrips: [{
+                            country: "poland",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+                        },
+                        {
+                            country: "france",
                             dateGoing: expect.any(String),
                             dateReturning: expect.any(String),
                         }],
