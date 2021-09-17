@@ -78,32 +78,35 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
   const newEmail = updateEmail || oldUser.email;
   const newPassword = password || oldUser.password;
   let newTrips = trip ? (oldUser.trips.concat([trip])) : oldUser.trips;
-  let newPastTrips = archiveTrip !== undefined ? oldUser.pastTrips.concat(oldUser.trips[archiveTrip]) : oldUser.pastTrips;
+  let newPastTrips = oldUser.pastTrips;
 
-  //Sort the trips by the date going
-  newTrips.sort((a: any,b: any) => {
-    const date1: any = new Date(a.dateGoing);
-    const date2: any = new Date(b.dateGoing);
-    return date1 - date2;
-  })
-
-  //if deleteTrip has been defined, remove it from the array of newTrips
-  if(deleteTrip) {
-    newTrips = newTrips.slice(0, deleteTrip).concat(newTrips.slice(deleteTrip + 1))
+  //if deleteTrip is defined, set the value at the array index to undefined
+  if(deleteTrip !== undefined) {
+      newTrips[deleteTrip] = undefined;
   }
 
-  //if archiveTrip has been defined, remove it from trips, and add it back into pastTrips with keys deleted
+  //if archiveTrip is defined, set the value at the array index to undefined and move it into pastTrips with deleted keys
   if(archiveTrip !== undefined) {
-    newTrips = newTrips.slice(0, archiveTrip).concat(newTrips.slice(archiveTrip + 1))
-    const tripAddedIn = newPastTrips.pop();
-    delete tripAddedIn.acceptingTourists
-    delete tripAddedIn.extraDocsRequired
-    delete tripAddedIn.newInfo
-    delete tripAddedIn.testRequired
-    delete tripAddedIn.trafficLight
-    delete tripAddedIn.vaccineRequired
-    newPastTrips.push(tripAddedIn)
+      const tripAddedIn = newTrips[archiveTrip];
+      newTrips[archiveTrip] = undefined;
+      delete tripAddedIn.acceptingTourists
+      delete tripAddedIn.extraDocsRequired
+      delete tripAddedIn.newInfo
+      delete tripAddedIn.testRequired
+      delete tripAddedIn.trafficLight
+      delete tripAddedIn.vaccineRequired
+      newPastTrips.push(tripAddedIn);
   }
+
+    //remove any undefineds from newTrips
+    newTrips = newTrips.filter((trip: any) => trip !== undefined)
+
+    //Sort the trips by the date going
+    newTrips.sort((a: any,b: any) => {
+      const date1: any = new Date(a.dateGoing);
+      const date2: any = new Date(b.dateGoing);
+      return date1 - date2;
+    })
 
   // Find and update user in the db by email
   await mongoCl().then((db: any) => {
