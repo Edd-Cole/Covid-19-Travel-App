@@ -4,10 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "service mongod start",
+        "start": "node ./backend/listen.ts",
         "test": "jest",
         "test:watch": "jest --watch",
-        "seed": "ts-node backend/db/seeds/run-seed.ts"
+        "seed": "ts-node backend/db/seeds/run-seed.ts",
+        "seed:prod": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL) node db/run-seed.js"
     },
     "jest": {
         "transform": {

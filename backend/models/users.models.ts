@@ -66,7 +66,7 @@ const killUser = (email: string) => {
   });
 };
 
-const repairUser = async (email: string, name: string, updateEmail: string, password: any, trip: object) => {
+const repairUser = async (email: string, name: string, updateEmail: string, password: any, trip: object, deleteTrip: number, archiveTrip: number) => {
   // Get the user from the db
   const oldUser = await mongoCl().then((db: any) => {
     return db.collection('users').findOne({ email });
@@ -77,15 +77,42 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
   const newName = name || oldUser.name;
   const newEmail = updateEmail || oldUser.email;
   const newPassword = password || oldUser.password;
-  const newTrips = trip ? (oldUser.trips.concat([trip])) : oldUser.trips;
+  let newTrips = trip ? (oldUser.trips.concat([trip])) : oldUser.trips;
+  let newPastTrips = oldUser.pastTrips;
 
-  console.log(newTrips)
-//.sort((a: any, b: any) => a.dateGoing - b.dateGoing)
+  //if deleteTrip is defined, set the value at the array index to undefined
+  if(deleteTrip !== undefined) {
+      newTrips[deleteTrip] = undefined;
+  }
+
+  //if archiveTrip is defined, set the value at the array index to undefined and move it into pastTrips with deleted keys
+  if(archiveTrip !== undefined) {
+      const tripAddedIn = newTrips[archiveTrip];
+      newTrips[archiveTrip] = undefined;
+      delete tripAddedIn.acceptingTourists
+      delete tripAddedIn.extraDocsRequired
+      delete tripAddedIn.newInfo
+      delete tripAddedIn.testRequired
+      delete tripAddedIn.trafficLight
+      delete tripAddedIn.vaccineRequired
+      newPastTrips.push(tripAddedIn);
+  }
+
+    //remove any undefineds from newTrips
+    newTrips = newTrips.filter((trip: any) => trip !== undefined)
+
+    //Sort the trips by the date going
+    newTrips.sort((a: any,b: any) => {
+      const date1: any = new Date(a.dateGoing);
+      const date2: any = new Date(b.dateGoing);
+      return date1 - date2;
+    })
+
   // Find and update user in the db by email
   await mongoCl().then((db: any) => {
     return db
       .collection('users')
-      .update({ email }, { $set: { name: newName, email: newEmail, password: newPassword, trips: newTrips } });
+      .updateOne({ email }, { $set: { name: newName, email: newEmail, password: newPassword, trips: newTrips, pastTrips: newPastTrips } });
   });
 
   // Get the updated user from the db
