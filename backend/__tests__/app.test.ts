@@ -338,7 +338,10 @@ describe('Test Endpoints', () => {
       });
     });
 
-    describe('/users', () => {
+
+  });
+
+  describe('/users', () => {
       describe('/ - POST', () => {
         describe('status 201 - Created', () => {
           test('creates and returns a new user object when given a name, email and password', () => {
@@ -798,6 +801,5 @@ describe('Test Endpoints', () => {
           });
         });
       });
-    });
   });
 });
