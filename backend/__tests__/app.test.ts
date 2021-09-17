@@ -255,7 +255,7 @@ describe('Test Endpoints', () => {
 
       describe('/:country', () => {
         describe('/ - GET', () => {
-          describe.only('status 200 - Success', () => {
+          describe('status 200 - Success', () => {
             test('returns all the details of a country from the database using a country name', () => {
               return request(app)
                 .get('/api/countries/italy')

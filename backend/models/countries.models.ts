@@ -51,7 +51,7 @@ const fixCountry = async (_id: string, country: object ) => {
 
     return mongo().then(async (db: any) => {
         const country =  await db.collection('countries').findOne({ _id });
-        console.log(country)
+        delete country._id;
         return country
     })
 }
