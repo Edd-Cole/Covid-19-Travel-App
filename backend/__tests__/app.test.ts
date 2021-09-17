@@ -250,6 +250,7 @@ describe('Test Endpoints', () => {
             });
         });
       });
+    });
 
       describe('/:country', () => {
         describe('/ - GET', () => {
@@ -336,9 +337,6 @@ describe('Test Endpoints', () => {
           });
         });
       });
-    });
-
-
   });
 
   describe('/users', () => {
