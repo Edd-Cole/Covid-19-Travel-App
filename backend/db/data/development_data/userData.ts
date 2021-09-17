@@ -6,8 +6,8 @@ module.exports = [
         trips: [{
             country: "france",
             trafficLight: "amber",
-            dateGoing: "2022.01.12",
-            dateReturning: "2022.01.24",
+            dateGoing: new Date(2022,0,12),
+            dateReturning: new Date(2022,0,24),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -17,8 +17,8 @@ module.exports = [
         {
         country: "greece",
         trafficLight: "amber",
-        dateGoing: "2022.05.03",
-        dateReturning: "2022.05.10",
+        dateGoing: new Date(2022,4,3),
+        dateReturning: new Date(2022,4,10),
         acceptingTourists: true,
         vaccineRequired: true,
         testRequired: true,
@@ -27,8 +27,8 @@ module.exports = [
         }],
         pastTrips: [{
             country: "poland",
-            dateGoing: "2021.12.02",
-            dateReturning: "2021.12.06",
+            dateGoing: new Date(2021,11,2),
+            dateReturning: new Date(2021,11,6),
         }],
     },
     {
@@ -38,8 +38,8 @@ module.exports = [
         trips: [{
             country: "spain",
             trafficLight: "amber",
-            dateGoing: "2022.01.12",
-            dateReturning: "2022.01.24",
+            dateGoing: new Date(2022,0,12),
+            dateReturning: new Date(2022,0,24),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -49,8 +49,8 @@ module.exports = [
         {
             country: "ireland",
             trafficLight: "amber",
-            dateGoing: "2022.05.03",
-            dateReturning: "2022.05.10",
+            dateGoing: new Date(2022,4,3),
+            dateReturning: new Date(2022,4,10),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -60,8 +60,8 @@ module.exports = [
         {
             country: "netherlands",
             trafficLight: "amber",
-            dateGoing: "2022.05.011",
-            dateReturning: "2022.05.19",
+            dateGoing: new Date(2022,4,11),
+            dateReturning: new Date(2022,4,19),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -70,13 +70,13 @@ module.exports = [
         }],
         pastTrips: [{
             country: "italy",
-            dateGoing: "2021.12.02",
-            dateReturning: "2021.12.06",
+            dateGoing: new Date(2021,11,2),
+            dateReturning: new Date(2021,11,6),
         },
         {
             country: "france",
-            dateGoing: "2021.12.07",
-            dateReturning: "2021.12.10",
+            dateGoing: new Date(2021,11,7),
+            dateReturning: new Date(2021,11,10)
         }],
     },
     {
@@ -86,8 +86,8 @@ module.exports = [
         trips: [{
             country: "spain",
             trafficLight: "amber",
-            dateGoing: "2022.01.12",
-            dateReturning: "2022.01.24",
+            dateGoing: new Date(2022, 0, 12),
+            dateReturning: new Date(2022,0,24),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -97,8 +97,8 @@ module.exports = [
         {
             country: "ireland",
             trafficLight: "amber",
-            dateGoing: "2022.05.03",
-            dateReturning: "2022.05.10",
+            dateGoing: new Date(2022,4,3),
+            dateReturning: new Date(2022,4,10),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -108,8 +108,8 @@ module.exports = [
         {
             country: "netherlands",
             trafficLight: "amber",
-            dateGoing: "2022.05.011",
-            dateReturning: "2022.05.19",
+            dateGoing: new Date(2022,5,11),
+            dateReturning: new Date(2022,5,19),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -118,13 +118,13 @@ module.exports = [
         }],
         pastTrips: [{
             country: "italy",
-            dateGoing: "2021.12.02",
-            dateReturning: "2021.12.06",
+            dateGoing: new Date(2021, 11, 2),
+            dateReturning: new Date(2021,11,6),
         },
         {
             country: "france",
-            dateGoing: "2021.12.07",
-            dateReturning: "2021.12.10",
+            dateGoing: new Date(2021,11,7),
+            dateReturning: new Date(2021,11,10),
         }],
     },
     {
@@ -134,8 +134,8 @@ module.exports = [
             trips: [{
                 country: "france",
                 trafficLight: "amber",
-                dateGoing: "2022.01.12",
-                dateReturning: "2022.01.24",
+                dateGoing: new Date(2022,0,12),
+                dateReturning: new Date(2022,0,24),
                 acceptingTourists: true,
                 vaccineRequired: true,
                 testRequired: true,
@@ -145,8 +145,8 @@ module.exports = [
             {
                 country: "germany",
                 trafficLight: "amber",
-                dateGoing: "2022.05.03",
-                dateReturning: "2022.05.10",
+                dateGoing: new Date(2022,4,3),
+                dateReturning: new Date(2022,4,10),
                 acceptingTourists: true,
                 vaccineRequired: true,
                 testRequired: true,
@@ -156,8 +156,8 @@ module.exports = [
             {
                 country: "spain",
                 trafficLight: "amber",
-                dateGoing: "2022.05.011",
-                dateReturning: "2022.05.19",
+                dateGoing: new Date(2022,4,11),
+                dateReturning: new Date(2022,4,19),
                 acceptingTourists: true,
                 vaccineRequired: true,
                 testRequired: true,
@@ -166,13 +166,13 @@ module.exports = [
             }],
             pastTrips: [{
                 country: "portugal",
-                dateGoing: "2021.12.02",
-                dateReturning: "2021.12.06",
+                dateGoing: new Date(2021,11,2),
+                dateReturning: new Date(2021,11,6),
             },
             {
                 country: "ireland",
-                dateGoing: "2021.12.07",
-                dateReturning: "2021.12.10",
+                dateGoing: new Date(2021,11,7),
+                dateReturning: new Date(2021,11,10),
             }],
     },
     {
@@ -182,8 +182,8 @@ module.exports = [
         trips: [{
             country: "poland",
             trafficLight: "amber",
-            dateGoing: "2022.01.12",
-            dateReturning: "2022.01.24",
+            dateGoing: new Date(2022,0,12),
+            dateReturning: new Date(2022,0,24),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -193,8 +193,8 @@ module.exports = [
         {
             country: "netherlands",
             trafficLight: "amber",
-            dateGoing: "2022.05.03",
-            dateReturning: "2022.05.10",
+            dateGoing: new Date(2022,4,3),
+            dateReturning: new Date(2022, 4, 10),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -204,8 +204,8 @@ module.exports = [
         {
             country: "switzerland",
             trafficLight: "amber",
-            dateGoing: "2022.05.011",
-            dateReturning: "2022.05.19",
+            dateGoing: new Date(2022,4,11),
+            dateReturning: new Date(2022,4,19),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -214,13 +214,13 @@ module.exports = [
         }],
         pastTrips: [{
             country: "france",
-            dateGoing: "2021.12.02",
-            dateReturning: "2021.12.06",
+            dateGoing: new Date(2021,11,2),
+            dateReturning: new Date(2021,11,6),
         },
         {
             country: "iceland",
-            dateGoing: "2021.12.07",
-            dateReturning: "2021.12.10",
+            dateGoing: new Date(2021, 11, 7),
+            dateReturning: new Date(2021,11,10),
         }],
     },
     {
@@ -230,8 +230,8 @@ module.exports = [
         trips: [{
             country: "greece",
             trafficLight: "amber",
-            dateGoing: "2022.01.12",
-            dateReturning: "2022.01.24",
+            dateGoing: new Date(2022,0,12),
+            dateReturning: new Date(2022,0,24),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -241,8 +241,8 @@ module.exports = [
         {
             country: "italy",
             trafficLight: "amber",
-            dateGoing: "2022.05.03",
-            dateReturning: "2022.05.10",
+            dateGoing: new Date(2022,4,3),
+            dateReturning: new Date(2022, 4, 10),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -252,8 +252,8 @@ module.exports = [
         {
             country: "croatia",
             trafficLight: "amber",
-            dateGoing: "2022.05.011",
-            dateReturning: "2022.05.19",
+            dateGoing: new Date(2022,4,11),
+            dateReturning: new Date(2022,4,19),
             acceptingTourists: true,
             vaccineRequired: true,
             testRequired: true,
@@ -262,13 +262,13 @@ module.exports = [
         }],
         pastTrips: [{
             country: "france",
-            dateGoing: "2021.12.02",
-            dateReturning: "2021.12.06",
+            dateGoing: new Date(2021, 11,2),
+            dateReturning: new Date(2021,11,6),
         },
         {
             country: "portugal",
-            dateGoing: "2021.12.07",
-            dateReturning: "2021.12.10",
+            dateGoing: new Date(2021,11,7),
+            dateReturning: new Date(2021,11,10),
         }],
     },
 
