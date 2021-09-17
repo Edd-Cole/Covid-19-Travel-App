@@ -36,6 +36,11 @@ const fetchCountry = (country: string) => {
   });
 };
 
-const insertCountry = () => {};
+const insertCountry = async (countries: object) => {
+  await mongo().then((db: any) => {
+    return db.collection('countries').insertOne(countries);
+  });
+  return fetchCountries();
+};
 
 module.exports = { fetchCountries, fetchCountry, insertCountry };

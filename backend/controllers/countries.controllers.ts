@@ -29,5 +29,12 @@ export const getCountry = (req: any, res: any, next: any) => {
 };
 
 export const addCountry = (req: any, res: any, next: any) => {
-  return createCountry;
+  const { countries } = req.body;
+  return createCountry(countries)
+    .then((countries: any) => {
+      res.status(201).send({ countries });
+    })
+    .catch((err: object) => {
+      next(err);
+    });
 };
