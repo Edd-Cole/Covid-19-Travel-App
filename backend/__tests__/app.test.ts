@@ -118,6 +118,124 @@ describe('Test Endpoints', () => {
               ]);
             });
         });
+        test('adds an array of countries into the database and returns an array of country names', () => {
+          return request(app)
+            .post('/api/countries')
+            .send([
+              {
+                country: 'iceland',
+                colorList: 'green',
+                entryRequirements: {
+                  recoveryFromCovid: {
+                    minDays: 11,
+                    maxDays: 180
+                  },
+                  withFullVaccination: {
+                    acceptingVisitors: false,
+                    daysInnoculatedBeforeEntry: null,
+                    test: {
+                      maximumHoursBefore: null
+                    },
+                    quarantine: {
+                      numberOfDays: null
+                    },
+                    documentsRequired: [],
+                    other: []
+                  },
+                  withoutFullVaccination: {
+                    acceptingVisitors: false,
+                    test: {
+                      maximumHoursBefore: null
+                    },
+                    quarantine: {
+                      numberOfDays: null
+                    },
+                    documentsRequired: [],
+                    other: []
+                  }
+                },
+                restrictions: {
+                  masks: {
+                    isRequired: true,
+                    moreInfo:
+                      'Face masks are required in all enclosed public spaces'
+                  },
+                  lockdowns: false,
+                  socialDistancing: true,
+                  groupMaximums: {
+                    inside: null,
+                    outside: null
+                  }
+                }
+              },
+
+              {
+                country: 'finland',
+                colorList: 'green',
+                entryRequirements: {
+                  recoveryFromCovid: {
+                    minDays: 11,
+                    maxDays: 180
+                  },
+                  withFullVaccination: {
+                    acceptingVisitors: true,
+                    daysInnoculatedBeforeEntry: 14,
+                    test: {
+                      maximumHoursBefore: null
+                    },
+                    quarantine: {
+                      numberOfDays: null
+                    },
+                    documentsRequired: ['Vaccination Status Proof'],
+                    other: []
+                  },
+                  withoutFullVaccination: {
+                    acceptingVisitors: true,
+                    test: {
+                      maximumHoursBefore: 72
+                    },
+                    quarantine: {
+                      numberOfDays:
+                        'If tested positive, case must self-isolate until test is negative'
+                    },
+                    documentsRequired: [
+                      'Proof of Negative Test',
+                      'Proof of COVID recovery'
+                    ],
+                    other: [
+                      'If no documents provided regarding vaccination/testing, traveller must take a test no later than 24 hours after arrival'
+                    ]
+                  }
+                },
+                restrictions: {
+                  masks: {
+                    isRequired: true,
+                    moreInfo:
+                      'Face masks are required in all enclosed public spaces and businesses'
+                  },
+                  lockdowns: false,
+                  socialDistancing: true,
+                  groupMaximums: {
+                    inside: null,
+                    outside: null
+                  }
+                }
+              }
+            ])
+            .expect(201)
+            .then((res: any) => {
+              expect(res.body.countries).toEqual([
+                'Denmark',
+                'Finland',
+                'Germany',
+                'Iceland',
+                'Italy',
+                'Portugal',
+                'Spain',
+                'Switzerland'
+              ]);
+            });
+        });
       });
     });
 
