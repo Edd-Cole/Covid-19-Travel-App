@@ -323,7 +323,7 @@ describe('Test Endpoints', () => {
               });
           });
 
-          test('resturns a user with an updated email', () => {
+          test('returns a user with an updated email', () => {
             return request(app)
             .patch('/api/users/js@google.com')
             .send({ email: 'new@email.com' })
@@ -425,6 +425,35 @@ describe('Test Endpoints', () => {
                     }],
                 })
               })
+          })
+
+          test("deletes a trip from the users trips", () => {
+              return request(app)
+                .patch("/api/users/js@google.com")
+                .send({deleteTrip: 1})
+                .expect(200)
+                .then((res: any) => {
+                    expect(res.body.user).toEqual({
+                        name: "John Smith",
+                        email: "js@google.com",
+                        trips: [{
+                            country: "france",
+                            trafficLight: "amber",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+                            acceptingTourists: true,
+                            vaccineRequired: true,
+                            testRequired: true,
+                            extraDocsRequired: true,
+                            newInfo: false
+                        }],
+                        pastTrips: [{
+                            country: "poland",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+                        }],
+                    })
+                })
           })
         })
 
