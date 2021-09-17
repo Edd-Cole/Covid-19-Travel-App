@@ -66,7 +66,7 @@ const killUser = (email: string) => {
   });
 };
 
-const repairUser = async (email: string, name: string, updateEmail: string, password: any, trip: object, deleteTrip: number) => {
+const repairUser = async (email: string, name: string, updateEmail: string, password: any, trip: object, deleteTrip: number, archiveTrip: number) => {
   // Get the user from the db
   const oldUser = await mongoCl().then((db: any) => {
     return db.collection('users').findOne({ email });
@@ -78,6 +78,7 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
   const newEmail = updateEmail || oldUser.email;
   const newPassword = password || oldUser.password;
   let newTrips = trip ? (oldUser.trips.concat([trip])) : oldUser.trips;
+  let newPastTrips = archiveTrip !== undefined ? oldUser.pastTrips.concat(oldUser.trips[archiveTrip]) : oldUser.pastTrips;
 
   //Sort the trips by the date going
   newTrips.sort((a: any,b: any) => {
@@ -91,11 +92,24 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
     newTrips = newTrips.slice(0, deleteTrip).concat(newTrips.slice(deleteTrip + 1))
   }
 
+  //if archiveTrip has been defined, remove it from trips, and add it back into pastTrips with keys deleted
+  if(archiveTrip !== undefined) {
+    newTrips = newTrips.slice(0, archiveTrip).concat(newTrips.slice(archiveTrip + 1))
+    const tripAddedIn = newPastTrips.pop();
+    delete tripAddedIn.acceptingTourists
+    delete tripAddedIn.extraDocsRequired
+    delete tripAddedIn.newInfo
+    delete tripAddedIn.testRequired
+    delete tripAddedIn.trafficLight
+    delete tripAddedIn.vaccineRequired
+    newPastTrips.push(tripAddedIn)
+  }
+
   // Find and update user in the db by email
   await mongoCl().then((db: any) => {
     return db
       .collection('users')
-      .update({ email }, { $set: { name: newName, email: newEmail, password: newPassword, trips: newTrips } });
+      .updateOne({ email }, { $set: { name: newName, email: newEmail, password: newPassword, trips: newTrips, pastTrips: newPastTrips } });
   });
 
   // Get the updated user from the db
