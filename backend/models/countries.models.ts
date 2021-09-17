@@ -1,11 +1,11 @@
-const { main: mongo } = require("../db/seeds/connection");
+const { main: mongo } = require('../db/seeds/connection');
 
 const fetchCountries = () => {
   // Establish connection to the database and, using promises, manipulate info
   return mongo().then((db: any) => {
     // Use info from the countries collection within DB, get all the documents inside
     return db
-      .collection("countries")
+      .collection('countries')
       .find({})
       .sort({ country: 1 })
       .toArray()
@@ -23,17 +23,24 @@ const fetchCountries = () => {
 const fetchCountry = (country: string) => {
   return mongo().then((db: any) => {
     return db
-      .collection("countries")
+      .collection('countries')
       .findOne({ country: country })
       .then((countryObject: any) => {
         if (!countryObject && /\d/.test(country)) {
-          return Promise.reject({ code: 400, msg: "Invalid Endpoint" });
+          return Promise.reject({ code: 400, msg: 'Invalid Endpoint' });
         } else if (!countryObject) {
-          return Promise.reject({ code: 404, msg: "Endpoint Not Found" });
+          return Promise.reject({ code: 404, msg: 'Endpoint Not Found' });
         }
         return countryObject;
       });
   });
 };
 
-module.exports = { fetchCountries, fetchCountry };
+const insertCountry = async (countries: object[]) => {
+  await mongo().then((db: any) => {
+    return db.collection('countries').insertMany(countries);
+  });
+  return fetchCountries();
+};
+
+module.exports = { fetchCountries, fetchCountry, insertCountry };
