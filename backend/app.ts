@@ -11,4 +11,4 @@ app.use("/api", router);
 
 app.use(errorHandling)
 
-module.exports = app;
+module.exports = { app };
