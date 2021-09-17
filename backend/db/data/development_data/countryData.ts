@@ -1176,7 +1176,7 @@ module.exports = [
   },
 
   {
-    country: "czech republic",
+    country: "czech_republic",
     colorList: "amber",
     entryRequirements: {
       recoveryFromCovid: {
@@ -1427,7 +1427,7 @@ module.exports = [
   },
 
   {
-	"country": "lativa",
+	"country": "latvia",
 	"colorList": "green",
 	"entryRequirements": {
 		"recoveryFromCovid": {
