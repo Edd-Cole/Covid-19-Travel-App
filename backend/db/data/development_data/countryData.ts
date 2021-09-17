@@ -1327,7 +1327,7 @@ module.exports = [
   },
 
   {
-    country: "Malta",
+    country: "malta",
     colorList: "amber",
     entryRequirements: {
       recoveryFromCovid: {
