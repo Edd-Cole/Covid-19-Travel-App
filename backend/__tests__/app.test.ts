@@ -1,7 +1,7 @@
 import 'jest';
 const request = require('supertest');
 const fs = require('fs/promises');
-const app = require('../app');
+const { app } = require('../app');
 const { countryData, userData } = require('../db/data/test_data/index');
 const { main, client } = require('../db/seeds/connection');
 const { seed } = require('../db/seeds/seed');
@@ -191,8 +191,8 @@ describe('Test Endpoints', () => {
                     {
                       country: 'france',
                       trafficLight: 'amber',
-                      dateGoing: '2022.01.12',
-                      dateReturning: '2022.01.24',
+                      dateGoing: expect.any(String),
+                      dateReturning: expect.any(String),
                       acceptingTourists: true,
                       vaccineRequired: true,
                       testRequired: true,
@@ -202,8 +202,8 @@ describe('Test Endpoints', () => {
                     {
                       country: 'greece',
                       trafficLight: 'amber',
-                      dateGoing: '2022.05.03',
-                      dateReturning: '2022.05.10',
+                      dateGoing: expect.any(String),
+                      dateReturning: expect.any(String),
                       acceptingTourists: true,
                       vaccineRequired: true,
                       testRequired: true,
@@ -214,8 +214,8 @@ describe('Test Endpoints', () => {
                   pastTrips: [
                     {
                       country: 'poland',
-                      dateGoing: '2021.12.02',
-                      dateReturning: '2021.12.06'
+                      dateGoing: expect.any(String),
+                      dateReturning: expect.any(String)
                     }
                   ]
                 });
@@ -292,8 +292,8 @@ describe('Test Endpoints', () => {
                     {
                       country: 'france',
                       trafficLight: 'amber',
-                      dateGoing: '2022.01.12',
-                      dateReturning: '2022.01.24',
+                      dateGoing: expect.any(String),
+                      dateReturning: expect.any(String),
                       acceptingTourists: true,
                       vaccineRequired: true,
                       testRequired: true,
@@ -303,8 +303,8 @@ describe('Test Endpoints', () => {
                     {
                       country: 'greece',
                       trafficLight: 'amber',
-                      dateGoing: '2022.05.03',
-                      dateReturning: '2022.05.10',
+                      dateGoing: expect.any(String),
+                      dateReturning: expect.any(String),
                       acceptingTourists: true,
                       vaccineRequired: true,
                       testRequired: true,
@@ -315,8 +315,8 @@ describe('Test Endpoints', () => {
                   pastTrips: [
                     {
                       country: 'poland',
-                      dateGoing: '2021.12.02',
-                      dateReturning: '2021.12.06'
+                      dateGoing: expect.any(String),
+                      dateReturning: expect.any(String)
                     }
                   ]
                 });
@@ -336,8 +336,8 @@ describe('Test Endpoints', () => {
                         {
                             country: 'france',
                             trafficLight: 'amber',
-                            dateGoing: '2022.01.12',
-                            dateReturning: '2022.01.24',
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
                             acceptingTourists: true,
                             vaccineRequired: true,
                             testRequired: true,
@@ -347,8 +347,8 @@ describe('Test Endpoints', () => {
                         {
                             country: 'greece',
                             trafficLight: 'amber',
-                            dateGoing: '2022.05.03',
-                            dateReturning: '2022.05.10',
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
                             acceptingTourists: true,
                             vaccineRequired: true,
                             testRequired: true,
@@ -359,8 +359,8 @@ describe('Test Endpoints', () => {
                     pastTrips: [
                         {
                             country: 'poland',
-                            dateGoing: '2021.12.02',
-                            dateReturning: '2021.12.06'
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String)
                         }
                     ]
                 });
@@ -368,12 +368,12 @@ describe('Test Endpoints', () => {
 
           });
 
-          test.only('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
+          test('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
               return request(app).patch("/api/users/js@google.com").send({trip: {
                 country: "ireland",
                 trafficLight: "amber",
-                dateGoing: "2020.06.03",
-                dateReturning: "2020.06.10",
+                dateGoing: new Date(2022, 2,28),
+                dateReturning: new Date(2022, 3, 10),
                 acceptingTourists: true,
                 vaccineRequired: true,
                 testRequired: true,
@@ -385,12 +385,11 @@ describe('Test Endpoints', () => {
                   expect(res.body.user).toEqual({
                     name: "John Smith",
                     email: "js@google.com",
-                    password: "password",
                     trips: [{
                         country: "france",
                         trafficLight: "amber",
-                        dateGoing: "2022.01.12",
-                        dateReturning: "2022.01.24",
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
                         acceptingTourists: true,
                         vaccineRequired: true,
                         testRequired: true,
@@ -398,31 +397,31 @@ describe('Test Endpoints', () => {
                         newInfo: false
                     },
                     {
-                        country: "greece",
-                        trafficLight: "amber",
-                        dateGoing: "2022.05.03",
-                        dateReturning: "2022.05.10",
-                        acceptingTourists: true,
-                        vaccineRequired: true,
-                        testRequired: true,
-                        extraDocsRequired: true,
-                        newInfo: true
-                    },
-                    {
                         country: "ireland",
                         trafficLight: "amber",
-                        dateGoing: "2022.06.03",
-                        dateReturning: "2022.06.10",
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
                         acceptingTourists: true,
                         vaccineRequired: true,
                         testRequired: true,
                         extraDocsRequired: true,
                         newInfo: false    
-                      }],
+                    },
+                    {
+                        country: "greece",
+                        trafficLight: "amber",
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
+                        acceptingTourists: true,
+                        vaccineRequired: true,
+                        testRequired: true,
+                        extraDocsRequired: true,
+                        newInfo: true
+                    }],
                     pastTrips: [{
                         country: "poland",
-                        dateGoing: "2021.12.02",
-                        dateReturning: "2021.12.06",
+                        dateGoing: expect.any(String),
+                        dateReturning: expect.any(String),
                     }],
                 })
               })
