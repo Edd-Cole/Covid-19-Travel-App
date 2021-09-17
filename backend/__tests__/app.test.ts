@@ -52,54 +52,56 @@ describe('Test Endpoints', () => {
 
     describe.only('/ - POST', () => {
       describe('status 201 - Created', () => {
-        test('it adds a new country into the database and returns it', () => {
+        test('it adds a new country into the database and returns an array of country names', () => {
           return request(app)
             .post('/api/countries')
             .send({
-              country: 'slovenia',
-              colorList: 'green',
-              entryRequirements: {
-                recoveryFromCovid: {
-                  minDays: 11,
-                  maxDays: 180
+              countries: {
+                country: 'slovenia',
+                colorList: 'green',
+                entryRequirements: {
+                  recoveryFromCovid: {
+                    minDays: 11,
+                    maxDays: 180
+                  },
+                  withFullVaccination: {
+                    acceptingVisitors: true,
+                    daysInnoculatedBeforeEntry: 14,
+                    test: {
+                      maximumHoursBefore: null
+                    },
+                    quarantine: {
+                      numberOfDays: 0
+                    },
+                    documentsRequired: ['Vaccination Status Proof'],
+                    other: []
+                  },
+                  withoutFullVaccination: {
+                    acceptingVisitors: true,
+                    test: {
+                      maximumHoursBefore: 72
+                    },
+                    quarantine: {
+                      numberOfDays: 10
+                    },
+                    documentsRequired: [
+                      'PCR test no longer than 72 Hours old, or Antigen test no longer than 48 Hours old'
+                    ],
+                    other: []
+                  }
                 },
-                withFullVaccination: {
-                  acceptingVisitors: true,
-                  daysInnoculatedBeforeEntry: 14,
-                  test: {
-                    maximumHoursBefore: null
+                restrictions: {
+                  masks: {
+                    isRequired: true,
+                    moreInfo:
+                      'Face masks are required in all enclosed public spaces and businesses'
                   },
-                  quarantine: {
-                    numberOfDays: 0
-                  },
-                  documentsRequired: ['Vaccination Status Proof'],
-                  other: []
-                },
-                withoutFullVaccination: {
-                  acceptingVisitors: true,
-                  test: {
-                    maximumHoursBefore: 72
-                  },
-                  quarantine: {
-                    numberOfDays: 10
-                  },
-                  documentsRequired: [
-                    'PCR test no longer than 72 Hours old, or Antigen test no longer than 48 Hours old'
-                  ],
-                  other: []
-                }
-              },
-              restrictions: {
-                masks: {
-                  isRequired: true,
-                  moreInfo:
-                    'Face masks are required in all enclosed public spaces and businesses'
-                },
-                lockdowns: false,
-                socialDistancing: true,
-                groupMaximums: {
-                  inside: 50,
-                  outside: 50
+                  lockdowns: false,
+                  socialDistancing: true,
+                  groupMaximums: {
+                    inside: 50,
+                    outside: 50
+                  }
                 }
               }
             })
