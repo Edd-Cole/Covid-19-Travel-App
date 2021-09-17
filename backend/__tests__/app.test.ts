@@ -277,7 +277,7 @@ describe('Test Endpoints', () => {
         });
       });
 
-      describe.only('/ - PATCH', () => {
+      describe('/ - PATCH', () => {
         describe('status 200 - Success', () => {
           test('returns a user with an updated name', () => {
             return request(app)
@@ -369,7 +369,9 @@ describe('Test Endpoints', () => {
           });
 
           test('adds a new trip into the trips array with the array sorted by date in ascending order', () => {
-              return request(app).patch("/api/users/js@google.com").send({trip: {
+              return request(app)
+              .patch("/api/users/js@google.com")
+              .send({trip: {
                 country: "ireland",
                 trafficLight: "amber",
                 dateGoing: new Date(2022, 2,28),
@@ -485,6 +487,52 @@ describe('Test Endpoints', () => {
                             country: "france",
                             dateGoing: expect.any(String),
                             dateReturning: expect.any(String),
+                        }],
+                    })
+                })
+          })
+
+          test("Can patch multiple key/value pairs at once", () => {
+              return request(app)
+                .patch("/api/users/js@google.com")
+                .send({name: "Dave", email: "new@email.com", password: "newPassword", trip: {
+                    country: "ireland",
+                    trafficLight: "amber",
+                    dateGoing: new Date(2022, 3, 10),
+                    dateReturning: new Date(2022, 3, 17),
+                    acceptingTourists: true,
+                    vaccineRequired: true,
+                    testRequired: true,
+                    extraDocsRequired: true,
+                    newInfo: false  
+                }, deleteTrip: 0, archiveTrip: 1})
+                .then((res: any) => {
+                    console.log(res.body.user)
+                    expect(res.body.user).toEqual({
+                        name: "Dave",
+                        email: "new@email.com",
+                        trips: [
+                        {
+                            country: "ireland",
+                            trafficLight: "amber",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+                            acceptingTourists: true,
+                            vaccineRequired: true,
+                            testRequired: true,
+                            extraDocsRequired: true,
+                            newInfo: false    
+                        }],
+                        pastTrips: [{
+                            country: "poland",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+                        },
+                        {
+                            country: "greece",
+                            dateGoing: expect.any(String),
+                            dateReturning: expect.any(String),
+
                         }],
                     })
                 })
