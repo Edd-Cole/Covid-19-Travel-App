@@ -1526,7 +1526,7 @@ module.exports = [
 	"entryRequirements": {
 		"recoveryFromCovid": {
 			"minDays": 0,
-			"maxDays": 180,
+			"maxDays": 0,
 		},
 		"withFullVaccination": {
 			"acceptingVisitors": true,
