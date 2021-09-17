@@ -29,7 +29,8 @@ export const getCountry = (req: any, res: any, next: any) => {
 };
 
 export const addCountry = (req: any, res: any, next: any) => {
-  const { countries } = req.body;
+  let { countries } = req.body;
+  countries = Array.isArray(countries) ? countries : [countries];
   return createCountry(countries)
     .then((countries: any) => {
       res.status(201).send({ countries });
