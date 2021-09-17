@@ -255,14 +255,13 @@ describe('Test Endpoints', () => {
 
       describe('/:country', () => {
         describe('/ - GET', () => {
-          describe('status 200 - Success', () => {
+          describe.only('status 200 - Success', () => {
             test('returns all the details of a country from the database using a country name', () => {
               return request(app)
                 .get('/api/countries/italy')
                 .expect(200)
                 .then((response: any) => {
                   expect(response.body.country).toEqual({
-                    _id: expect.any(String),
                     country: 'italy',
                     colorList: 'amber',
                     entryRequirements: {
@@ -340,10 +339,10 @@ describe('Test Endpoints', () => {
 
     });
     describe('/:_id', () => {
-        describe("status 200 - Success", () => {
-            describe.only('/ - PATCH', () => {
+        describe('/ - PATCH', () => {
+            describe("status 200 - Success", () => {
                 test('returns the updated country by country_id', () => {
-                    return request(app).patch('/api/countries/123').send({
+                    return request(app).patch('/api/countries/123').send({country: {
                         "country": "portugal",
                         "colorList": "green",
                         "entryRequirements": {
@@ -392,7 +391,7 @@ describe('Test Endpoints', () => {
                         },
                         "hotspots": ["Lisbon"],
                         "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
-                      }).expect(200).then((res: any) => {
+                      }}).expect(200).then((res: any) => {
                           expect(res.body.country).toEqual({
                             "country": "portugal",
                             "colorList": "green",
@@ -494,7 +493,7 @@ describe('Test Endpoints', () => {
             test('Returns a user object given their email address', () => {
               return request(app)
                 .post('/api/users/js@google.com')
-                .send({ email: 'js@google.com', password: 'password' })
+                .send({ password: 'password' })
                 .expect(200)
                 .then((response: any) => {
                   expect(response.body.user).toEqual({

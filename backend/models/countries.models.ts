@@ -37,11 +37,23 @@ const fetchCountry = (country: string) => {
   });
 };
 
-const insertCountry = async (countries: object[]) => {
+const insertCountry = async ( countries: object[]) => {
   await mongo().then((db: any) => {
     return db.collection('countries').insertMany(countries);
   });
   return fetchCountries();
 };
 
-module.exports = { fetchCountries, fetchCountry, insertCountry };
+const fixCountry = async (_id: string, country: object ) => {
+    await mongo().then((db: any) => {
+        return db.collection('countries').updateOne({ _id  }, { $set: country })
+    })
+
+    return mongo().then(async (db: any) => {
+        const country =  await db.collection('countries').findOne({ _id });
+        console.log(country)
+        return country
+    })
+}
+
+module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry };
