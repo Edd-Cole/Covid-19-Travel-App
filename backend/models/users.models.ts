@@ -67,10 +67,18 @@ const killUser = (email: string) => {
 };
 
 const repairUser = async (email: string, name: string, updateEmail: string, password: any, trip: object, deleteTrip: number, archiveTrip: number) => {
+    //check that email is of an appropriate type
+    if (/^\d+$/.test(email)) {
+        return Promise.reject({ code: 400, msg: 'Invalid Endpoint' });
+      }
   // Get the user from the db
-  const oldUser = await mongoCl().then((db: any) => {
-    return db.collection('users').findOne({ email });
-  });
+  const oldUser = await mongoCl().then(async(db: any) => {
+    const findUser = await db.collection('users').findOne({ email });
+    if(!findUser) {
+        return Promise.reject({code: 404, msg: "User does not exist"})
+    }
+    return findUser
+  })
 
   // Set any undefined values from the request to current values in the db,
   // otherwise set to new values
