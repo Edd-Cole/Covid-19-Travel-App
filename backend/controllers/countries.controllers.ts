@@ -48,6 +48,7 @@ export const addCountry = (req: any, res: any, next: any) => {
 
 export const getCountryByID = (req: any, res: any, next: any) => {
     const { _id } = req.params
+    console.log(_id)
     return selectCountryByID(_id)
         .then((country: any) => {
             res.status(200).send({ country })
@@ -60,6 +61,7 @@ export const getCountryByID = (req: any, res: any, next: any) => {
 export const patchCountry = (req: any, res: any, next: any) => {
     const { _id } = req.params;
     const { country } = req.body;
+    console.log(_id)
     return editCountry(_id, country)
     .then((country: object) => {
         return res.status(200).send({country});
