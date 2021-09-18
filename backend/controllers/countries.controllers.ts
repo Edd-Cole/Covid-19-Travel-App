@@ -3,6 +3,7 @@ const {
   fetchCountry: selectCountry,
   insertCountry: createCountry,
   fixCountry: editCountry,
+  fetchCountryByID: selectCountryByID,
   fetchCountriesWithID: selectCountriesWithID
 } = require('../models/countries.models');
 
@@ -45,6 +46,17 @@ export const addCountry = (req: any, res: any, next: any) => {
     });
 };
 
+export const getCountryByID = (req: any, res: any, next: any) => {
+    const { _id } = req.params
+    return selectCountryByID(_id)
+        .then((country: any) => {
+            res.status(200).send({ country })
+        })
+        .catch((err: object) => {
+            next(err);
+        })
+}
+
 export const patchCountry = (req: any, res: any, next: any) => {
     const { _id } = req.params;
     const { country } = req.body;
@@ -53,7 +65,6 @@ export const patchCountry = (req: any, res: any, next: any) => {
         return res.status(200).send({country});
     })
     .catch((err: object) => {
-        console.log(err)
         next(err)
     })
 }
