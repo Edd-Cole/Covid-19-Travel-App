@@ -1,6 +1,6 @@
 module.exports = [{
     "_id": "123",
-    "country": "portugal",
+    "country": "Portugal",
     "colorList": "amber",
     "entryRequirements": {
       "recoveryFromCovid": {
@@ -51,7 +51,7 @@ module.exports = [{
   },
 
 {
-  "country": "spain",
+  "country": "Spain",
   "colorList": "amber",
   "entryRequirements": {
     "recoveryFromCovid": null,
@@ -101,7 +101,7 @@ module.exports = [{
 },
 
 {
-  "country": "italy",
+  "country": "Italy",
   "colorList": "amber",
   "entryRequirements": {
     "recoveryFromCovid": null,
@@ -152,7 +152,7 @@ module.exports = [{
 },
 
 {
-    "country": "germany",
+    "country": "Germany",
   "colorList": "green",
   "withFullVaccination": {
     "acceptingVisitors": true,
@@ -200,7 +200,7 @@ module.exports = [{
 },
 
 { 
-    "country": "denmark",
+    "country": "Denmark",
   "colorList": "Green",
   "entryRequirements": {
     "recoveryFromCovid": {
@@ -250,7 +250,7 @@ module.exports = [{
 },
 
 {
-    "country": "switzerland",
+    "country": "Switzerland",
   "colorList": "green",
   "withFullVaccination": {
     "acceptingVisitors": true,
