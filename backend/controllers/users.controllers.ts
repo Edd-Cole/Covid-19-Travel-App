@@ -7,7 +7,8 @@ const {
 
 export const setUser = (req: any, res: any, next: any) => {
   //destructure email and password from the request body, then send into models
-  const { email, password } = req.body;
+  const { email } = req.params
+  const { password } = req.body;
   return selectUser(email, password)
     .then((user: object) => {
       //Send user back in an object with key of user

@@ -85,7 +85,6 @@
         "Description": "Serves a user object with all the current info for that user",
         "Queries": [],
         "Request Example": {
-            "email": "js@google.com",
             "password": "password"
         },
         "Response Example": {

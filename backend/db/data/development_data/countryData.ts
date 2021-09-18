@@ -1176,7 +1176,7 @@ module.exports = [
   },
 
   {
-    country: "czech republic",
+    country: "czech_republic",
     colorList: "amber",
     entryRequirements: {
       recoveryFromCovid: {
@@ -1427,7 +1427,7 @@ module.exports = [
   },
 
   {
-	"country": "lativa",
+	"country": "latvia",
 	"colorList": "green",
 	"entryRequirements": {
 		"recoveryFromCovid": {
@@ -1449,13 +1449,13 @@ module.exports = [
 		"withoutFullVaccination": {
 			"acceptingVisitors": false,
 			"test": {
-				"maximumHoursBefore": 72
+				"maximumHoursBefore": 0
 			},
 			"quarantine": {
 				"numberOfDays": 0
 			},
 			"documentsRequired": [ "Covid Recovery Certificate", "Electronic Form" ],
-			"other": "0 days quarantine is based upon a negative test. Also everyone who intends to enter Latvia is required to complete and submit an electronic form no earlier than 48 hours before entering Latvia."
+			"other": ["0 days quarantine is based upon a negative test. Also everyone who intends to enter Latvia is required to complete and submit an electronic form no earlier than 48 hours before entering Latvia."]
 		}
 	},
 	"restrictions": {
@@ -1472,5 +1472,99 @@ module.exports = [
 	},
 	"hotspots": ["Riga", "Kuldīga", "Daugavpils"],
 	"healthCareNumber": "Latvian Centre for Disease Prevention and Control (SPKC) helpline (00 371) 67501590 or (00 371) 67387661 (open 8.30-17.00 working days). In case of emergency call 113."
+},
+{
+	"country": "poland",
+	"colorList": "amber",
+	"entryRequirements": {
+		"recoveryFromCovid": {
+			"minDays": 0,
+			"maxDays": 180,
+		},
+		"withFullVaccination": {
+			"acceptingVisitors": true,
+			"daysInnoculatedBeforeEntry": 14,
+			"test": {
+				"maximumHoursBefore": 0
+			},
+			"quarantine": {
+				"numberOfDays": 0 
+			},
+			"documentsRequired": ["Vaccination Status Proof", "Passenger Locator Form"],
+			"other": [""]
+		},
+		"withoutFullVaccination": {
+			"acceptingVisitors": true,
+			"test": {
+				"maximumHoursBefore": 0
+			},
+			"quarantine": {
+				"numberOfDays": 10
+			},
+			"documentsRequired": [ "Passenger Locator Form" ],
+			"other": ["Entered into quarantine database upon arrival"]
+		}
+	},
+	"restrictions": {
+		"masks": {
+			"isRequired": true,
+			"moreInfo": "Face masks must be used in all indoor spaces. You can be fined for not complying"
+		},
+		"lockdowns": false,
+		"socialDistancing": true,
+		"groupMaximums": {
+			"inside": 150,
+			"outside": 150
+		}
+	},
+	"hotspots": ["Warsaw"],
+	"healthCareNumber": "Dial 989 and then 6 for English"
+},
+{
+	"country": "norway",
+	"colorList": "green",
+	"entryRequirements": {
+		"recoveryFromCovid": {
+			"minDays": 0,
+			"maxDays": 0,
+		},
+		"withFullVaccination": {
+			"acceptingVisitors": true,
+			"daysInnoculatedBeforeEntry": 14,
+			"test": {
+				"maximumHoursBefore": 72
+			},
+			"quarantine": {
+				"numberOfDays": 10 
+			},
+			"documentsRequired": ["Vaccination Status Proof", "Self Declaration Form"],
+			"other": []
+		},
+		"withoutFullVaccination": {
+			"acceptingVisitors": false,
+			"test": {
+				"maximumHoursBefore": null
+			},
+			"quarantine": {
+				"numberOfDays": null
+			},
+			"documentsRequired": [],
+			"other": []
+		}
+	},
+	"restrictions": {
+		"masks": {
+			"isRequired": false,
+			"moreInfo": null
+		},
+		"lockdowns": false,
+		"socialDistancing": true,
+		"groupMaximums": {
+			"inside": 1000,
+			"outside": 1000
+		}
+	},
+	"hotspots": ["Warsaw"],
+	"healthCareNumber": " +47 815 55 015 for general enquiries and +47 116 117 if you believe you have been infected"
 }
 ];

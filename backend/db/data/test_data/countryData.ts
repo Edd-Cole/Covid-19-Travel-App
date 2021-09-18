@@ -1,4 +1,5 @@
 module.exports = [{
+    "_id": "123",
     "country": "portugal",
     "colorList": "amber",
     "entryRequirements": {

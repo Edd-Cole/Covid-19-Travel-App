@@ -239,6 +239,7 @@ describe('Test Endpoints', () => {
             });
         });
       });
+
       describe('status 400 - Bad Request', () => {
         test('if the value on the countries key is not an object or an array, return an error', () => {
           return request(app)
@@ -261,7 +262,6 @@ describe('Test Endpoints', () => {
                 .expect(200)
                 .then((response: any) => {
                   expect(response.body.country).toEqual({
-                    _id: expect.any(String),
                     country: 'italy',
                     colorList: 'amber',
                     entryRequirements: {
@@ -336,8 +336,123 @@ describe('Test Endpoints', () => {
             });
           });
         });
+<<<<<<< HEAD
       });
   });
+=======
+
+    });
+    describe('/:_id', () => {
+        describe('/ - PATCH', () => {
+            describe("status 200 - Success", () => {
+                test('returns the updated country by country_id', () => {
+                    return request(app).patch('/api/countries/123').send({country: {
+                        "country": "portugal",
+                        "colorList": "green",
+                        "entryRequirements": {
+                          "recoveryFromCovid": {
+                            "minDays": 11,
+                            "maxDays": 180
+                          },
+                          "withFullVaccination": {
+                            "acceptingVisitors": true,
+                            "daysInnoculatedBeforeEntry": 7,
+                            "test": {
+                              "maximumHoursBefore": 0
+                            },
+                            "quarantine": {
+                              "numberOfDays": 0
+                            },
+                            "documentsRequired": [
+                              "Vaccination Status Proof",
+                              "Covid Recovery Certificate"
+                            ],
+                            "other": ["Temperature Screening < 38 degrees on arrival"]
+                          },
+                          "withoutFullVaccination": {
+                            "acceptingVisitors": false,
+                            "test": {
+                              "maximumHoursBefore": null
+                            },
+                            "quarantine": {
+                              "numberOfDays": null
+                            },
+                            "documentsRequired": [],
+                            "other": null
+                          }
+                        },
+                        "restrictions": {
+                          "masks": {
+                            "isRequired": false,
+                            "moreInfo": null
+                          },
+                          "lockdowns": false,
+                          "socialDistancing": true,
+                          "groupMaximums": {
+                            "inside": 8,
+                            "outside": 15
+                          }
+                        },
+                        "hotspots": ["Lisbon"],
+                        "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+                      }}).expect(200).then((res: any) => {
+                          expect(res.body.country).toEqual({
+                            "country": "portugal",
+                            "colorList": "green",
+                            "entryRequirements": {
+                              "recoveryFromCovid": {
+                                "minDays": 11,
+                                "maxDays": 180
+                              },
+                              "withFullVaccination": {
+                                "acceptingVisitors": true,
+                                "daysInnoculatedBeforeEntry": 7,
+                                "test": {
+                                  "maximumHoursBefore": 0
+                                },
+                                "quarantine": {
+                                  "numberOfDays": 0
+                                },
+                                "documentsRequired": [
+                                  "Vaccination Status Proof",
+                                  "Covid Recovery Certificate"
+                                ],
+                                "other": ["Temperature Screening < 38 degrees on arrival"]
+                              },
+                              "withoutFullVaccination": {
+                                "acceptingVisitors": false,
+                                "test": {
+                                  "maximumHoursBefore": null
+                                },
+                                "quarantine": {
+                                  "numberOfDays": null
+                                },
+                                "documentsRequired": [],
+                                "other": null
+                              }
+                            },
+                            "restrictions": {
+                              "masks": {
+                                "isRequired": false,
+                                "moreInfo": null
+                              },
+                              "lockdowns": false,
+                              "socialDistancing": true,
+                              "groupMaximums": {
+                                "inside": 8,
+                                "outside": 15
+                              }
+                            },
+                            "hotspots": ["Lisbon"],
+                            "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+                          })
+                      })
+                })
+            })
+        })
+    })
+    });
+>>>>>>> 312367012c1784703cf0a81c7a1e91c5311ff340
 
   describe('/users', () => {
       describe('/ - POST', () => {
@@ -383,7 +498,7 @@ describe('Test Endpoints', () => {
             test('Returns a user object given their email address', () => {
               return request(app)
                 .post('/api/users/js@google.com')
-                .send({ email: 'js@google.com', password: 'password' })
+                .send({ password: 'password' })
                 .expect(200)
                 .then((response: any) => {
                   expect(response.body.user).toEqual({
@@ -799,5 +914,9 @@ describe('Test Endpoints', () => {
           });
         });
       });
+<<<<<<< HEAD
   });
+=======
+    });
+>>>>>>> 312367012c1784703cf0a81c7a1e91c5311ff340
 });
