@@ -261,7 +261,7 @@ describe('Test Endpoints', () => {
                         .get('/api/countries/countries_with_id')
                         .expect(200)
                         .then((res: any) => {
-                            expect(res.body.any).toMatchObject({
+                            expect(res.body.countries).toMatchObject({
                                 'Denmark': expect.any(String),
                                 'Germany': expect.any(String),
                                 'Italy': expect.any(String),
