@@ -65,7 +65,6 @@ const fetchCountriesWithID = async() => {
     countries.forEach((country: any) => {
         countriesWithID[country.country] = country._id;
     });
-    console.log(countriesWithID)
     return countriesWithID;
 } 
 

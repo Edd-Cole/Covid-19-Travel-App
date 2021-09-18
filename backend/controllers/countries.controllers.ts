@@ -53,6 +53,7 @@ export const patchCountry = (req: any, res: any, next: any) => {
         return res.status(200).send({country});
     })
     .catch((err: object) => {
+        console.log(err)
         next(err)
     })
 }
