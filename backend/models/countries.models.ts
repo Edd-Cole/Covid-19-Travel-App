@@ -1,3 +1,5 @@
+const ObjectId = require('mongodb').ObjectId
+
 const { main: mongo } = require('../db/seeds/connection');
 
 const fetchCountries = () => {
@@ -45,21 +47,23 @@ const insertCountry = async ( countries: object[]) => {
 };
 
 const fixCountry = async (_id: string, country: object ) => {
+    const new_id = new ObjectId(_id)
     await mongo().then((db: any) => {
-        return db.collection('countries').updateOne({ _id  }, { $set: country })
+        return db.collection('countries').updateOne({ _id: new_id }, { $set: country })
     })
 
     return mongo().then(async (db: any) => {
-        const country =  await db.collection('countries').findOne({ _id });
+        const country =  await db.collection('countries').findOne({ _id: new_id });
         delete country._id;
         return country
     })
 }
 
 const fetchCountryByID = ( _id: any ) => {
+    const new_id = new ObjectId(_id)
     return mongo()
         .then(async (db: any) => {
-            const country = await db.collection('countries').findOne({ _id })
+            const country = await db.collection('countries').findOne({ _id: new_id })
             delete country._id;
             return country
         })
