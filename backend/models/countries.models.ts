@@ -56,4 +56,17 @@ const fixCountry = async (_id: string, country: object ) => {
     })
 }
 
-module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry };
+const fetchCountriesWithID = async() => {
+    const countriesWithID: any = {}
+    const countries = await mongo()
+        .then((db: any) => {
+            return db.collection('countries').find({}).sort({country: 1}).toArray()
+        })
+    countries.forEach((country: any) => {
+        countriesWithID[country.country] = country._id;
+    });
+    console.log(countriesWithID)
+    return countriesWithID;
+} 
+
+module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountriesWithID };
