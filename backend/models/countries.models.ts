@@ -31,16 +31,29 @@ const fetchCountry = (country: string) => {
         } else if (!countryObject) {
           return Promise.reject({ code: 404, msg: 'Endpoint Not Found' });
         }
+        delete countryObject._id;
         return countryObject;
       });
   });
 };
 
-const insertCountry = async (countries: object[]) => {
+const insertCountry = async ( countries: object[]) => {
   await mongo().then((db: any) => {
     return db.collection('countries').insertMany(countries);
   });
   return fetchCountries();
 };
 
-module.exports = { fetchCountries, fetchCountry, insertCountry };
+const fixCountry = async (_id: string, country: object ) => {
+    await mongo().then((db: any) => {
+        return db.collection('countries').updateOne({ _id  }, { $set: country })
+    })
+
+    return mongo().then(async (db: any) => {
+        const country =  await db.collection('countries').findOne({ _id });
+        delete country._id;
+        return country
+    })
+}
+
+module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry };
