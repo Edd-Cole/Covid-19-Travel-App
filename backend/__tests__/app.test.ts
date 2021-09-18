@@ -253,6 +253,183 @@ describe('Test Endpoints', () => {
       });
     });
 
+    describe('/country', () => {
+        describe('/:_id', () => {
+            describe('/ - GET', () => {
+                describe('status 200 - Success', () => {
+                    test('returns the country using the country id', () => {
+                        return request(app)
+                            .get('/api/countries/country/123a')
+                            .expect(200)
+                            .then((res: any) => {
+                                expect(res.body.country).toEqual({
+                                    "country": "Portugal",
+                                    "colorList": "amber",
+                                    "entryRequirements": {
+                                      "recoveryFromCovid": {
+                                        "minDays": 11,
+                                        "maxDays": 180
+                                      },
+                                      "withFullVaccination": {
+                                        "acceptingVisitors": true,
+                                        "daysInnoculatedBeforeEntry": 14,
+                                        "test": {
+                                          "maximumHoursBefore": 72
+                                        },
+                                        "quarantine": {
+                                          "numberOfDays": 0
+                                        },
+                                        "documentsRequired": [
+                                          "Vaccination Status Proof",
+                                          "Covid Recovery Certificate"
+                                        ],
+                                        "other": ["Temperature Screening < 38 degrees on arrival"]
+                                      },
+                                      "withoutFullVaccination": {
+                                        "acceptingVisitors": false,
+                                        "test": {
+                                          "maximumHoursBefore": null
+                                        },
+                                        "quarantine": {
+                                          "numberOfDays": null
+                                        },
+                                        "documentsRequired": [],
+                                        "other": null
+                                      }
+                                    },
+                                    "restrictions": {
+                                      "masks": {
+                                        "isRequired": true,
+                                        "moreInfo": "Face masks are required in all enclosed public spaces"
+                                      },
+                                      "lockdowns": false,
+                                      "socialDistancing": true,
+                                      "groupMaximums": {
+                                        "inside": 8,
+                                        "outside": 15
+                                      }
+                                    },
+                                    "hotspots": ["Lisbon"],
+                                    "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+                                  })
+                            })
+                    })
+                })
+            })
+            describe('/ - PATCH', () => {
+                describe('status 200 - Success', () => {
+                    test('returns the updated country using the id when passing in a new country object', () => {
+                        return request(app)
+                            .patch('/api/countries/country/123a')
+                            .send({country: {
+                                "country": "Portugal",
+                                "colorList": "green",
+                                "entryRequirements": {
+                                  "recoveryFromCovid": {
+                                    "minDays": 11,
+                                    "maxDays": 180
+                                  },
+                                  "withFullVaccination": {
+                                    "acceptingVisitors": true,
+                                    "daysInnoculatedBeforeEntry": 14,
+                                    "test": {
+                                      "maximumHoursBefore": 72
+                                    },
+                                    "quarantine": {
+                                      "numberOfDays": 0
+                                    },
+                                    "documentsRequired": [
+                                      "Vaccination Status Proof",
+                                      "Covid Recovery Certificate"
+                                    ],
+                                    "other": ["Temperature Screening < 38 degrees on arrival"]
+                                  },
+                                  "withoutFullVaccination": {
+                                    "acceptingVisitors": false,
+                                    "test": {
+                                      "maximumHoursBefore": null
+                                    },
+                                    "quarantine": {
+                                      "numberOfDays": null
+                                    },
+                                    "documentsRequired": [],
+                                    "other": null
+                                  }
+                                },
+                                "restrictions": {
+                                  "masks": {
+                                    "isRequired": true,
+                                    "moreInfo": "Face masks are required in all enclosed public spaces"
+                                  },
+                                  "lockdowns": false,
+                                  "socialDistancing": true,
+                                  "groupMaximums": {
+                                    "inside": 8,
+                                    "outside": 15
+                                  }
+                                },
+                                "hotspots": ["Lisbon"],
+                                "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+                              }})
+                              .expect(200)
+                              .then((res: any) => {
+                                  expect(res.body.country).toEqual({
+                                    "country": "Portugal",
+                                    "colorList": "green",
+                                    "entryRequirements": {
+                                      "recoveryFromCovid": {
+                                        "minDays": 11,
+                                        "maxDays": 180
+                                      },
+                                      "withFullVaccination": {
+                                        "acceptingVisitors": true,
+                                        "daysInnoculatedBeforeEntry": 14,
+                                        "test": {
+                                          "maximumHoursBefore": 72
+                                        },
+                                        "quarantine": {
+                                          "numberOfDays": 0
+                                        },
+                                        "documentsRequired": [
+                                          "Vaccination Status Proof",
+                                          "Covid Recovery Certificate"
+                                        ],
+                                        "other": ["Temperature Screening < 38 degrees on arrival"]
+                                      },
+                                      "withoutFullVaccination": {
+                                        "acceptingVisitors": false,
+                                        "test": {
+                                          "maximumHoursBefore": null
+                                        },
+                                        "quarantine": {
+                                          "numberOfDays": null
+                                        },
+                                        "documentsRequired": [],
+                                        "other": null
+                                      }
+                                    },
+                                    "restrictions": {
+                                      "masks": {
+                                        "isRequired": true,
+                                        "moreInfo": "Face masks are required in all enclosed public spaces"
+                                      },
+                                      "lockdowns": false,
+                                      "socialDistancing": true,
+                                      "groupMaximums": {
+                                        "inside": 8,
+                                        "outside": 15
+                                      }
+                                    },
+                                    "hotspots": ["Lisbon"],
+                                    "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
+                                  })
+                              })
+                    })
+                })
+            })
+        })
+    })
+
     describe('/countries_with_id', () => {
         describe('/ - GET', () => {
             describe('status 200 - Success', () => {
@@ -360,180 +537,6 @@ describe('Test Endpoints', () => {
         });
     });
 
-    describe('/:_id', () => {
-        describe('/ - GET', () => {
-            describe('status 200 - Success', () => {
-                test.only('returns the country using the country id', () => {
-                    return request(app)
-                        .get('/api/countries/123a')
-                        .expect(200)
-                        .then((res: any) => {
-                            expect(res.body.country).toEqual({
-                                "country": "Portugal",
-                                "colorList": "amber",
-                                "entryRequirements": {
-                                  "recoveryFromCovid": {
-                                    "minDays": 11,
-                                    "maxDays": 180
-                                  },
-                                  "withFullVaccination": {
-                                    "acceptingVisitors": true,
-                                    "daysInnoculatedBeforeEntry": 14,
-                                    "test": {
-                                      "maximumHoursBefore": 72
-                                    },
-                                    "quarantine": {
-                                      "numberOfDays": 0
-                                    },
-                                    "documentsRequired": [
-                                      "Vaccination Status Proof",
-                                      "Covid Recovery Certificate"
-                                    ],
-                                    "other": ["Temperature Screening < 38 degrees on arrival"]
-                                  },
-                                  "withoutFullVaccination": {
-                                    "acceptingVisitors": false,
-                                    "test": {
-                                      "maximumHoursBefore": null
-                                    },
-                                    "quarantine": {
-                                      "numberOfDays": null
-                                    },
-                                    "documentsRequired": [],
-                                    "other": null
-                                  }
-                                },
-                                "restrictions": {
-                                  "masks": {
-                                    "isRequired": true,
-                                    "moreInfo": "Face masks are required in all enclosed public spaces"
-                                  },
-                                  "lockdowns": false,
-                                  "socialDistancing": true,
-                                  "groupMaximums": {
-                                    "inside": 8,
-                                    "outside": 15
-                                  }
-                                },
-                                "hotspots": ["Lisbon"],
-                                "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
-                              })
-                        })
-                })
-            })
-        })
-        describe('/ - PATCH', () => {
-            describe('status 200 - Success', () => {
-                test('returns the updated country using the id when passing in a new country object', () => {
-                    return request(app)
-                        .patch('/api/countries/123')
-                        .send({country: {
-                            "country": "Portugal",
-                            "colorList": "green",
-                            "entryRequirements": {
-                              "recoveryFromCovid": {
-                                "minDays": 11,
-                                "maxDays": 180
-                              },
-                              "withFullVaccination": {
-                                "acceptingVisitors": true,
-                                "daysInnoculatedBeforeEntry": 14,
-                                "test": {
-                                  "maximumHoursBefore": 72
-                                },
-                                "quarantine": {
-                                  "numberOfDays": 0
-                                },
-                                "documentsRequired": [
-                                  "Vaccination Status Proof",
-                                  "Covid Recovery Certificate"
-                                ],
-                                "other": ["Temperature Screening < 38 degrees on arrival"]
-                              },
-                              "withoutFullVaccination": {
-                                "acceptingVisitors": false,
-                                "test": {
-                                  "maximumHoursBefore": null
-                                },
-                                "quarantine": {
-                                  "numberOfDays": null
-                                },
-                                "documentsRequired": [],
-                                "other": null
-                              }
-                            },
-                            "restrictions": {
-                              "masks": {
-                                "isRequired": true,
-                                "moreInfo": "Face masks are required in all enclosed public spaces"
-                              },
-                              "lockdowns": false,
-                              "socialDistancing": true,
-                              "groupMaximums": {
-                                "inside": 8,
-                                "outside": 15
-                              }
-                            },
-                            "hotspots": ["Lisbon"],
-                            "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
-                          }})
-                          .expect(200)
-                          .then((res: any) => {
-                              expect(res.body.country).toEqual({
-                                "country": "Portugal",
-                                "colorList": "green",
-                                "entryRequirements": {
-                                  "recoveryFromCovid": {
-                                    "minDays": 11,
-                                    "maxDays": 180
-                                  },
-                                  "withFullVaccination": {
-                                    "acceptingVisitors": true,
-                                    "daysInnoculatedBeforeEntry": 14,
-                                    "test": {
-                                      "maximumHoursBefore": 72
-                                    },
-                                    "quarantine": {
-                                      "numberOfDays": 0
-                                    },
-                                    "documentsRequired": [
-                                      "Vaccination Status Proof",
-                                      "Covid Recovery Certificate"
-                                    ],
-                                    "other": ["Temperature Screening < 38 degrees on arrival"]
-                                  },
-                                  "withoutFullVaccination": {
-                                    "acceptingVisitors": false,
-                                    "test": {
-                                      "maximumHoursBefore": null
-                                    },
-                                    "quarantine": {
-                                      "numberOfDays": null
-                                    },
-                                    "documentsRequired": [],
-                                    "other": null
-                                  }
-                                },
-                                "restrictions": {
-                                  "masks": {
-                                    "isRequired": true,
-                                    "moreInfo": "Face masks are required in all enclosed public spaces"
-                                  },
-                                  "lockdowns": false,
-                                  "socialDistancing": true,
-                                  "groupMaximums": {
-                                    "inside": 8,
-                                    "outside": 15
-                                  }
-                                },
-                                "hotspots": ["Lisbon"],
-                                "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
-                              })
-                          })
-                })
-            })
-        })
-    })
   });
 
   describe('/users', () => {
