@@ -2,7 +2,8 @@ const {
   fetchCountries: selectCountries,
   fetchCountry: selectCountry,
   insertCountry: createCountry,
-  fixCountry: editCountry
+  fixCountry: editCountry,
+  fetchCountriesWithID: selectCountriesWithID
 } = require('../models/countries.models');
 
 export const getCountries = (req: object, res: any, next: any) => {
@@ -54,4 +55,14 @@ export const patchCountry = (req: any, res: any, next: any) => {
     .catch((err: object) => {
         next(err)
     })
+}
+
+export const getCountriesWithID = (req: any, res: any, next: any) => {
+    return selectCountriesWithID()
+        .then((countries: object) => {
+            res.status(200).send({countries})
+        })
+        .catch((err: object) => {
+            next(err)
+        })
 }

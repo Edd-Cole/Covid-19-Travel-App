@@ -253,7 +253,29 @@ describe('Test Endpoints', () => {
       });
     });
 
-      describe('/:country', () => {
+    describe('/countries_with_id', () => {
+        describe('/ - GET', () => {
+            describe('status 200 - Success', () => {
+                test.only('returns an object with countries and associated ids', () => {
+                    return request(app)
+                        .get('/api/countries/countries_with_id')
+                        .expect(200)
+                        .then((res: any) => {
+                            expect(res.body.countries).toMatchObject({
+                                'Denmark': expect.any(String),
+                                'Germany': expect.any(String),
+                                'Italy': expect.any(String),
+                                'Portugal': expect.any(String),
+                                'Spain': expect.any(String),
+                                'Switzerland': expect.any(String)
+                            })
+                        })
+                })
+            })
+        })
+    })
+
+    describe('/:country', () => {
         describe('/ - GET', () => {
           describe('status 200 - Success', () => {
             test('returns all the details of a country from the database using a country name', () => {
@@ -336,120 +358,10 @@ describe('Test Endpoints', () => {
             });
           });
         });
-
     });
-    describe('/:_id', () => {
-        describe('/ - PATCH', () => {
-            describe("status 200 - Success", () => {
-                test('returns the updated country by country_id', () => {
-                    return request(app).patch('/api/countries/123').send({country: {
-                        "country": "portugal",
-                        "colorList": "green",
-                        "entryRequirements": {
-                          "recoveryFromCovid": {
-                            "minDays": 11,
-                            "maxDays": 180
-                          },
-                          "withFullVaccination": {
-                            "acceptingVisitors": true,
-                            "daysInnoculatedBeforeEntry": 7,
-                            "test": {
-                              "maximumHoursBefore": 0
-                            },
-                            "quarantine": {
-                              "numberOfDays": 0
-                            },
-                            "documentsRequired": [
-                              "Vaccination Status Proof",
-                              "Covid Recovery Certificate"
-                            ],
-                            "other": ["Temperature Screening < 38 degrees on arrival"]
-                          },
-                          "withoutFullVaccination": {
-                            "acceptingVisitors": false,
-                            "test": {
-                              "maximumHoursBefore": null
-                            },
-                            "quarantine": {
-                              "numberOfDays": null
-                            },
-                            "documentsRequired": [],
-                            "other": null
-                          }
-                        },
-                        "restrictions": {
-                          "masks": {
-                            "isRequired": false,
-                            "moreInfo": null
-                          },
-                          "lockdowns": false,
-                          "socialDistancing": true,
-                          "groupMaximums": {
-                            "inside": 8,
-                            "outside": 15
-                          }
-                        },
-                        "hotspots": ["Lisbon"],
-                        "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
-                      }}).expect(200).then((res: any) => {
-                          expect(res.body.country).toEqual({
-                            "country": "portugal",
-                            "colorList": "green",
-                            "entryRequirements": {
-                              "recoveryFromCovid": {
-                                "minDays": 11,
-                                "maxDays": 180
-                              },
-                              "withFullVaccination": {
-                                "acceptingVisitors": true,
-                                "daysInnoculatedBeforeEntry": 7,
-                                "test": {
-                                  "maximumHoursBefore": 0
-                                },
-                                "quarantine": {
-                                  "numberOfDays": 0
-                                },
-                                "documentsRequired": [
-                                  "Vaccination Status Proof",
-                                  "Covid Recovery Certificate"
-                                ],
-                                "other": ["Temperature Screening < 38 degrees on arrival"]
-                              },
-                              "withoutFullVaccination": {
-                                "acceptingVisitors": false,
-                                "test": {
-                                  "maximumHoursBefore": null
-                                },
-                                "quarantine": {
-                                  "numberOfDays": null
-                                },
-                                "documentsRequired": [],
-                                "other": null
-                              }
-                            },
-                            "restrictions": {
-                              "masks": {
-                                "isRequired": false,
-                                "moreInfo": null
-                              },
-                              "lockdowns": false,
-                              "socialDistancing": true,
-                              "groupMaximums": {
-                                "inside": 8,
-                                "outside": 15
-                              }
-                            },
-                            "hotspots": ["Lisbon"],
-                            "healthCareNumber": "(+351) 808 24 24 24, press 9 for English"
-                          })
-                      })
-                })
-            })
-        })
-    })
-    });
+  });
 
-    describe('/users', () => {
+  describe('/users', () => {
       describe('/ - POST', () => {
         describe('status 201 - Created', () => {
           test('creates and returns a new user object when given a name, email and password', () => {
@@ -909,5 +821,5 @@ describe('Test Endpoints', () => {
           });
         });
       });
-    });
+  });
 });
