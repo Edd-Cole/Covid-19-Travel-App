@@ -47,9 +47,9 @@ export const addCountry = (req: any, res: any, next: any) => {
 };
 
 export const getCountryByID = (req: any, res: any, next: any) => {
-    const { _id } = req.params
-    console.log(_id)
-    return selectCountryByID(_id)
+    const { id } = req.params
+    console.log(id)
+    return selectCountryByID(id)
         .then((country: any) => {
             res.status(200).send({ country })
         })
