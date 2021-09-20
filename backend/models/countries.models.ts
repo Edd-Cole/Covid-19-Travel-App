@@ -85,7 +85,7 @@ const killCountry = (_id: string) => {
     const new_id = new ObjectId(_id)
     return mongo()
         .then((db: any) => {
-            return db.collection('countries').remove({ _id: new_id })
+            return db.collection('countries').drop();
         })
 }
 
