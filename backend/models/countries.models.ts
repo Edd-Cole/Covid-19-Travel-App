@@ -85,7 +85,12 @@ const killCountry = (_id: string) => {
     const new_id = new ObjectId(_id)
     return mongo()
         .then((db: any) => {
-            return db.collection('countries').deleteOne( { _id: new_id });
+            return db.collection('countries').deleteOne( { _id: new_id }, (err: object, obj: object) => {
+                if(err) {
+                    return Promise.reject({code: 500, msg: "database error"})
+                }
+                return 
+            });
         })
 
 }
