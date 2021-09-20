@@ -119,6 +119,7 @@ module.exports = [{
     }, {
         "country": "Germany",
         "colorList": "green",
+        "entryRequirements": {
         "withFullVaccination": {
             "acceptingVisitors": true,
             "daysInnoculatedBeforeEntry": null,
@@ -144,6 +145,7 @@ module.exports = [{
             "documentsRequired": ["proof of residence (UK)", "negative test"],
             "other": ["none"]
         },
+    },
         "restrictions": {
             "masks": { "isRequired": true, "moreInfo": "masks in densely populated areas, businesses that require them also" },
             "lockdowns": false,
