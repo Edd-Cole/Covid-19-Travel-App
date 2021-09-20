@@ -4,7 +4,8 @@ const {
   insertCountry: createCountry,
   fixCountry: editCountry,
   fetchCountryByID: selectCountryByID,
-  fetchCountriesWithID: selectCountriesWithID
+  fetchCountriesWithID: selectCountriesWithID,
+  killCountry: wipeCountry
 } = require('../models/countries.models');
 
 export const getCountries = (req: object, res: any, next: any) => {
@@ -78,5 +79,16 @@ export const getCountriesWithID = (req: any, res: any, next: any) => {
         })
         .catch((err: object) => {
             next(err)
+        })
+}
+
+export const deleteCountry = (req: any, res: any, next: any) => {
+    const { _id } = req.params
+    return wipeCountry(_id)
+        .then(() => {
+            res.sendStatus(204);
+        })
+        .catch((err: object) => {
+            next(err);
         })
 }

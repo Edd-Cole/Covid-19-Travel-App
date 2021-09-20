@@ -1,1 +1,3 @@
 node_modules
+backend/db/data/development_data/convert.js
+backend/db/data/development_data/countryData.js
