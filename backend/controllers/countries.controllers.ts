@@ -21,6 +21,7 @@ export const getCountries = (req: object, res: any, next: any) => {
 };
 
 export const getCountry = (req: any, res: any, next: any) => {
+  //Extract country from params
   const { country } = req.params;
   return selectCountry(country)
     .then((country: object) => {
