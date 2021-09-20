@@ -34,7 +34,9 @@ export const postUser = (req: any, res: any, next: any) => {
 };
 
 export const deleteUser = (req: any, res: any, next: any) => {
+  //Extract email from params
   const { email } = req.params;
+  //if succesful send success - no content
   return wipeUser(email)
     .then(() => {
       res.sendStatus(204);
@@ -45,8 +47,10 @@ export const deleteUser = (req: any, res: any, next: any) => {
 };
 
 export const updateUser = (req: any, res: any, next: any) => {
+//extract email from params and potential info to update from the body
   const { email } = req.params;
   const { name, email: updateEmail, password, trip, deleteTrip, archiveTrip } = req.body;
+  //if successful, send back the new user with updates
   return fixUser(email, name, updateEmail, password, trip, deleteTrip, archiveTrip)
     .then((user: object) => {
       res.status(200).send({ user });
