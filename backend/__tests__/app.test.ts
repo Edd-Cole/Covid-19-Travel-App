@@ -30,7 +30,7 @@ describe('Test Endpoints', () => {
   });
 
   describe('/countries', () => {
-    describe('/ - GET', () => {
+        describe('/ - GET', () => {
       describe('status 200 - success', () => {
         test('returns a list of country names', () => {
           return request(app)
@@ -48,9 +48,9 @@ describe('Test Endpoints', () => {
             });
         });
       });
-    });
+        });
 
-    describe('/ - POST', () => {
+        describe('/ - POST', () => {
       describe('status 201 - Created', () => {
         test('it adds a new country into the database and returns an array of country names', () => {
           return request(app)
@@ -251,9 +251,9 @@ describe('Test Endpoints', () => {
             });
         });
       });
-    });
+        });
 
-    describe('/countries_with_id', () => {
+        describe('/countries_with_id', () => {
         describe('/ - GET', () => {
             describe('status 200 - Success', () => {
                 test('returns an object with countries and associated ids', () => {
@@ -273,9 +273,9 @@ describe('Test Endpoints', () => {
                 })
             })
         })
-    })
+        })
 
-    describe('/:country', () => {
+        describe('/:country', () => {
         describe('/ - GET', () => {
           describe('status 200 - Success', () => {
             test('returns all the details of a country from the database using a country name', () => {
@@ -358,9 +358,18 @@ describe('Test Endpoints', () => {
             });
           });
         });
-    });
+        });
 
-  });
+        describe('/country', () => {
+            describe.only('/delete_countries_collection', () => {
+                describe('/ - DELETE', () => {
+                    test('status 204 - Success, No Content', () => {
+                        return request(app).delete('/api/countries/country/delete_countries_collection').expect(204)
+                    })
+                })
+            });
+        })
+    })
 
   describe('/users', () => {
       describe('/ - POST', () => {

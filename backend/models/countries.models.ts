@@ -96,4 +96,11 @@ const fetchCountriesWithID = async() => {
     return countriesWithID;
 } 
 
-module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID };
+const killCollection = () => {
+    return mongo()
+        .then((db: any) => {
+            return db.collection('countries').drop();
+        })
+}
+
+module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID, killCollection };
