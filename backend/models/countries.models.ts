@@ -85,9 +85,9 @@ const killCountry = (_id: string) => {
     const new_id = new ObjectId(_id)
     return mongo()
         .then((db: any) => {
-            return db.collection('countries').removeOne( { _id: new_id });
+            return db.collection('countries').deleteOne( { _id: new_id });
         })
 
 }
 
-module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID };
+module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID, killCountry };
