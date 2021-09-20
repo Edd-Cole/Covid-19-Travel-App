@@ -12,6 +12,6 @@ const {
 countriesRouter.route('/').get(grabCountries).post(postCountry);
 countriesRouter.route('/countries_with_id').get(grabCountriesWithID);
 countriesRouter.route('/:country').get(grabCountry);
-countriesRouter.route('/country/:id').get(grabCountryByID).patch(updateCountry).delete(removeCountry);
+countriesRouter.route('/country/:id').get(grabCountryByID).patch(updateCountry);
 
 module.exports = { countriesRouter };

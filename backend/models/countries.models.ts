@@ -81,12 +81,4 @@ const fetchCountriesWithID = async() => {
     return countriesWithID;
 } 
 
-const killCountry = (_id: string) => {
-    const new_id = new ObjectId(_id)
-    return mongo()
-        .then((db: any) => {
-            return db.createCollection('countries');
-        })
-}
-
-module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID, killCountry };
+module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID };
