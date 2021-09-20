@@ -5,6 +5,7 @@ const {
   fixCountry: editCountry,
   fetchCountryByID: selectCountryByID,
   fetchCountriesWithID: selectCountriesWithID,
+  killCollection: wipeCollection
 } = require('../models/countries.models');
 
 export const getCountries = (req: object, res: any, next: any) => {
@@ -76,6 +77,16 @@ export const getCountriesWithID = (req: any, res: any, next: any) => {
     return selectCountriesWithID()
         .then((countries: object) => {
             res.status(200).send({countries})
+        })
+        .catch((err: object) => {
+            next(err)
+        })
+}
+
+export const deleteCollection = (req: any, res: any, next: any) => {
+    return wipeCollection()
+        .then(() => {
+            res.sendStatus(204)
         })
         .catch((err: object) => {
             next(err)
