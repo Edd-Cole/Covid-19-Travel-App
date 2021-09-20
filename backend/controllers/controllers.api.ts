@@ -7,7 +7,6 @@ const getEndpoints = (req: object, res: any, next: any) => {
       res.status(200).send({ endpoints });
     })
     .catch((err: any) => {
-      console.log(err);
       next(err);
     });
 };
