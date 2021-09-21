@@ -16,6 +16,5 @@ countriesRouter.route('/countries_with_id').get(grabCountriesWithID);
 countriesRouter.route('/:country').get(grabCountry);
 countriesRouter.route('/country/:id').get(grabCountryByID).patch(updateCountry);
 countriesRouter.route('/country/delete_countries_collection').delete(removeCollection)
-countriesRouter.route('/country/create_countries_collection').post(postCollection)
 
 module.exports = { countriesRouter };

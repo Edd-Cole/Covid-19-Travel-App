@@ -361,7 +361,7 @@ describe('Test Endpoints', () => {
         });
 
         describe('/country', () => {
-            describe.only('/delete_countries_collection', () => {
+            describe('/delete_countries_collection', () => {
                 describe('/ - DELETE', () => {
                     test('status 204 - Success, No Content', () => {
                         return request(app).delete('/api/countries/country/delete_countries_collection').expect(204)
