@@ -206,21 +206,23 @@ module.exports = [{
 }, {
     "country": "Switzerland",
     "colorList": "green",
-    "withFullVaccination": {
-        "acceptingVisitors": true,
-        "daysInnoculatedBeforeEntry": null,
-        "test": { "required": false },
-        "quarantine": { "required": false, "numberOfDays": null },
-        "documentsRequired": ["proof of residence (UK)", "proof of vaccination"],
-        "other": [null]
-    },
-    "withoutFullVaccination": {
-        "acceptingVisitors": false,
-        "daysInnoculatedBeforeEntry": null,
-        "test": { "required": true, "maximumHoursBefore": 72, "acceptedTests": ["PCR", "LFD", "LAMP"] },
-        "quarantine": { "required": true, "numberOfDays": 10, "TTR (Test To Release)": true, "whenAvailable": "5 days into quarantine" },
-        "documentsRequired": ["proof of residence (UK)", "negative test/covid certificate/recovery within lat 6 months", "passenger locator form"],
-        "other": [null]
+    "entryRequirements": {
+        "withFullVaccination": {
+            "acceptingVisitors": true,
+            "daysInnoculatedBeforeEntry": null,
+            "test": { "required": false },
+            "quarantine": { "required": false, "numberOfDays": null },
+            "documentsRequired": ["proof of residence (UK)", "proof of vaccination"],
+            "other": [null]
+        },
+        "withoutFullVaccination": {
+            "acceptingVisitors": false,
+            "daysInnoculatedBeforeEntry": null,
+            "test": { "required": true, "maximumHoursBefore": 72, "acceptedTests": ["PCR", "LFD", "LAMP"] },
+            "quarantine": { "required": true, "numberOfDays": 10, "TTR (Test To Release)": true, "whenAvailable": "5 days into quarantine" },
+            "documentsRequired": ["proof of residence (UK)", "negative test/covid certificate/recovery within lat 6 months", "passenger locator form"],
+            "other": [null]
+        }
     },
     "restrictions": {
         "masks": {
