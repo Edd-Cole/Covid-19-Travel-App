@@ -7,7 +7,8 @@ const {
   getCountryByID: grabCountryByID,
   getCountriesWithID: grabCountriesWithID,
   deleteCountry: removeCountry,
-  deleteCollection: removeCollection
+  deleteCollection: removeCollection,
+  addCollection: postCollection
 } = require('../controllers/countries.controllers');
 
 countriesRouter.route('/').get(grabCountries).post(postCountry);
@@ -15,5 +16,6 @@ countriesRouter.route('/countries_with_id').get(grabCountriesWithID);
 countriesRouter.route('/:country').get(grabCountry);
 countriesRouter.route('/country/:id').get(grabCountryByID).patch(updateCountry);
 countriesRouter.route('/country/delete_countries_collection').delete(removeCollection)
+countriesRouter.route('/country/create_countries_collection').post(postCollection)
 
 module.exports = { countriesRouter };

@@ -103,4 +103,11 @@ const killCollection = () => {
         })
 }
 
-module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID, killCollection };
+const insertCollection = () => {
+    return mongo()
+        .then((db: any) => {
+            return db.createCollection('countries')
+        })
+}
+
+module.exports = { fetchCountries, fetchCountry, insertCountry, fixCountry, fetchCountryByID, fetchCountriesWithID, killCollection, insertCollection };
