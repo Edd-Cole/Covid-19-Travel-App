@@ -2,7 +2,8 @@ const {
   fetchUser: selectUser,
   buildUser: addUser,
   killUser: wipeUser,
-  repairUser: fixUser
+  repairUser: fixUser,
+  fetchUsers: selectUsers
 } = require('../models/users.models.ts');
 
 export const setUser = (req: any, res: any, next: any) => {
@@ -58,4 +59,15 @@ export const updateUser = (req: any, res: any, next: any) => {
     .catch((err: object) => {
       next(err);
     });
-};
+};;
+
+export const getUsers = (req: any, res: any, next: any) => {
+    return selectUsers()    
+        .then((users: object[]) => {
+            res.status(200).send({users});
+        })
+        .catch((err: object) => {
+            console.log(err);
+            next(err)
+        })
+}
