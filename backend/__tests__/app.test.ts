@@ -363,8 +363,10 @@ describe('Test Endpoints', () => {
         describe('/country', () => {
             describe('/delete_countries_collection', () => {
                 describe('/ - DELETE', () => {
-                    test('status 204 - Success, No Content', () => {
-                        return request(app).delete('/api/countries/country/delete_countries_collection').expect(204)
+                    test('status 204 - Success, No Content', async() => {
+                        await request(app).delete('/api/countries/country/delete_countries_collection').expect(204)
+
+                        return main().then((db: any) => db.createCollection("countries")) //if running npm test for all, this is needed to recreate the collection, otherwise errors persist
                     })
                 })
             });
@@ -831,5 +833,23 @@ describe('Test Endpoints', () => {
           });
         });
       });
+      describe('/all_users', () => {
+          describe('/ - GET', () => {
+              describe('status 200 - Success', () => {
+                  test('returns an array of user name and emails', () => {
+                      return request(app).get('/api/users/all_users').expect(200)
+                        .then((res: any) => {
+                            expect(res.body.users).toEqual([    {
+                                name: "John Smith",
+                                email: "js@google.com"},
+                                {name: "Edd Kleszcz",
+                                email: "ek@sadballoons.com"},
+                                {name: "Mahamud Arteh",
+                                email: "ma@sadballoons.com"}])
+                        })
+                  })
+              })
+          })
+      })
   });
 });

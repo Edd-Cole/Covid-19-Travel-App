@@ -135,4 +135,14 @@ const repairUser = async (email: string, name: string, updateEmail: string, pass
   });
 };
 
-module.exports = { fetchUser, buildUser, killUser, repairUser };
+const fetchUsers = () => {
+    return mongoCl()
+        .then(async(db: any) => {
+            const users: object[] = await db.collection('users').find({}).toArray();
+            return users.map((user: any) => {
+                return {name: user.name, email: user.email}
+            })
+        })
+}
+
+module.exports = { fetchUser, buildUser, killUser, repairUser, fetchUsers };
