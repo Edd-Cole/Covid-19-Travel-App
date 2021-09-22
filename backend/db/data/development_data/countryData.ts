@@ -150,7 +150,7 @@ module.exports = [{
         "masks": { "isRequired": true, "moreInfo": "masks in densely populated areas, businesses that require them also" },
         "lockdowns": false,
         "socialDistancing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Berlin", "Hamburg", "Cologne"],
     "geoLocation": {
@@ -193,7 +193,7 @@ module.exports = [{
         "masks": { "isRequired": true, "moreInfo": "Face masks on public transport, including taxis and ferries" },
         "lockdowns": false,
         "socialDistancing": true,
-        "groupMaximums": { "inside": 500, "outside": 500 }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Copenhagen", "Aarhus", "Herning"],
     "healthCareNumber": "Danish authorities on their helpline (+45 7020 6044)",
@@ -232,7 +232,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Geneva", "Zurich"],
     "geoLocation": {
@@ -354,7 +354,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Vienna", "Vorarlberg"],
     "geoLocation": {
@@ -405,7 +405,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Sofia", "Plovdiv"],
     "geoLocation": {
@@ -462,7 +462,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": [],
     "geoLocation": {
@@ -519,7 +519,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["plit", "Dubrovnik"],
     "geoLocation": {
@@ -558,7 +558,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Derry City", "Donegal"],
     "geoLocation": {
@@ -600,7 +600,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Vilnius", "Kaunas"],
     "geoLocation": {
@@ -645,7 +645,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Amsterdam", "Rotterdam"],
     "geoLocation": {
@@ -687,7 +687,7 @@ module.exports = [{
         "lockdowns": false,
         "socialDistancing": true,
         "contactTracing": true,
-        "groupMaximum": { "inside": null, "outside": null }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Bucuresti", "Cluj"],
     "geoLocation": {
@@ -778,7 +778,7 @@ module.exports = [{
         "masks": { "isRequired": null, "moreInfo": null },
         "lockdowns": false,
         "socialDistancing": true,
-        "groupMaximums": { "inside": 8, "outside": "no limit" }
+        "groupMaximums": { "inside": 8, "outside": null }
     },
     "geoLocation": {
         "latitude": 62.1282,
@@ -1149,7 +1149,7 @@ module.exports = [{
         },
         "lockdowns": false,
         "socialDistancing": true,
-        "groupMaximums": { "inside": 1000, "outside": 1000 }
+        "groupMaximums": { "inside": 1000, "outside": null }
     },
     "hotspots": [""],
     "healthCareNumber": "+423 235 45 32 (24 hours)",
@@ -1263,7 +1263,7 @@ module.exports = [{
         },
         "lockdowns": false,
         "socialDistancing": true,
-        "groupMaximums": { "inside": 1000, "outside": 1000 }
+        "groupMaximums": { "inside": null, "outside": null }
     },
     "hotspots": ["Warsaw"],
     "healthCareNumber": " +47 815 55 015 for general enquiries and +47 116 117 if you believe you have been infected",
