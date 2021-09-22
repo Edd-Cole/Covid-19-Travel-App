@@ -836,7 +836,7 @@ describe('Test Endpoints', () => {
       describe('/all_users', () => {
           describe('/ - GET', () => {
               describe('status 200 - Success', () => {
-                  test.only('returns an array of user name and emails', () => {
+                  test('returns an array of user name and emails', () => {
                       return request(app).get('/api/users/all_users').expect(200)
                         .then((res: any) => {
                             expect(res.body.users).toEqual([    {
