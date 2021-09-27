@@ -8,7 +8,9 @@
         "test": "jest",
         "test:watch": "jest --watch",
         "seed": "ts-node backend/db/seeds/run-seed.ts",
-        "seed:prod": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL) node db/run-seed.js"
+        "seed:prod": "NODE_ENV=production DATABASE_URL=$(heroku config:get DATABASE_URL) node db/run-seed.js",
+        "init_db": "ts-node ./backend/db/seeds/initialiseDB",
+        "listen": "ts-node ./backend/listen.ts"
     },
     "jest": {
         "transform": {

@@ -370,6 +370,31 @@ describe('Test Endpoints', () => {
                     })
                 })
             });
+
+            describe('/:id', () => {
+                describe('/ - GET', () => {
+                    describe('status 200 - Success', () => {
+                        test('returns the country with the relevant country id', () => {
+                            return request(app)
+                                .get('/api/countries/country/123a456789bc')
+                                .expect(200)
+                                .then((res: any) => {
+                                    expect(res.body.country.country).toBe('Portugal')
+                                })
+                        })
+                    })
+                })
+
+                describe('/ - PATCH', () => {
+                    describe('status 200 - Success', () => {
+                        test("updates a country when given a relevant key-value pair", () => {
+                            return request(app)
+                                .patch('/api/countries/country/123a456789bc')
+                                .send({})
+                        })
+                    })
+                })
+            })
         })
     })
 

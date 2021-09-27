@@ -74,7 +74,8 @@ const fetchCountryByID = ( _id: any ) => {
     //locate and return the country with the matching id, remove id and send back
     return mongo()
         .then(async (db: any) => {
-            const country = await db.collection('countries').findOne({ _id: new_id })
+            //first locate country by using object_id, needed for the hosted version, second version allows local compatibility
+            const country = await db.collection('countries').findOne({ _id: new_id }) || await db.collection('countries').findOne({ _id })
             delete country._id;
             return country
         })
