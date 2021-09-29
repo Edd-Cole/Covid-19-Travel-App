@@ -8,6 +8,7 @@ const initialiseDB = async() => {
     await db1.createCollection('countries');
     await db2.createCollection('users');
     await db2.createCollection('countries');
+    return connect.close();
 }
 
 initialiseDB();
