@@ -31,6 +31,24 @@ npm install
 ```
 This will install all the needed dependencies and dev dependencies on to the repo.
 
+Next, you will need to install MongoDB to your local machine! (If you want to run the tests, if you don't, don't worry about this step).
+
+Follow this <a href="">link</a> and install Mongo given your operating system.
+
+Check MongoDB is installed properly by typing this command into your terminal:
+
+```http
+mongo
+```
+You should see a swathe of text and a single ">" icon at the end. If this appears, you've been successful!
+
+Finally, you need the databases! We've made it really easy for you, type this command into your termianl:
+
+```http
+npm run init_db
+```
+This will set up the relevant databases for the tests.
+
 ### <span style="text-decoration: underline">Running Tests:</span>
 
 The unit tests for the api are located on the path:
