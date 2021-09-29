@@ -2,7 +2,13 @@
 
 ## Intro:
 ---
-- mention node needs to be installed and git
+Welcome to Coroamer. The app that is built for international travel safety for the Coronavirus pandemic.
+
+You are currently viewing the back end portion of the project. To view the Front End portion go <a href="https://github.com/CHARIOT-SEB/Covid-Travel-App-Frontend">here</a>.
+
+The aim of this app was to share, with travellers, the restrictions of each European country and what they would need to do to be assured entry and a safe stay.
+
+Before diving into the project, make sure you have node.js installed globally on your computer! If not you can go <a href="https://www.freecodecamp.org/news/how-to-install-node-in-your-machines-macos-linux-windows/">here</a> to install node.
 
 ## Set up:
 ---
