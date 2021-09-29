@@ -40,7 +40,7 @@ npm test
 ```
 ## Structure:
 ---
-The project is structured in two repo's. This half of the project is the back end, the other half can be found here: [INSERT_URL_HERE].
+The project is structured in two repo's. This half of the project is the back end, the other half can be found <a href="https://github.com/CHARIOT-SEB/Covid-Travel-App-Frontend">here</a>.
 
 Within this repository, all code that relates to the back end can be found in the "backend" directory.
 
@@ -68,7 +68,7 @@ There are 3 ways to use this program...
 
 The first is to run it locally on your machine. If this is what you plan to do, you must have MongoDB installed on your local machine.
 
-Here is a good website to get MongoDB installed locally: [URL_HERE_FOR_MONGO].
+Here is a good website to get MongoDB installed locally, click <a href="https://docs.mongodb.com/manual/installation/">here</a> to see the instructions for Windows, Mac or Linux.
 
 Next, once you have finished all these steps and you can access mongo by typing "mongo" on you Command Line. Type the following command in the root of your directory:
 
@@ -88,7 +88,7 @@ This will set the program to listen for your requests. Lastly, in Input box at t
 
 This will allow you to connect locally to the program, and you can begin using the api as you want.
 
-A second option to access the API is by using the app. If you go here [URL_HERE], you can get this repo and access the front end portion of the application. This connects to the hosted back end.
+A second option to access the API is by using the app. If you go <a href="https://github.com/CHARIOT-SEB/Covid-Travel-App-Frontend">here</a>, you can get this repo and access the front end portion of the application. This connects to the hosted back end.
 
 Lastly, you can use Insomnia to connect to the hosted version of this. If you copy and paste the following link into the search bar, you can make your desired requests to the DB: https://covid-travel-app-21.herokuapp.com/api
 
