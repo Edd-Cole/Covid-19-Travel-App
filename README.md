@@ -52,7 +52,7 @@ The first sub-directory is the __tests__ directory which houses the app.test.ts 
 
 Next is the controllers sub-directory. This directory is home to all the controllers for each of the relevant routes that are used, either by a user of internally by the team. The files are categorised by the relevant router that has been established.
 
-After the controllers directory is thte db directory. This houses everything relevant to the database. The Data which is then seperated into test and dev data with files for Users and Countries, with a generic export file. Within the development data directory, we have a convertToJson file, as we came across standardised data problems, and this was the easiest way to resolve these issues. We'd drop the countries collection and then would post all the data back in using Insomnia.
+After the controllers directory is the db directory. This houses everything relevant to the database. The Data which is then seperated into test and dev data with files for Users and Countries, with a generic export file. Within the development data directory, we have a convertToJson file, as we came across standardised data problems, and this was the easiest way to resolve these issues. We'd drop the countries collection and then would post all the data back in using Insomnia.
 
 The db also contains the connection.ts file, seed.ts, run-seed.ts within the seed sub-sub-directory. This allows us to establish a connection to MongoDB that is either hosted locally, or on the cloud. And if it is hosted locally, it will switch to either test or dev data depending on what is being run, automatically. The seed file populates the database as we need each time it is run, and run-seed executes the seeding function.
 
