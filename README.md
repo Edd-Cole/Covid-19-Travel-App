@@ -2,7 +2,13 @@
 
 ## Intro:
 ---
-- mention node needs to be installed and git
+Welcome to Coroamer. The app that is built for international travel safety for the Coronavirus pandemic.
+
+You are currently viewing the back end portion of the project. To view the Front End portion go <a href="https://github.com/CHARIOT-SEB/Covid-Travel-App-Frontend">here</a>.
+
+The aim of this app was to share, with travellers, the restrictions of each European country and what they would need to do to be assured entry and a safe stay.
+
+Before diving into the project, make sure you have node.js installed globally on your computer! If not you can go <a href="https://www.freecodecamp.org/news/how-to-install-node-in-your-machines-macos-linux-windows/">here</a> to install node.
 
 ## Set up:
 ---
@@ -25,6 +31,24 @@ npm install
 ```
 This will install all the needed dependencies and dev dependencies on to the repo.
 
+Next, you will need to install MongoDB to your local machine! (If you want to run the tests, if you don't, don't worry about this step).
+
+Follow this <a href="">link</a> and install Mongo given your operating system.
+
+Check MongoDB is installed properly by typing this command into your terminal:
+
+```http
+mongo
+```
+You should see a swathe of text and a single ">" icon at the end. If this appears, you've been successful!
+
+Finally, you need the databases! We've made it really easy for you, type this command into your termianl:
+
+```http
+npm run init_db
+```
+This will set up the relevant databases for the tests.
+
 ### <span style="text-decoration: underline">Running Tests:</span>
 
 The unit tests for the api are located on the path:
@@ -40,7 +64,7 @@ npm test
 ```
 ## Structure:
 ---
-The project is structured in two repo's. This half of the project is the back end, the other half can be found here: [INSERT_URL_HERE].
+The project is structured in two repo's. This half of the project is the back end, the other half can be found <a href="https://github.com/CHARIOT-SEB/Covid-Travel-App-Frontend">here</a>.
 
 Within this repository, all code that relates to the back end can be found in the "backend" directory.
 
@@ -52,7 +76,7 @@ The first sub-directory is the __tests__ directory which houses the app.test.ts 
 
 Next is the controllers sub-directory. This directory is home to all the controllers for each of the relevant routes that are used, either by a user of internally by the team. The files are categorised by the relevant router that has been established.
 
-After the controllers directory is thte db directory. This houses everything relevant to the database. The Data which is then seperated into test and dev data with files for Users and Countries, with a generic export file. Within the development data directory, we have a convertToJson file, as we came across standardised data problems, and this was the easiest way to resolve these issues. We'd drop the countries collection and then would post all the data back in using Insomnia.
+After the controllers directory is the db directory. This houses everything relevant to the database. The Data which is then seperated into test and dev data with files for Users and Countries, with a generic export file. Within the development data directory, we have a convertToJson file, as we came across standardised data problems, and this was the easiest way to resolve these issues. We'd drop the countries collection and then would post all the data back in using Insomnia.
 
 The db also contains the connection.ts file, seed.ts, run-seed.ts within the seed sub-sub-directory. This allows us to establish a connection to MongoDB that is either hosted locally, or on the cloud. And if it is hosted locally, it will switch to either test or dev data depending on what is being run, automatically. The seed file populates the database as we need each time it is run, and run-seed executes the seeding function.
 
@@ -68,7 +92,7 @@ There are 3 ways to use this program...
 
 The first is to run it locally on your machine. If this is what you plan to do, you must have MongoDB installed on your local machine.
 
-Here is a good website to get MongoDB installed locally: [URL_HERE_FOR_MONGO].
+Here is a good website to get MongoDB installed locally, click <a href="https://docs.mongodb.com/manual/installation/">here</a> to see the instructions for Windows, Mac or Linux.
 
 Next, once you have finished all these steps and you can access mongo by typing "mongo" on you Command Line. Type the following command in the root of your directory:
 
@@ -88,7 +112,7 @@ This will set the program to listen for your requests. Lastly, in Input box at t
 
 This will allow you to connect locally to the program, and you can begin using the api as you want.
 
-A second option to access the API is by using the app. If you go here [URL_HERE], you can get this repo and access the front end portion of the application. This connects to the hosted back end.
+A second option to access the API is by using the app. If you go <a href="https://github.com/CHARIOT-SEB/Covid-Travel-App-Frontend">here</a>, you can get this repo and access the front end portion of the application. This connects to the hosted back end.
 
 Lastly, you can use Insomnia to connect to the hosted version of this. If you copy and paste the following link into the search bar, you can make your desired requests to the DB: https://covid-travel-app-21.herokuapp.com/api
 
